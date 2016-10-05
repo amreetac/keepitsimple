@@ -19854,37 +19854,47 @@
 			value: function render() {
 				return _react2.default.createElement(
 					'div',
-					{ className: 'container' },
+					null,
 					_react2.default.createElement(
-						'div',
-						{ className: 'row' },
+						'header',
+						null,
 						_react2.default.createElement(
 							'div',
 							{ className: 'jumbotron' },
 							_react2.default.createElement(
-								'h2',
-								{ className: 'text-center' },
-								'Recipe Finder!'
-							),
-							_react2.default.createElement(
-								'p',
-								{ className: 'text-center' },
+								'div',
+								{ className: 'row' },
 								_react2.default.createElement(
-									'em',
-									null,
-									'Enter an ingradient to search for a recipe (ex: "banana").'
+									'h1',
+									{ className: 'mainHeader text-center' },
+									'Recipe Finder!'
 								)
 							)
-						),
+						)
+					),
+					_react2.default.createElement('br', null),
+					_react2.default.createElement(
+						'div',
+						{ className: 'container' },
 						_react2.default.createElement(
 							'div',
-							{ className: 'col-md-6' },
+							{ className: 'row' },
 							_react2.default.createElement(_Form2.default, { setTerm: this.setTerm })
 						),
 						_react2.default.createElement(
 							'div',
-							{ className: 'col-md-6' },
+							{ className: 'row' },
 							_react2.default.createElement(_Results2.default, { address: this.state.results })
+						)
+					),
+					_react2.default.createElement('br', null),
+					_react2.default.createElement(
+						'footer',
+						null,
+						_react2.default.createElement(
+							'div',
+							{ className: 'row' },
+							'Copyright 2016'
 						)
 					)
 				);
@@ -19966,10 +19976,15 @@
 						"div",
 						{ className: "panel-heading" },
 						_react2.default.createElement(
-							"h3",
+							"h2",
 							{ className: "panel-title text-center" },
-							"Query"
-						)
+							_react2.default.createElement(
+								"strong",
+								null,
+								"Ingredient"
+							)
+						),
+						"    "
 					),
 					_react2.default.createElement(
 						"div",
@@ -19982,11 +19997,11 @@
 								{ className: "form-group" },
 								_react2.default.createElement(
 									"h4",
-									{ className: "" },
+									{ className: "text-center" },
 									_react2.default.createElement(
-										"strong",
+										"em",
 										null,
-										"Ingredient"
+										"Enter an ingredient to search for a recipe (ex: \"banana\")."
 									)
 								),
 								_react2.default.createElement("input", { type: "text", className: "form-control text-center", id: "term", onChange: this.handleChange, required: true }),
@@ -20051,18 +20066,22 @@
 						"div",
 						{ className: "panel-heading" },
 						_react2.default.createElement(
-							"h3",
+							"h2",
 							{ className: "panel-title text-center" },
-							"Results"
+							_react2.default.createElement(
+								"strong",
+								null,
+								"Recipes"
+							)
 						)
 					),
 					_react2.default.createElement(
 						"div",
 						{ className: "panel-body text-center" },
 						_react2.default.createElement(
-							"h1",
+							"h3",
 							null,
-							"Address:"
+							"List"
 						),
 						_react2.default.createElement(
 							"p",
