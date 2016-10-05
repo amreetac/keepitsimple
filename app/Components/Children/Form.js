@@ -30,14 +30,17 @@ class Form extends React.Component{
 
 			<div className="panel panel-default">
 				<div className="panel-heading">
-					<h3 className="panel-title text-center">Query</h3>
-				</div>
+					<h2 className="panel-title text-center"><strong>Ingredient</strong></h2>				</div>
 				<div className="panel-body text-center">
 
 						<form>
 							<div className="form-group">
-								<h4 className=""><strong>Ingredient</strong></h4>
-
+								<h4 className="text-center">
+									<em>
+										Enter an ingredient to search for a recipe (ex: "banana").
+									</em>
+								</h4>
+				
 								{/*Note how each of the form elements has an id that matches the state. This is not necessary but it is convenient.
 									Also note how each has an onChange event associated with our handleChange event. 
 								*/}

@@ -10,11 +10,11 @@ class Results extends React.Component{
 
 			<div className="panel panel-default">
 				<div className="panel-heading">
-					<h3 className="panel-title text-center">Results</h3>
+					<h2 className="panel-title text-center"><strong>Recipes</strong></h2>
 				</div>
 				<div className="panel-body text-center">
 
-						<h1>Address:</h1>
+						<h3>List</h3>
 						<p>{this.props.address}</p>
 
 				</div>

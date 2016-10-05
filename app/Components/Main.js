@@ -4,6 +4,7 @@ import React from 'react';
 import Form from './Children/Form';
 import Results from './Children/Results';
 
+
 // Helper Function
 import helpers from './utils/helpers.js';
 
@@ -51,31 +52,30 @@ class Main extends React.Component{
 
 	render(){
 		return(
-
-			<div className="container">
-
-				<div className="row">
-
-					<div className="jumbotron">
-						<h2 className="text-center">Recipe Finder!</h2>
-						<p className="text-center"><em>Enter an ingradient to search for a recipe (ex: "banana").</em></p>
+		<div>
+			<header>
+				<div className="jumbotron">
+					<div className="row">
+						<h1 className="mainHeader text-center">Recipe Finder!</h1>
 					</div>
-
-					<div className="col-md-6">
-					
-						<Form setTerm={this.setTerm}/>
-
-					</div>
-
-					<div className="col-md-6">
-				
-						<Results address={this.state.results} />
-
-					</div>
-
 				</div>
-
+			</header>	
+			<br />
+			<div className="container">
+				<div className="row">
+					<Form setTerm={this.setTerm}/>
+				</div>
+				<div className="row">
+					<Results address={this.state.results} />
+				</div>
 			</div>
+			<br />
+			<footer>
+				<div className="row">
+					Copyright 2016 
+				</div>
+			</footer>
+		</div>
 		)		
 	}
 
