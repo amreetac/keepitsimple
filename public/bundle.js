@@ -19881,21 +19881,6 @@
 							'div',
 							{ className: 'row' },
 							_react2.default.createElement(_Form2.default, { setTerm: this.setTerm })
-						),
-						_react2.default.createElement(
-							'div',
-							{ className: 'row' },
-							_react2.default.createElement(_Results2.default, { address: this.state.results })
-						)
-					),
-					_react2.default.createElement('br', null),
-					_react2.default.createElement(
-						'footer',
-						null,
-						_react2.default.createElement(
-							'div',
-							{ className: 'row' },
-							'Copyright 2016'
 						)
 					)
 				);
@@ -19968,8 +19953,8 @@
 				console.log("CLICK");
 				console.log(this.state.term);
 
-				//this.props.setTerm(this.state.term);
-				var queryURL = "/search?key=119e99ed960f27a6545bf45ad0506cdb&q=chicken";
+				this.props.setTerm(this.state.term);
+				//var queryURL ="/search?key=119e99ed960f27a6545bf45ad0506cdb&q=chicken";
 				/*		
 	   var instance = axios.create({
 	   	baseURL: 'https://some-domain.com/api/',
@@ -19983,13 +19968,33 @@
 	   .end(function (result) {
 	   console.log(result.status, result.headers, result.body);
 	   });
-	   */
-				var searchQuery = _axios2.default.create({
-					baseURL: 'http://food2fork.com/api/',
-					timeout: 1000
-				});
-				searchQuery.get(queryURL).then(function (response) {
-					console.log(response);
+	   // */
+				// 		var searchQuery = axios.create({
+				// 			baseURL: 'http://food2fork.com/api/',
+				// 			timeout: 1000
+				// 		});
+				// 		searchQuery.get(queryURL).then(function (response) {
+				//     		console.log(response);
+				//   		})
+
+				var searchedCharacter = $("#term").val().trim();
+
+				searchedCharacter = searchedCharacter.replace(/\s+/g, '').toLowerCase();
+
+				var currentURL = window.location.origin;
+
+				$.get(currentURL + "/api/" + searchedCharacter, function (data) {
+
+					console.log(data);
+					if (data == false) {
+						$("#name").text("The force is not strong with this one. Your character was not found. ");
+						$("#stats").hide();
+					} else {
+						$("#stats").show();
+						$("#title").text(data.title);
+						$("#source_url").attr("href", data.source_url);
+						$("#image_url").attr("src", data.image_url);
+					}
 				});
 			}
 		}, {
@@ -19998,45 +20003,116 @@
 
 				return _react2.default.createElement(
 					'div',
-					{ className: 'panel panel-default' },
+					null,
 					_react2.default.createElement(
 						'div',
-						{ className: 'panel-heading' },
+						{ className: 'panel panel-default' },
 						_react2.default.createElement(
-							'h2',
-							{ className: 'panel-title text-center' },
+							'div',
+							{ className: 'panel-heading' },
 							_react2.default.createElement(
-								'strong',
-								null,
-								'Ingredient'
+								'h2',
+								{ className: 'panel-title text-center' },
+								_react2.default.createElement(
+									'strong',
+									null,
+									'Ingredient'
+								)
 							)
 						),
-						'    '
+						_react2.default.createElement(
+							'div',
+							{ className: 'panel-body text-center' },
+							_react2.default.createElement(
+								'form',
+								null,
+								_react2.default.createElement(
+									'div',
+									{ className: 'form-group' },
+									_react2.default.createElement(
+										'h4',
+										{ className: 'text-center' },
+										_react2.default.createElement(
+											'em',
+											null,
+											'Enter an ingredient to search for a recipe (ex: "banana").'
+										)
+									),
+									_react2.default.createElement('input', { type: 'text', className: 'form-control text-center', id: 'term', onChange: this.handleChange, required: true }),
+									_react2.default.createElement('br', null),
+									_react2.default.createElement(
+										'button',
+										{ type: 'button', className: 'btn btn-primary', onClick: this.handleClick },
+										'Submit'
+									)
+								)
+							)
+						)
 					),
 					_react2.default.createElement(
 						'div',
-						{ className: 'panel-body text-center' },
+						{ className: 'panel panel-default' },
 						_react2.default.createElement(
-							'form',
-							null,
+							'div',
+							{ className: 'panel-heading' },
+							_react2.default.createElement(
+								'h3',
+								{ className: 'panel-title' },
+								_react2.default.createElement(
+									'strong',
+									null,
+									'Recipe Result'
+								)
+							)
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'panel-body' },
 							_react2.default.createElement(
 								'div',
-								{ className: 'form-group' },
+								{ className: 'well' },
 								_react2.default.createElement(
-									'h4',
-									{ className: 'text-center' },
-									_react2.default.createElement(
-										'em',
-										null,
-										'Enter an ingredient to search for a recipe (ex: "banana").'
-									)
+									'h2',
+									{ id: 'title' },
+									'All Recipes'
 								),
-								_react2.default.createElement('input', { type: 'text', className: 'form-control text-center', id: 'term', onChange: this.handleChange, required: true }),
-								_react2.default.createElement('br', null),
 								_react2.default.createElement(
-									'button',
-									{ type: 'button', className: 'btn btn-primary', onClick: this.handleClick },
-									'Submit'
+									'div',
+									{ id: 'stats' },
+									_react2.default.createElement(
+										'h3',
+										null,
+										_react2.default.createElement(
+											'strong',
+											null,
+											'Source:'
+										),
+										' ',
+										_react2.default.createElement(
+											'span',
+											null,
+											_react2.default.createElement(
+												'a',
+												{ id: 'source_url', target: '_blank', href: 'http://allrecipes.com/Recipe/Slow-Cooker-Chicken-Tortilla-Soup/Detail.aspx' },
+												'Recipe'
+											)
+										)
+									),
+									_react2.default.createElement(
+										'h3',
+										null,
+										_react2.default.createElement(
+											'strong',
+											null,
+											'Image:'
+										),
+										' ',
+										_react2.default.createElement(
+											'span',
+											null,
+											_react2.default.createElement('image', { id: 'image_url', src: 'http://static.food2fork.com/19321150c4.jpg' })
+										)
+									)
 								)
 							)
 						)

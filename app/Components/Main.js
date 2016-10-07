@@ -66,16 +66,8 @@ class Main extends React.Component{
 				<div className="row">
 					<Form setTerm={this.setTerm}/>
 				</div>
-				<div className="row">
-					<Results address={this.state.results} />
-				</div>
 			</div>
-			<br />
-			<footer>
-				<div className="row">
-					Copyright 2016 
-				</div>
-			</footer>
+			
 		</div>
 		)		
 	}
