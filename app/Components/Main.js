@@ -31,22 +31,23 @@ class Main extends React.Component{
 	componentDidUpdate(prevProps, prevState){
 		if(prevState.searchTerm != this.state.searchTerm){
 			console.log("UPDATED");
+			
+			// helpers.runQuery(this.state.searchTerm)
+			// 	.then((data)=>{
+			// 		console.log(data)
+			// 		// if (data != this.state.results)
+			// 		// {
+			// 		// 	console.log("HERE");
+			// 		// 	console.log(data);
 
-			helpers.runQuery(this.state.searchTerm)
-				.then((data)=>{
-					if (data != this.state.results)
-					{
-						console.log("HERE");
-						console.log(data);
+			// 		// 	// this.setState({
+			// 		// 	// 	results: data
+			// 		// 	// })		
+			// 		// }
 
-						this.setState({
-							results: data
-						})		
-					}
-
-				// This code is necessary to bind the keyword "this" when we say this.setState 
-				// to actually mean the component itself and not the runQuery function.
-				})		
+			// 	// This code is necessary to bind the keyword "this" when we say this.setState 
+			// 	// to actually mean the component itself and not the runQuery function.
+			// 	})		
 		}
 	}
 

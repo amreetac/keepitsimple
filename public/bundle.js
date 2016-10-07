@@ -19829,24 +19829,25 @@
 		}, {
 			key: 'componentDidUpdate',
 			value: function componentDidUpdate(prevProps, prevState) {
-				var _this2 = this;
-
 				if (prevState.searchTerm != this.state.searchTerm) {
 					console.log("UPDATED");
 
-					_helpers2.default.runQuery(this.state.searchTerm).then(function (data) {
-						if (data != _this2.state.results) {
-							console.log("HERE");
-							console.log(data);
+					// helpers.runQuery(this.state.searchTerm)
+					// 	.then((data)=>{
+					// 		console.log(data)
+					// 		// if (data != this.state.results)
+					// 		// {
+					// 		// 	console.log("HERE");
+					// 		// 	console.log(data);
 
-							_this2.setState({
-								results: data
-							});
-						}
+					// 		// 	// this.setState({
+					// 		// 	// 	results: data
+					// 		// 	// })		
+					// 		// }
 
-						// This code is necessary to bind the keyword "this" when we say this.setState 
-						// to actually mean the component itself and not the runQuery function.
-					});
+					// 	// This code is necessary to bind the keyword "this" when we say this.setState 
+					// 	// to actually mean the component itself and not the runQuery function.
+					// 	})		
 				}
 			}
 		}, {
@@ -19913,7 +19914,7 @@
 /* 160 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 		value: true
@@ -19924,6 +19925,10 @@
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
+
+	var _axios = __webpack_require__(163);
+
+	var _axios2 = _interopRequireDefault(_axios);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -19951,65 +19956,87 @@
 		}
 
 		_createClass(Form, [{
-			key: "handleChange",
+			key: 'handleChange',
 			value: function handleChange(event) {
 				var newState = {};
 				newState[event.target.id] = event.target.value;
 				this.setState(newState);
 			}
 		}, {
-			key: "handleClick",
+			key: 'handleClick',
 			value: function handleClick() {
 				console.log("CLICK");
 				console.log(this.state.term);
 
-				this.props.setTerm(this.state.term);
+				//this.props.setTerm(this.state.term);
+				var queryURL = "/search?key=119e99ed960f27a6545bf45ad0506cdb&q=chicken";
+				/*		
+	   var instance = axios.create({
+	   	baseURL: 'https://some-domain.com/api/',
+	   	timeout: 1000,
+	   	headers: {'X-Custom-Header': 'foobar'}
+	   });
+	   // These code snippets use an open-source library. http://unirest.io/nodejs
+	   unirest.get("https://community-food2fork.p.mashape.com/get?key=&rId=37859")
+	   .header("X-Mashape-Key", "RsW6ifPSUUmshG6tH3UMXZUc9MGip1qU31IjsnAqvX1SjGB2vA")
+	   .header("Accept", "application/json")
+	   .end(function (result) {
+	   console.log(result.status, result.headers, result.body);
+	   });
+	   */
+				var searchQuery = _axios2.default.create({
+					baseURL: 'http://food2fork.com/api/',
+					timeout: 1000
+				});
+				searchQuery.get(queryURL).then(function (response) {
+					console.log(response);
+				});
 			}
 		}, {
-			key: "render",
+			key: 'render',
 			value: function render() {
 
 				return _react2.default.createElement(
-					"div",
-					{ className: "panel panel-default" },
+					'div',
+					{ className: 'panel panel-default' },
 					_react2.default.createElement(
-						"div",
-						{ className: "panel-heading" },
+						'div',
+						{ className: 'panel-heading' },
 						_react2.default.createElement(
-							"h2",
-							{ className: "panel-title text-center" },
+							'h2',
+							{ className: 'panel-title text-center' },
 							_react2.default.createElement(
-								"strong",
+								'strong',
 								null,
-								"Ingredient"
+								'Ingredient'
 							)
 						),
-						"    "
+						'    '
 					),
 					_react2.default.createElement(
-						"div",
-						{ className: "panel-body text-center" },
+						'div',
+						{ className: 'panel-body text-center' },
 						_react2.default.createElement(
-							"form",
+							'form',
 							null,
 							_react2.default.createElement(
-								"div",
-								{ className: "form-group" },
+								'div',
+								{ className: 'form-group' },
 								_react2.default.createElement(
-									"h4",
-									{ className: "text-center" },
+									'h4',
+									{ className: 'text-center' },
 									_react2.default.createElement(
-										"em",
+										'em',
 										null,
-										"Enter an ingredient to search for a recipe (ex: \"banana\")."
+										'Enter an ingredient to search for a recipe (ex: "banana").'
 									)
 								),
-								_react2.default.createElement("input", { type: "text", className: "form-control text-center", id: "term", onChange: this.handleChange, required: true }),
-								_react2.default.createElement("br", null),
+								_react2.default.createElement('input', { type: 'text', className: 'form-control text-center', id: 'term', onChange: this.handleChange, required: true }),
+								_react2.default.createElement('br', null),
 								_react2.default.createElement(
-									"button",
-									{ type: "button", className: "btn btn-primary", onClick: this.handleClick },
-									"Submit"
+									'button',
+									{ type: 'button', className: 'btn btn-primary', onClick: this.handleClick },
+									'Submit'
 								)
 							)
 						)
@@ -20103,47 +20130,47 @@
 
 /***/ },
 /* 162 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
+	// // Include the axios package for performing HTTP requests (promise based alternative to request)
+	// var axios = require('axios');
+	// // var unirest = require('unirest');
+
+
+	// // Helper Functions (in this case the only one is runQuery)
+	// var helpers = {
+	// // runQuery: function(){
+	// // 	unirest.post("http://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/products/classify")
+	// // .header("X-Mashape-Key":"RsW6ifPSUUmshG6tH3UMXZUc9MGip1qU31IjsnAqvX1SjGB2vA", "Content-Type": "application/json","Accept": "application/json")
+	// // .send({"title":"Kroger Vitamin A & D Reduced Fat 2% Milk","upc":"","plu_code":""})
+	// // .end(function (result) {
+	// //   console.log(result.status, result.headers, result.body);
+	// // });
+	// // }
+
+	// 	runQuery: function(location){
+
+	// 		console.log(location);
+
+	// 		//Figure out the geolocation
+	// 		//var queryURL = "http://api.opencagedata.com/geocode/v1/json?query=" + location + "&pretty=1&key=" + geocodeAPI;
+	// 		var queryURL ="https://food2fork.com/api/search?key=119e99ed960f27a6545bf45ad0506cdb&q=shredded%20chicken;"
+	// 		return axios.get(queryURL)
+	// 		// 	//.then(function(response){
+
+	// 		// 		console.log(response.recipes.title);
+	// 		// 		return response;
+	// 		// 		//return response.data.results[0].formatted;
+	// 		// //})
+
+	// 	}
+
+	// }
+
+
+	// // We export the helpers function (which contains getGithubInfo)
+	// module.exports = helpers;
 	"use strict";
-
-	// Include the axios package for performing HTTP requests (promise based alternative to request)
-	var axios = __webpack_require__(163);
-	// var unirest = require('unirest');
-	// Geocoder API
-	var geocodeAPI = "35e5548c618555b1a43eb4759d26b260";
-
-	// unirest.post("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/products/classify")
-	// .header("X-Mashape-Key", "RsW6ifPSUUmshG6tH3UMXZUc9MGip1qU31IjsnAqvX1SjGB2vA")
-	// .header("Content-Type", "application/json")
-	// .header("Accept", "application/json")
-	// .send({"title":"Kroger Vitamin A & D Reduced Fat 2% Milk","upc":"","plu_code":""})
-	// .end(function (result) {
-	//   console.log(result.status, result.headers, result.body);
-	// });
-
-
-	// Helper Functions (in this case the only one is runQuery)
-	var helpers = {
-
-			runQuery: function runQuery(location) {
-
-					console.log(location);
-
-					//Figure out the geolocation
-					var queryURL = "http://api.opencagedata.com/geocode/v1/json?query=" + location + "&pretty=1&key=" + geocodeAPI;
-
-					return axios.get(queryURL).then(function (response) {
-
-							console.log(response);
-							return response.data.results[0].formatted;
-					});
-			}
-
-	};
-
-	// We export the helpers function (which contains getGithubInfo)
-	module.exports = helpers;
 
 /***/ },
 /* 163 */
