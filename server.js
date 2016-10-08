@@ -18,7 +18,7 @@ app.use('/', express.static(__dirname + '/public'));
 
 // Star Wars Characters (DATA)
 // =============================================================
-var characters = [
+var recipes = [
 
 	{
 		routeName: "allrecipes",
@@ -66,17 +66,17 @@ app.get('/recipe', function(req, res){
 // })
 
 // Search for Specific Character (or all characters) - provides JSON
-app.get('/api/:characters?', function(req, res){
+app.get('/api/:recipes?', function(req, res){
 
-	var chosen = req.params.characters;
+	var chosen = req.params.recipes;
 console.log(chosen);
 	if(chosen){
 		console.log(chosen);
 
-		for (var i=0; i <characters.length; i++){
+		for (var i=0; i <recipes.length; i++){
 
-			if (chosen == characters[i].routeName){
-				res.json(characters[i]);
+			if (chosen == recipes[i].routeName){
+				res.json(recipes[i]);
 				return;
 			}
 		}
@@ -85,7 +85,7 @@ console.log(chosen);
 	}
 
 	else{
-		res.json(characters);
+		res.json(recipes);
 	}
 })
 
