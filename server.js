@@ -57,6 +57,25 @@ app.get('/recipe', function(req, res){
 	res.sendFile(path.join(__dirname, '/public/recipe.html'));
 })
 
+//Added home route
+
+app.get('/home', function(req, res){
+	res.sendFile(path.join(__dirname, '/public/landing.html'));
+})
+
+// Added pantry route
+
+app.get('/pantry', function(req, res){
+	res.sendFile(path.join(__dirname, '/public/pantry.html'));
+})
+
+// Added about route
+
+app.get('/about', function(req, res){
+	res.sendFile(path.join(__dirname, '/public/about.html'));
+})
+
+
 // app.get('/add', function(req, res){
 // 	res.sendFile(path.join(__dirname, 'add.html'));
 // })
