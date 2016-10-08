@@ -19977,13 +19977,13 @@
 				//     		console.log(response);
 				//   		})
 
-				var searchedCharacter = $("#term").val().trim();
+				var searchedRecipe = $("#term").val().trim();
 
-				searchedCharacter = searchedCharacter.replace(/\s+/g, '').toLowerCase();
+				searchedRecipe = searchedRecipe.replace(/\s+/g, '').toLowerCase();
 
 				var currentURL = window.location.origin;
 
-				$.get(currentURL + "/api/" + searchedCharacter, function (data) {
+				$.get(currentURL + "/api/" + searchedRecipe, function (data) {
 
 					console.log(data);
 					if (data == false) {
