@@ -1,10 +1,31 @@
+	(function RecipeController(){
+
+		$("#recipe-search").on("click", function(){
+
+			$("#recipe-result").text("Recipe Controller World");
+
+		});
+
+
+
+    // Grab the URL of the website
+        var currentURL = window.location.origin;
+
+		// AJAX post the data to the friends API. 
+        $.get(currentURL + "/recipe", userData, function(data){
 
 
 
 
 
+
+		/*
 // Capture the form inputs 
     $("#submit").on("click", function(){
+
+
+
+
       console.log("1");
 
     
@@ -26,5 +47,7 @@
           $("#resultsModal").modal('toggle');
 
         });
-  
+
+        */
+ 	})();
       
