@@ -10,7 +10,7 @@ app.listen(3000, function() {
 	console.log('App running on port 3000!');
 
 	var foodApi = new FoodApi();
-	var recipe = foodApi.findRecipe(["Milk"]);
+	var recipe = foodApi.findRecipe("Apples,Sugar,Flour");
 
 	console.log(recipe);
 });

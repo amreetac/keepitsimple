@@ -6,15 +6,46 @@
 
 	<!-- Here we include bootstrap. This will be made available to all of the generated HTML/JS that React generates-->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" >
+
+	<link rel="stylesheet" href="./styles.css">
 </head>
 
 <body>
-	
-	<!-- This is where React will deploy the contents it generates -->
-	<div id="app"></div>
 
-	<!-- All of our JS code will be transpiled into this bundle.js file -->
-	<script src="bundle.js"></script>
-	
+<script type="text/javascript">
+  var spoonacularServings = 2;
+  var spoonacularMeasure = 'metric';
+  var spoonacularView = 'grid';
+</script><div class="spoonacular-ingredients-menu">
+
+<div id="spoonacularView" class="spoonacular-switch spoonacular-metro" style="float:left;width:130px">
+    <input id="spoonacular-grid" name="view" type="radio" checked onchange="spoonacularToggleView();">
+    <label for="spoonacular-grid" onclick="">grid</label>
+
+    <input id="spoonacular-list" name="view" type="radio" onchange="spoonacularToggleView();">
+    <label for="spoonacular-list" onclick="">list</label>
+    
+    <span class="slide-button"></span>
+</div>
+
+<div style="float:left;width:140px;margin-left:20px;line-height:24px">
+    <span style="float:left">Servings:</span> <input style="float:left" type="text" size="2" id="spoonacular-serving-stepper" value="2" />
+    <span itemprop="recipeYield" id="spoonacular-serving-stepper-initial" style="display:none">2</span>
+</div>
+
+<div id="spoonacularMeasure" class="spoonacular-switch spoonacular-metro" style="float:right;width:130px;margin-right:10px">
+    <input id="spoonacular-metric" name="measure" type="radio" METRIC-CHECKED onchange="spoonacularToggleMeasure();">
+    <label for="spoonacular-metric" onclick="">metric</label>
+
+    <input id="spoonacular-us" name="measure" type="radio" US-CHECKED onchange="spoonacularToggleMeasure();">
+    <label for="spoonacular-us" onclick="">US</label>
+    
+    <span class="slide-button"></span>
+</div>
+ 
+</div>
+<div style="clear:both"></div>
+<div id="spoonacular-ingredient-vis-grid"><div style="float:left"><div class="spoonacular-ingredient"><div class="spoonacular-amount t12 spoonacular-metric" style="display:block;">85.05 grams</div><div class="spoonacular-amount t12 spoonacular-us" style="display:none;">3 ounces</div><div class="spoonacular-image-wrapper"><img src="https://spoonacular.com/cdn/ingredients_100x100/flour.png" title="85.05 grams flour" alt="85.05 grams flour"/></div><div class="spoonacular-name t12">flour</div></div></div><div style="clear:both"></div></div><div id="spoonacular-ingredient-vis-list"><div itemprop="ingredients" class="spoonacular-ingredient-list"><div style="float:left"><div class="spoonacular-image-wrapper" style="height:80px"><img src="https://spoonacular.com/cdn/ingredients_100x100/flour.png" title="85.05 grams flour" alt="85.05 grams flour"/></div></div><div class="spoonacular-amount spoonacular-metric" style="display:block;width:154px">85.05 grams</div><div class="spoonacular-amount spoonacular-us" style="display:none;width:154px">3 ounces</div><div class="spoonacular-name">flour</div><div style="clear:both"></div></div></div><div style="margin-top:3px;margin-right:10px;text-align:right;">Widget by <a href="https://spoonacular.com">spoonacular.com</a></div>
+
 </body>
 </html>
