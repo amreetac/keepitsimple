@@ -1,6 +1,8 @@
-body{
+/*body{
 	background-color: #000;
 }
+
+*/
 .jumbotron{
 	margin-bottom: 0px;
     background: url('headerbackground.jpg');
@@ -13,9 +15,13 @@ body{
 	font-style: italic;
 	color: #fff;
 }
+
+/*
 .container{
 	padding:10px;
 }
+
+
 footer{
 	color:#fff;
 	background-color: grey;
