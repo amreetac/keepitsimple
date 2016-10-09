@@ -16,6 +16,9 @@ app.use(bodyParser.text());
 app.use(bodyParser.json({type:'application/vnd.api+json'}));
 app.use('/', express.static(__dirname + '/public'));
 
+import FoodApi from './utils/FoodApi';
+
+
 // Star Wars Characters (DATA)
 // =============================================================
 var characters = [

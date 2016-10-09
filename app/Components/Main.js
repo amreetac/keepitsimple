@@ -54,6 +54,7 @@ class Main extends React.Component{
 	render(){
 		return(
 		<div>
+
 			<header>
 				<div className="jumbotron">
 					<div className="row">
@@ -61,18 +62,31 @@ class Main extends React.Component{
 					</div>
 				</div>
 			</header>	
+
 			<br />
+
 			<div className="container">
 				<div className="row">
 					<Form setTerm={this.setTerm}/>
 				</div>
 			</div>
+
+			<footer>
+        <div className="container">
+            <div className="row">
+                <div className="col-lg-12 text-center">
+                    <p>Copyright &copy; Amreeta Choudhury Padmaja Kondeti Stefanie
+                    Centi Sudharshana Chavan 2016</p>
+                </div>
+            </div>
+        </div>
+    	</footer>
+
 			
 		</div>
 		)		
 	}
-
 }
 
-// Export the componen back for use in other files
+// Export the component back for use in other files
 export default Main;

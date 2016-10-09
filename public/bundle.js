@@ -19780,11 +19780,11 @@
 
 	var _Form2 = _interopRequireDefault(_Form);
 
-	var _Results = __webpack_require__(180);
+	var _Results = __webpack_require__(161);
 
 	var _Results2 = _interopRequireDefault(_Results);
 
-	var _helpers = __webpack_require__(181);
+	var _helpers = __webpack_require__(162);
 
 	var _helpers2 = _interopRequireDefault(_helpers);
 
@@ -19882,6 +19882,27 @@
 							{ className: 'row' },
 							_react2.default.createElement(_Form2.default, { setTerm: this.setTerm })
 						)
+					),
+					_react2.default.createElement(
+						'footer',
+						null,
+						_react2.default.createElement(
+							'div',
+							{ className: 'container' },
+							_react2.default.createElement(
+								'div',
+								{ className: 'row' },
+								_react2.default.createElement(
+									'div',
+									{ className: 'col-lg-12 text-center' },
+									_react2.default.createElement(
+										'p',
+										null,
+										'Copyright \xA9 Amreeta Choudhury Padmaja Kondeti Stefanie Centi Sudharshana Chavan 2016'
+									)
+								)
+							)
+						)
 					)
 				);
 			}
@@ -19890,7 +19911,7 @@
 		return Main;
 	}(_react2.default.Component);
 
-	// Export the componen back for use in other files
+	// Export the component back for use in other files
 
 
 	exports.default = Main;
@@ -19911,7 +19932,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _axios = __webpack_require__(161);
+	var _axios = __webpack_require__(163);
 
 	var _axios2 = _interopRequireDefault(_axios);
 
@@ -19961,41 +19982,24 @@
 	   	timeout: 1000,
 	   	headers: {'X-Custom-Header': 'foobar'}
 	   });
-	   // These code snippets use an open-source library. http://unirest.io/nodejs
-	   unirest.get("https://community-food2fork.p.mashape.com/get?key=&rId=37859")
-	   .header("X-Mashape-Key", "RsW6ifPSUUmshG6tH3UMXZUc9MGip1qU31IjsnAqvX1SjGB2vA")
-	   .header("Accept", "application/json")
-	   .end(function (result) {
-	   console.log(result.status, result.headers, result.body);
-	   });
-	   // */
-				// 		var searchQuery = axios.create({
-				// 			baseURL: 'http://food2fork.com/api/',
-				// 			timeout: 1000
-				// 		});
-				// 		searchQuery.get(queryURL).then(function (response) {
-				//     		console.log(response);
-				//   		})
-
-				var searchedCharacter = $("#term").val().trim();
-
-				searchedCharacter = searchedCharacter.replace(/\s+/g, '').toLowerCase();
-
-				var currentURL = window.location.origin;
-
-				$.get(currentURL + "/api/" + searchedCharacter, function (data) {
-
-					console.log(data);
-					if (data == false) {
-						$("#name").text("The force is not strong with this one. Your character was not found. ");
-						$("#stats").hide();
-					} else {
-						$("#stats").show();
-						$("#title").text(data.title);
-						$("#source_url").attr("href", data.source_url);
-						$("#image_url").attr("src", data.image_url);
-					}
-				});
+	   
+	     		var searchedCharacter = $("#term").val().trim();
+	   			searchedCharacter = searchedCharacter.replace(/\s+/g, '').toLowerCase();
+	   			var currentURL = window.location.origin;
+	   			$.get( currentURL + "/api/" + searchedCharacter, function( data ) {
+	   				console.log(data);
+	   		if(data == false){
+	   			$("#name").text("The force is not strong with this one. Your character was not found. ");
+	   			$("#stats").hide();
+	   		}
+	   		else {
+	   			$("#stats").show();
+	   			$("#title").text(data.title);
+	   			$("#source_url").attr("href", data.source_url);
+	   			$("#image_url").attr("src", data.image_url);
+	   		}
+	   			});
+	   			*/
 			}
 		}, {
 			key: 'render',
@@ -20130,22 +20134,144 @@
 /* 161 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(162);
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Results = function (_React$Component) {
+		_inherits(Results, _React$Component);
+
+		function Results(props) {
+			_classCallCheck(this, Results);
+
+			return _possibleConstructorReturn(this, (Results.__proto__ || Object.getPrototypeOf(Results)).call(this, props));
+		}
+
+		_createClass(Results, [{
+			key: "render",
+			value: function render() {
+				return _react2.default.createElement(
+					"div",
+					{ className: "panel panel-default" },
+					_react2.default.createElement(
+						"div",
+						{ className: "panel-heading" },
+						_react2.default.createElement(
+							"h2",
+							{ className: "panel-title text-center" },
+							_react2.default.createElement(
+								"strong",
+								null,
+								"Recipes"
+							)
+						)
+					),
+					_react2.default.createElement(
+						"div",
+						{ className: "panel-body text-center" },
+						_react2.default.createElement(
+							"h3",
+							null,
+							"List"
+						),
+						_react2.default.createElement(
+							"p",
+							null,
+							this.props.address
+						)
+					)
+				);
+			}
+		}]);
+
+		return Results;
+	}(_react2.default.Component);
+
+	// Export the component back for use in other files
+
+
+	exports.default = Results;
 
 /***/ },
 /* 162 */
+/***/ function(module, exports) {
+
+	// // Include the axios package for performing HTTP requests (promise based alternative to request)
+	// var axios = require('axios');
+	// // var unirest = require('unirest');
+
+
+	// // Helper Functions (in this case the only one is runQuery)
+	// var helpers = {
+	// // runQuery: function(){
+	// // 	unirest.post("http://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/products/classify")
+	// // .header("X-Mashape-Key":"RsW6ifPSUUmshG6tH3UMXZUc9MGip1qU31IjsnAqvX1SjGB2vA", "Content-Type": "application/json","Accept": "application/json")
+	// // .send({"title":"Kroger Vitamin A & D Reduced Fat 2% Milk","upc":"","plu_code":""})
+	// // .end(function (result) {
+	// //   console.log(result.status, result.headers, result.body);
+	// // });
+	// // }
+
+	// 	runQuery: function(location){
+
+	// 		console.log(location);
+
+	// 		//Figure out the geolocation
+	// 		//var queryURL = "http://api.opencagedata.com/geocode/v1/json?query=" + location + "&pretty=1&key=" + geocodeAPI;
+	// 		var queryURL ="https://food2fork.com/api/search?key=119e99ed960f27a6545bf45ad0506cdb&q=shredded%20chicken;"
+	// 		return axios.get(queryURL)
+	// 		// 	//.then(function(response){
+
+	// 		// 		console.log(response.recipes.title);
+	// 		// 		return response;
+	// 		// 		//return response.data.results[0].formatted;
+	// 		// //})
+
+	// 	}
+
+	// }
+
+
+	// // We export the helpers function (which contains getGithubInfo)
+	// module.exports = helpers;
+	"use strict";
+
+/***/ },
+/* 163 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__(164);
+
+/***/ },
+/* 164 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var defaults = __webpack_require__(163);
-	var utils = __webpack_require__(164);
-	var dispatchRequest = __webpack_require__(166);
-	var InterceptorManager = __webpack_require__(175);
-	var isAbsoluteURL = __webpack_require__(176);
-	var combineURLs = __webpack_require__(177);
-	var bind = __webpack_require__(178);
-	var transformData = __webpack_require__(170);
+	var defaults = __webpack_require__(165);
+	var utils = __webpack_require__(166);
+	var dispatchRequest = __webpack_require__(168);
+	var InterceptorManager = __webpack_require__(177);
+	var isAbsoluteURL = __webpack_require__(178);
+	var combineURLs = __webpack_require__(179);
+	var bind = __webpack_require__(180);
+	var transformData = __webpack_require__(172);
 
 	function Axios(defaultConfig) {
 	  this.defaults = utils.merge({}, defaultConfig);
@@ -20234,7 +20360,7 @@
 	axios.all = function all(promises) {
 	  return Promise.all(promises);
 	};
-	axios.spread = __webpack_require__(179);
+	axios.spread = __webpack_require__(181);
 
 	// Provide aliases for supported request methods
 	utils.forEach(['delete', 'get', 'head'], function forEachMethodNoData(method) {
@@ -20262,13 +20388,13 @@
 
 
 /***/ },
-/* 163 */
+/* 165 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(164);
-	var normalizeHeaderName = __webpack_require__(165);
+	var utils = __webpack_require__(166);
+	var normalizeHeaderName = __webpack_require__(167);
 
 	var PROTECTION_PREFIX = /^\)\]\}',?\n/;
 	var DEFAULT_CONTENT_TYPE = {
@@ -20340,7 +20466,7 @@
 
 
 /***/ },
-/* 164 */
+/* 166 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -20623,12 +20749,12 @@
 
 
 /***/ },
-/* 165 */
+/* 167 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(164);
+	var utils = __webpack_require__(166);
 
 	module.exports = function normalizeHeaderName(headers, normalizedName) {
 	  utils.forEach(headers, function processHeader(value, name) {
@@ -20641,7 +20767,7 @@
 
 
 /***/ },
-/* 166 */
+/* 168 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -20663,10 +20789,10 @@
 	        adapter = config.adapter;
 	      } else if (typeof XMLHttpRequest !== 'undefined') {
 	        // For browsers use XHR adapter
-	        adapter = __webpack_require__(167);
+	        adapter = __webpack_require__(169);
 	      } else if (typeof process !== 'undefined') {
 	        // For node use HTTP adapter
-	        adapter = __webpack_require__(167);
+	        adapter = __webpack_require__(169);
 	      }
 
 	      if (typeof adapter === 'function') {
@@ -20682,18 +20808,18 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 167 */
+/* 169 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
-	var utils = __webpack_require__(164);
-	var buildURL = __webpack_require__(168);
-	var parseHeaders = __webpack_require__(169);
-	var transformData = __webpack_require__(170);
-	var isURLSameOrigin = __webpack_require__(171);
-	var btoa = (typeof window !== 'undefined' && window.btoa) || __webpack_require__(172);
-	var settle = __webpack_require__(173);
+	var utils = __webpack_require__(166);
+	var buildURL = __webpack_require__(170);
+	var parseHeaders = __webpack_require__(171);
+	var transformData = __webpack_require__(172);
+	var isURLSameOrigin = __webpack_require__(173);
+	var btoa = (typeof window !== 'undefined' && window.btoa) || __webpack_require__(174);
+	var settle = __webpack_require__(175);
 
 	module.exports = function xhrAdapter(resolve, reject, config) {
 	  var requestData = config.data;
@@ -20790,7 +20916,7 @@
 	  // This is only done if running in a standard browser environment.
 	  // Specifically not if we're in a web worker, or react-native.
 	  if (utils.isStandardBrowserEnv()) {
-	    var cookies = __webpack_require__(174);
+	    var cookies = __webpack_require__(176);
 
 	    // Add xsrf header
 	    var xsrfValue = config.withCredentials || isURLSameOrigin(config.url) ?
@@ -20851,12 +20977,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 168 */
+/* 170 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(164);
+	var utils = __webpack_require__(166);
 
 	function encode(val) {
 	  return encodeURIComponent(val).
@@ -20925,12 +21051,12 @@
 
 
 /***/ },
-/* 169 */
+/* 171 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(164);
+	var utils = __webpack_require__(166);
 
 	/**
 	 * Parse headers into an object
@@ -20968,12 +21094,12 @@
 
 
 /***/ },
-/* 170 */
+/* 172 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(164);
+	var utils = __webpack_require__(166);
 
 	/**
 	 * Transform the data for a request or a response
@@ -20994,12 +21120,12 @@
 
 
 /***/ },
-/* 171 */
+/* 173 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(164);
+	var utils = __webpack_require__(166);
 
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -21068,7 +21194,7 @@
 
 
 /***/ },
-/* 172 */
+/* 174 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -21110,7 +21236,7 @@
 
 
 /***/ },
-/* 173 */
+/* 175 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -21134,12 +21260,12 @@
 
 
 /***/ },
-/* 174 */
+/* 176 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(164);
+	var utils = __webpack_require__(166);
 
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -21193,12 +21319,12 @@
 
 
 /***/ },
-/* 175 */
+/* 177 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(164);
+	var utils = __webpack_require__(166);
 
 	function InterceptorManager() {
 	  this.handlers = [];
@@ -21251,7 +21377,7 @@
 
 
 /***/ },
-/* 176 */
+/* 178 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -21271,7 +21397,7 @@
 
 
 /***/ },
-/* 177 */
+/* 179 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -21289,7 +21415,7 @@
 
 
 /***/ },
-/* 178 */
+/* 180 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -21306,7 +21432,7 @@
 
 
 /***/ },
-/* 179 */
+/* 181 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -21337,128 +21463,6 @@
 	  };
 	};
 
-
-/***/ },
-/* 180 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Results = function (_React$Component) {
-		_inherits(Results, _React$Component);
-
-		function Results(props) {
-			_classCallCheck(this, Results);
-
-			return _possibleConstructorReturn(this, (Results.__proto__ || Object.getPrototypeOf(Results)).call(this, props));
-		}
-
-		_createClass(Results, [{
-			key: "render",
-			value: function render() {
-				return _react2.default.createElement(
-					"div",
-					{ className: "panel panel-default" },
-					_react2.default.createElement(
-						"div",
-						{ className: "panel-heading" },
-						_react2.default.createElement(
-							"h2",
-							{ className: "panel-title text-center" },
-							_react2.default.createElement(
-								"strong",
-								null,
-								"Recipes"
-							)
-						)
-					),
-					_react2.default.createElement(
-						"div",
-						{ className: "panel-body text-center" },
-						_react2.default.createElement(
-							"h3",
-							null,
-							"List"
-						),
-						_react2.default.createElement(
-							"p",
-							null,
-							this.props.address
-						)
-					)
-				);
-			}
-		}]);
-
-		return Results;
-	}(_react2.default.Component);
-
-	// Export the component back for use in other files
-
-
-	exports.default = Results;
-
-/***/ },
-/* 181 */
-/***/ function(module, exports) {
-
-	// // Include the axios package for performing HTTP requests (promise based alternative to request)
-	// var axios = require('axios');
-	// // var unirest = require('unirest');
-
-
-	// // Helper Functions (in this case the only one is runQuery)
-	// var helpers = {
-	// // runQuery: function(){
-	// // 	unirest.post("http://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/products/classify")
-	// // .header("X-Mashape-Key":"RsW6ifPSUUmshG6tH3UMXZUc9MGip1qU31IjsnAqvX1SjGB2vA", "Content-Type": "application/json","Accept": "application/json")
-	// // .send({"title":"Kroger Vitamin A & D Reduced Fat 2% Milk","upc":"","plu_code":""})
-	// // .end(function (result) {
-	// //   console.log(result.status, result.headers, result.body);
-	// // });
-	// // }
-
-	// 	runQuery: function(location){
-
-	// 		console.log(location);
-
-	// 		//Figure out the geolocation
-	// 		//var queryURL = "http://api.opencagedata.com/geocode/v1/json?query=" + location + "&pretty=1&key=" + geocodeAPI;
-	// 		var queryURL ="https://food2fork.com/api/search?key=119e99ed960f27a6545bf45ad0506cdb&q=shredded%20chicken;"
-	// 		return axios.get(queryURL)
-	// 		// 	//.then(function(response){
-
-	// 		// 		console.log(response.recipes.title);
-	// 		// 		return response;
-	// 		// 		//return response.data.results[0].formatted;
-	// 		// //})
-
-	// 	}
-
-	// }
-
-
-	// // We export the helpers function (which contains getGithubInfo)
-	// module.exports = helpers;
-	"use strict";
 
 /***/ }
 /******/ ]);
