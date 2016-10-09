@@ -31,7 +31,7 @@ class Form extends React.Component{
 			headers: {'X-Custom-Header': 'foobar'}
 		});
 
-
+		*/
 
   		var searchedCharacter = $("#term").val().trim();
 
@@ -55,7 +55,7 @@ class Form extends React.Component{
 
 			});
 
-			*/
+			
 }
 
 	

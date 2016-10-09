@@ -1,5 +1,9 @@
 // Dependencies
 // =============================================================
+
+(function() {
+
+
 var express = require('express');
 var bodyParser = require('body-parser');
 var path = require('path');
@@ -16,7 +20,7 @@ app.use(bodyParser.text());
 app.use(bodyParser.json({type:'application/vnd.api+json'}));
 app.use('/', express.static(__dirname + '/public'));
 
-import FoodApi from './utils/FoodApi';
+var foodapi = require ('./utils/FoodApi');
 
 
 // Star Wars Characters (DATA)
@@ -57,7 +61,10 @@ var characters = [
 
 // Basic route that sends the user first to the AJAX Page
 app.get('/recipe', function(req, res){
-	res.sendFile(path.join(__dirname, '/public/recipe.html'));
+	var recipes = foodApi.findRecipe("Apples,Sugar,Flour");
+	console.log(recipes);
+	res.send(recipes);
+
 })
 
 //Added home route
@@ -130,7 +137,13 @@ console.log(chosen);
 // // 	console.log('App listening on PORT ' + PORT);
 // // })
 
+var foodApi;
+
 app.listen(3000, function() {
     console.log('Timestamp: ', (Date()).toString());
     console.log('App running on port 3000!');
+    console.log("Hi");
+    foodApi = new foodapi();
 });
+
+})();
