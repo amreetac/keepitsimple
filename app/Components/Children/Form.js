@@ -1,34 +1,38 @@
 import React from 'react';
 import axios from 'axios';
+
+import Result from './Results';
+
 class Form extends React.Component{
 	constructor(props){
 		super(props);
 
 		this.state = {
-			term: ""
+			term: "",
+			results:[]
 		}
-
+		
 		this.handleChange = this.handleChange.bind(this);
 		this.handleClick = this.handleClick.bind(this);
 	}
-
+	setResults(results){
+		this.setState({
+			results: results
+		})
+	}
 	handleChange(event){
 		var newState = {};
 		newState[event.target.id] = event.target.value;
 		this.setState(newState);
 	}
-
-	handleClick(){
-		console.log("CLICK");
-		console.log(this.state.term);
+	getSearchResults(){console.log(this.state.term);
 
 		this.props.setTerm(this.state.term);
-
+		var self = this;
 		var currentURL = window.location.origin;
+		console.log(currentURL+ "/recipe/" + this.state.term)
 
-		$.get( currentURL + "/api/" + this.state.term, function( data ) {
-
-			console.log(data);
+		$.get( currentURL + "/recipe/" + this.state.term, function( data ) {
 
 			if(data == false){
 				$("#name").text(" No Recipes Found ");
@@ -36,18 +40,20 @@ class Form extends React.Component{
 			}
 			else {
 				$("#stats").show();
-				$("#title").text(data.title);
-				$("#source_url").attr("href", data.source_url);
-				$("#image_url").attr("src", data.image);
-
-				this.props.setResults(data);
+				self.setState({
+              		results: data
+            	})
+            	console.log('self.state.results', self.state.results);
 			}
-
-		});
+			
+		})
+	}
+	handleClick(){
+		console.log("CLICK");
+		this.getSearchResults();	
 	}	
 
 	render(){
-
 		return(
 			<div>
 				<div className="panel panel-default">
@@ -76,16 +82,21 @@ class Form extends React.Component{
 
 				<div className="panel panel-default">
 					<div className="panel-heading">
-						<h3 className="panel-title"><strong>Recipe Result</strong></h3>
+						<h2 className="panel-title"><strong>Recipe Result</strong></h2>
 					</div>
 					<div className="panel-body">
-						<div className="well">
-							<h2 id="title">All Recipes</h2>
-							<div id="stats">
-								<h3><strong>Source:</strong> <span ><a id="source_url" target="_blank" href="http://allrecipes.com/Recipe/Slow-Cooker-Chicken-Tortilla-Soup/Detail.aspx">Recipe</a></span></h3>
-								<h3><strong>Image:</strong> <span ><image id="image_url" src="http://static.food2fork.com/19321150c4.jpg" /></span></h3>
-							</div>
+						<div id="stats">
+
+							<ul>
+								{this.state.results.map(function(result){
+									return(
+										<Result key={result.id} article={result} />
+									)
+								})}
+							</ul>
+
 						</div>
+						
 					</div>
 				</div>
 
@@ -96,4 +107,3 @@ class Form extends React.Component{
 }
 
 export default Form;
-
