@@ -19825,7 +19825,7 @@
 		}, {
 			key: 'setResults',
 			value: function setResults(results) {
-				console.log("fffsdss");
+
 				this.setState({
 					results: results
 				});

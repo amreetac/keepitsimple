@@ -18,6 +18,7 @@ app.use('/', express.static(__dirname + '/public'));
 
 /**** Hard code a list of recipes for now. ***/
 
+
 (function KeepItSimple(){
 
 // Use the FoodApi to access the Spoonacular Food Api
@@ -64,6 +65,7 @@ app.get('/about', function(req, res){
 // })
 
 // Search for Specific Character (or all characters) - provides JSON
+
 app.get('/recipe/:ingredients?', function(req, res){
 console.log(1);
 	var term = req.params.ingredients;
@@ -80,32 +82,15 @@ console.log(2);
 		// return too early and we would not have the data yet.
 		var result = foodApi.findRecipe(term, function(recipes){
 console.log(3);
+
 			console.log("[GET /api/:ingredients] recipes : ", recipes);
 
 			// Just send one recipe for now, later send entire array
 			res.json(recipes);
+
 		});
 	}
 })
-
-// // Create New Characters - takes in JSON input
-// app.post('/api/new', function(req, res){
-
-// 	var newcharacter = req.body;
-// 	newcharacter.routeName = newcharacter.name.replace(/\s+/g, '').toLowerCase()
-
-// 	console.log(newcharacter);
-
-// 	characters.push(newcharacter);
-
-// 	res.json(newcharacter);
-// })
-
-// // Starts the server to begin listening 
-// // =============================================================
-// // app.listen(PORT, function(){
-// // 	console.log('App listening on PORT ' + PORT);
-// // })
 
 app.listen(3000, function() {
     console.log('Timestamp: ', (Date()).toString());

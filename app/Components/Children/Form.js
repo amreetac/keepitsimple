@@ -50,8 +50,8 @@ class Form extends React.Component{
 	}
 	handleClick(){
 		console.log("CLICK");
-		this.getSearchResults();
-		
+		this.getSearchResults();	
+
 	}	
 
 	render(){
@@ -108,4 +108,3 @@ class Form extends React.Component{
 }
 
 export default Form;
-

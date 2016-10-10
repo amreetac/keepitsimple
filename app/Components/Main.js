@@ -30,7 +30,7 @@ class Main extends React.Component{
 	}
 
 	setResults(results){
-		console.log("fffsdss");
+
 		this.setState({
 			results: results
 		})
