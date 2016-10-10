@@ -1,28 +1,20 @@
-import React from 'react';
-class Results extends React.Component{
-	
-	constructor(props){
-		super(props);
-	}
+var React = require('react');
 
-	render(){
-		return(
+var Result = React.createClass({
+  render: function(){
+    return(
+      <div className="col-xs-12 col-sm-6 col-md-4 clearfix">
+  		  <li className="list-group-item">
+          <h4>{this.props.article.title}</h4>
+          <img src={this.props.article.image} alt={this.props.article.title} height="100" width="100" />
+  			   <div className="btn-group pull-right">
+     	    	<button type="button" className="btn btn-primary">Save</button>
+        	</div>
+        	
+        </li>
+      </div>
+    )
+  }
+});
 
-			<div className="panel panel-default">
-				<div className="panel-heading">
-					<h2 className="panel-title text-center"><strong>Recipes</strong></h2>
-				</div>
-				<div className="panel-body text-center">
-
-						<h3>List</h3>
-						<p>{this.props.address}</p>
-
-				</div>
-			</div>
-
-		)		
-	}
-}
-
-// Export the component back for use in other files
-export default Results;
+module.exports = Result;

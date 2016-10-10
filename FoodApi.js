@@ -23,7 +23,10 @@ function FoodApi() {
 	this.baseUrl = 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com';
 	this.apiKey = 'HpxgpOtGRjmshLUHkFBTPp3BiwZfp1Dcykzjsn12LlQQTUNslw';
 
-	this.limit = 5;
+
+	this.limit = 6;
+
+
 
 	this.findRecipe = function(ingredientList, cb) {
 
@@ -46,16 +49,7 @@ function FoodApi() {
   				console.log("**** body: ", result.body);
   				cb(result.body);
   			});
-/*
-  		// These code snippets use an open-source library.
-return unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?fillIngredients=false&ingredients=
-	apples%2Cflour%2Csugar&limitLicense=false&number=5&ranking=1")
-.header("X-Mashape-Key", "HpxgpOtGRjmshLUHkFBTPp3BiwZfp1Dcykzjsn12LlQQTUNslw")
-.header("Accept", "application/json")
-.end(function (result) {
-  console.log(result.status, result.headers, result.body);
-});
-*/
+
 	}
 }
 
