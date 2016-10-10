@@ -21316,7 +21316,7 @@
 	  render: function render() {
 	    return React.createElement(
 	      "div",
-	      { className: "col-xs-12 col-sm-6 col-md-4" },
+	      { className: "col-xs-12 col-sm-6 col-md-4 clearfix" },
 	      React.createElement(
 	        "li",
 	        { className: "list-group-item" },
