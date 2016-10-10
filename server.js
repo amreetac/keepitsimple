@@ -56,32 +56,24 @@ app.get('/about', function(req, res){
 })
 
 
-// app.get('/add', function(req, res){
-// 	res.sendFile(path.join(__dirname, 'add.html'));
-// })
-
-// app.get('/all', function(req, res){
-// 	res.sendFile(path.join(__dirname, 'all.html'));
-// })
-
 // Search for Specific Character (or all characters) - provides JSON
 
 app.get('/recipe/:ingredients?', function(req, res){
-console.log(1);
+	console.log(1);
 	var term = req.params.ingredients;
 
 	console.log("search term: ", term);
 	console.log("req.params: ", req.params);
 
 	if(term){
-console.log(2);
+		console.log(2);
 
 		// NOTE: the findRecipe takes a callback function.
 		// This is necessary so it doesn't have to wait before
 		// returning from the unirest call. Otherwise, it would
 		// return too early and we would not have the data yet.
 		var result = foodApi.findRecipe(term, function(recipes){
-console.log(3);
+		console.log(3);
 
 			console.log("[GET /api/:ingredients] recipes : ", recipes);
 
