@@ -16,9 +16,8 @@ app.use(bodyParser.text());
 app.use(bodyParser.json({type:'application/vnd.api+json'}));
 app.use('/', express.static(__dirname + '/public'));
 
-// Star Wars Characters (DATA)
-// =============================================================
-var characters = [
+/**** Hard code a list of recipes for now. ***/
+var recipes_for_testing = [
 
 	{
 		routeName: "allrecipes",
@@ -47,14 +46,24 @@ var characters = [
 		source_url: "http://www.closetcooking.com/2011/08/buffalo-chicken-grilled-cheese-sandwich.html",
 		image_url: "http://static.food2fork.com/Buffalo2BChicken2BPotato2BSkins2B5002B5802a7cf6f8f.jpg"
 	}
-]
+];	
+
+(function KeepItSimple(){
+
+// Use the FoodApi to access the Spoonacular Food Api
+var f = require('./FoodApi');
+
+var foodApi = new f();
 
 // Routes
 // =============================================================
 
 // Basic route that sends the user first to the AJAX Page
 app.get('/recipe', function(req, res){
-	res.sendFile(path.join(__dirname, '/public/recipe.html'));
+	//res.sendFile(path.join(__dirname, '/public/recipe.html'));
+
+	res.json(foodApi.findRecipe("Milk"));
+
 })
 
 //Added home route
@@ -85,26 +94,27 @@ app.get('/about', function(req, res){
 // })
 
 // Search for Specific Character (or all characters) - provides JSON
-app.get('/api/:characters?', function(req, res){
+app.get('/api/:ingredients?', function(req, res){
+console.log(1);
+	var term = req.params.ingredients;
 
-	var chosen = req.params.characters;
-console.log(chosen);
-	if(chosen){
-		console.log(chosen);
+	console.log("search term: ", term);
+	console.log("req.params: ", req.params);
 
-		for (var i=0; i <characters.length; i++){
+	if(term){
+console.log(2);
 
-			if (chosen == characters[i].routeName){
-				res.json(characters[i]);
-				return;
-			}
-		}
+		// NOTE: the findRecipe takes a callback function.
+		// This is necessary so it doesn't have to wait before
+		// returning from the unirest call. Otherwise, it would
+		// return too early and we would not have the data yet.
+		var result = foodApi.findRecipe(term, function(recipes){
+console.log(3);
+			console.log("[GET /api/:ingredients] recipes: ", recipes);
 
-		res.json(false);
-	}
-
-	else{
-		res.json(characters);
+			// Just send one recipe for now, later send entire array
+			res.json(recipes[0]);
+		});
 	}
 })
 
@@ -129,5 +139,8 @@ console.log(chosen);
 
 app.listen(3000, function() {
     console.log('Timestamp: ', (Date()).toString());
-    console.log('App running on port 3000!');
+    console.log('KeepItSimple App running on port 3000!');
 });
+
+	
+})();

@@ -19812,10 +19812,11 @@
 
 			_this.state = {
 				searchTerm: "",
-				results: ""
+				recipes: {}
 			};
 
 			_this.setTerm = _this.setTerm.bind(_this);
+			_this.setResults = _this.setResults.bind(_this);
 			return _this;
 		}
 
@@ -19824,6 +19825,13 @@
 			value: function setTerm(term) {
 				this.setState({
 					searchTerm: term
+				});
+			}
+		}, {
+			key: 'setResults',
+			value: function setResults(results) {
+				this.setState({
+					results: results
 				});
 			}
 		}, {
@@ -19880,7 +19888,7 @@
 						_react2.default.createElement(
 							'div',
 							{ className: 'row' },
-							_react2.default.createElement(_Form2.default, { setTerm: this.setTerm })
+							_react2.default.createElement(_Form2.default, { setTerm: this.setTerm, setResults: this.setResults })
 						)
 					)
 				);
@@ -19954,46 +19962,23 @@
 				console.log(this.state.term);
 
 				this.props.setTerm(this.state.term);
-				//var queryURL ="/search?key=119e99ed960f27a6545bf45ad0506cdb&q=chicken";
-				/*		
-	   var instance = axios.create({
-	   	baseURL: 'https://some-domain.com/api/',
-	   	timeout: 1000,
-	   	headers: {'X-Custom-Header': 'foobar'}
-	   });
-	   // These code snippets use an open-source library. http://unirest.io/nodejs
-	   unirest.get("https://community-food2fork.p.mashape.com/get?key=&rId=37859")
-	   .header("X-Mashape-Key", "RsW6ifPSUUmshG6tH3UMXZUc9MGip1qU31IjsnAqvX1SjGB2vA")
-	   .header("Accept", "application/json")
-	   .end(function (result) {
-	   console.log(result.status, result.headers, result.body);
-	   });
-	   // */
-				// 		var searchQuery = axios.create({
-				// 			baseURL: 'http://food2fork.com/api/',
-				// 			timeout: 1000
-				// 		});
-				// 		searchQuery.get(queryURL).then(function (response) {
-				//     		console.log(response);
-				//   		})
-
-				var searchedCharacter = $("#term").val().trim();
-
-				searchedCharacter = searchedCharacter.replace(/\s+/g, '').toLowerCase();
 
 				var currentURL = window.location.origin;
 
-				$.get(currentURL + "/api/" + searchedCharacter, function (data) {
+				$.get(currentURL + "/api/" + this.state.term, function (data) {
 
 					console.log(data);
+
 					if (data == false) {
-						$("#name").text("The force is not strong with this one. Your character was not found. ");
+						$("#name").text(" No Recipes Found ");
 						$("#stats").hide();
 					} else {
 						$("#stats").show();
 						$("#title").text(data.title);
 						$("#source_url").attr("href", data.source_url);
-						$("#image_url").attr("src", data.image_url);
+						$("#image_url").attr("src", data.image);
+
+						this.props.setResults(data);
 					}
 				});
 			}
@@ -21418,47 +21403,31 @@
 
 /***/ },
 /* 181 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	// // Include the axios package for performing HTTP requests (promise based alternative to request)
-	// var axios = require('axios');
-	// // var unirest = require('unirest');
+	'use strict';
 
+	// Include the axios package for performing HTTP requests (promise based alternative to request)
+	var axios = __webpack_require__(161);
 
-	// // Helper Functions (in this case the only one is runQuery)
-	// var helpers = {
-	// // runQuery: function(){
-	// // 	unirest.post("http://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/products/classify")
-	// // .header("X-Mashape-Key":"RsW6ifPSUUmshG6tH3UMXZUc9MGip1qU31IjsnAqvX1SjGB2vA", "Content-Type": "application/json","Accept": "application/json")
-	// // .send({"title":"Kroger Vitamin A & D Reduced Fat 2% Milk","upc":"","plu_code":""})
-	// // .end(function (result) {
-	// //   console.log(result.status, result.headers, result.body);
-	// // });
-	// // }
+	// Helper Class (for now, the only method is findRecipe)
+	function Helper() {
 
-	// 	runQuery: function(location){
+		this.findRecipe = function (ingredients) {
 
-	// 		console.log(location);
+			console.log(ingredients);
 
-	// 		//Figure out the geolocation
-	// 		//var queryURL = "http://api.opencagedata.com/geocode/v1/json?query=" + location + "&pretty=1&key=" + geocodeAPI;
-	// 		var queryURL ="https://food2fork.com/api/search?key=119e99ed960f27a6545bf45ad0506cdb&q=shredded%20chicken;"
-	// 		return axios.get(queryURL)
-	// 		// 	//.then(function(response){
+			return axios.get('/recipe/:' + ingredients).then(function (response) {
 
-	// 		// 		console.log(response.recipes.title);
-	// 		// 		return response;
-	// 		// 		//return response.data.results[0].formatted;
-	// 		// //})
+				console.log(response);
 
-	// 	}
+				return response.data.results;
+			});
+		};
+	}
 
-	// }
-
-
-	// // We export the helpers function (which contains getGithubInfo)
-	// module.exports = helpers;
-	"use strict";
+	// // We export the helper class
+	module.exports = Helper;
 
 /***/ }
 /******/ ]);
