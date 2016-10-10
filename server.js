@@ -1,31 +1,116 @@
-var express=require('express');
-var fetch = require('node-fetch');
+// Dependencies
+// =============================================================
+var express = require('express');
 var bodyParser = require('body-parser');
+var path = require('path');
+
+// Sets up the Express App
+// =============================================================
 var app = express();
+var PORT = process.env.PORT || 3000;
+console.log(__dirname);
+// Sets up the Express app to handle data parsing 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.text());
+app.use(bodyParser.json({type:'application/vnd.api+json'}));
+app.use('/', express.static(__dirname + '/public'));
 
-//static path below the parser definitions
-app.use('/', express.static(__dirname+'/static/'));
+/**** Hard code a list of recipes for now. ***/
 
-// parse application/x-www-form-urlencoded 
-app.use(bodyParser.urlencoded({ extended: false }))
- 
-// parse application/json 
-app.use(bodyParser.json())
+(function KeepItSimple(){
 
-app.get('/search', function(req, res){
+// Use the FoodApi to access the Spoonacular Food Api
+var f = require('./FoodApi');
 
-    const apiKey = "119e99ed960f27a6545bf45ad0506cdb";
-    let searchUrl = "http://food2fork.com/api/search";
-    searchUrl += "?key=" + apiKey + "&q=chicken";
-    fetch(searchUrl)
-        .then(function(res) {
-            return res.json();
-        }).then(function(json) {
-            console.log(json);
-            res.send(json);
-        });
-});
+var foodApi = new f();
+
+// Routes
+// =============================================================
+
+// Basic route that sends the user first to the AJAX Page
+app.get('/recipe', function(req, res){
+	//res.sendFile(path.join(__dirname, '/public/recipe.html'));
+
+	res.json(foodApi.findRecipe());
+
+})
+
+//Added home route
+
+app.get('/', function(req, res){
+	res.sendFile(path.join(__dirname, '/public/landing.html'));
+})
+
+// Added pantry route
+
+app.get('/pantry', function(req, res){
+	res.sendFile(path.join(__dirname, '/public/pantry.html'));
+})
+
+// Added about route
+
+app.get('/about', function(req, res){
+	res.sendFile(path.join(__dirname, '/public/about.html'));
+})
+
+
+// app.get('/add', function(req, res){
+// 	res.sendFile(path.join(__dirname, 'add.html'));
+// })
+
+// app.get('/all', function(req, res){
+// 	res.sendFile(path.join(__dirname, 'all.html'));
+// })
+
+// Search for Specific Character (or all characters) - provides JSON
+app.get('/recipe/:ingredients?', function(req, res){
+console.log(1);
+	var term = req.params.ingredients;
+
+	console.log("search term: ", term);
+	console.log("req.params: ", req.params);
+
+	if(term){
+console.log(2);
+
+		// NOTE: the findRecipe takes a callback function.
+		// This is necessary so it doesn't have to wait before
+		// returning from the unirest call. Otherwise, it would
+		// return too early and we would not have the data yet.
+		var result = foodApi.findRecipe(term, function(recipes){
+console.log(3);
+			console.log("[GET /api/:ingredients] recipes leee: ");
+
+			// Just send one recipe for now, later send entire array
+			res.json(recipes);
+		});
+	}
+})
+
+// // Create New Characters - takes in JSON input
+// app.post('/api/new', function(req, res){
+
+// 	var newcharacter = req.body;
+// 	newcharacter.routeName = newcharacter.name.replace(/\s+/g, '').toLowerCase()
+
+// 	console.log(newcharacter);
+
+// 	characters.push(newcharacter);
+
+// 	res.json(newcharacter);
+// })
+
+// // Starts the server to begin listening 
+// // =============================================================
+// // app.listen(PORT, function(){
+// // 	console.log('App listening on PORT ' + PORT);
+// // })
+
 app.listen(3000, function() {
     console.log('Timestamp: ', (Date()).toString());
-    console.log('App running on port 3000!');
+    console.log('KeepItSimple App running on port 3000!');
 });
+
+	
+})();

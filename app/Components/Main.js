@@ -2,11 +2,11 @@ import React from 'react';
 
 // Import sub-components
 import Form from './Children/Form';
-import Results from './Children/Results';
+//import Results from './Children/Results';
 
 
 // Helper Function
-import helpers from './utils/helpers.js';
+//import helpers from './utils/helpers.js';
 
 class Main extends React.Component{
 
@@ -16,10 +16,11 @@ class Main extends React.Component{
 
 		this.state = {
 			searchTerm: "",
-			results: ""
+			recipes: {}
 		}
 
 		this.setTerm = this.setTerm.bind(this);
+		this.setResults = this.setResults.bind(this);
 	}
 
 	setTerm(term){
@@ -28,9 +29,36 @@ class Main extends React.Component{
 		})
 	}
 
+	setResults(results){
+		console.log("fffsdss");
+		this.setState({
+			results: results
+		})
+	}
+
 	componentDidUpdate(prevProps, prevState){
 		if(prevState.searchTerm != this.state.searchTerm){
 			console.log("UPDATED");
+		// 	console.log(this.state.term);
+
+		// this.props.setTerm(this.state.term);
+	
+		 var currentURL = window.location.origin;
+		 console.log(currentURL+ "/recipe/" + this.state.term)
+
+		$.get( currentURL + "/recipe/" + this.state.term, function( data ) {
+			if(data == false){
+				// $("#name").text(" No Recipes Found ");
+				// $("#stats").hide();
+			}
+			else {
+				
+				
+				
+				this.props.setResults(data);
+			}//.bind(this);
+			
+		});
 			
 			// helpers.runQuery(this.state.searchTerm)
 			// 	.then((data)=>{
@@ -52,6 +80,7 @@ class Main extends React.Component{
 	}
 
 	render(){
+		
 		return(
 		<div>
 			<header>
@@ -64,7 +93,7 @@ class Main extends React.Component{
 			<br />
 			<div className="container">
 				<div className="row">
-					<Form setTerm={this.setTerm}/>
+					<Form setTerm={this.setTerm} setResults={"ggg"+this.setResults}/>
 				</div>
 			</div>
 			
