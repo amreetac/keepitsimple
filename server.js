@@ -80,7 +80,7 @@ console.log(2);
 		// return too early and we would not have the data yet.
 		var result = foodApi.findRecipe(term, function(recipes){
 console.log(3);
-			console.log("[GET /api/:ingredients] recipes leee: ");
+			console.log("[GET /api/:ingredients] recipes : ", recipes);
 
 			// Just send one recipe for now, later send entire array
 			res.json(recipes);

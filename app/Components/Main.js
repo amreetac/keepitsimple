@@ -43,22 +43,7 @@ class Main extends React.Component{
 
 		// this.props.setTerm(this.state.term);
 	
-		 var currentURL = window.location.origin;
-		 console.log(currentURL+ "/recipe/" + this.state.term)
-
-		$.get( currentURL + "/recipe/" + this.state.term, function( data ) {
-			if(data == false){
-				// $("#name").text(" No Recipes Found ");
-				// $("#stats").hide();
-			}
-			else {
-				
-				
-				
-				this.props.setResults(data);
-			}//.bind(this);
-			
-		});
+		
 			
 			// helpers.runQuery(this.state.searchTerm)
 			// 	.then((data)=>{
@@ -93,7 +78,7 @@ class Main extends React.Component{
 			<br />
 			<div className="container">
 				<div className="row">
-					<Form setTerm={this.setTerm} setResults={"ggg"+this.setResults}/>
+					<Form setTerm={this.setTerm} setResults={this.setResults}/>
 				</div>
 			</div>
 			

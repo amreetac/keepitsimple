@@ -1,5 +1,8 @@
 import React from 'react';
 import axios from 'axios';
+
+import Result from './Results';
+
 class Form extends React.Component{
 	constructor(props){
 		super(props);
@@ -9,8 +12,6 @@ class Form extends React.Component{
 			results:[]
 		}
 		
-
-
 		this.handleChange = this.handleChange.bind(this);
 		this.handleClick = this.handleClick.bind(this);
 	}
@@ -38,15 +39,11 @@ class Form extends React.Component{
 				$("#stats").hide();
 			}
 			else {
-				// $("#stats").show();
-				// $("#title").text(data.title);
-				// $("#source_url").attr("href", data.source_url);
-				// $("#image_url").attr("src", data.image);
-				console.log('from handleclicks'+data);
+				$("#stats").show();
 				self.setState({
-              		results: self.state.results
+              		results: data
             	})
-				//return data;
+            	console.log('self.state.results', self.state.results);
 			}
 			
 		})
@@ -58,7 +55,6 @@ class Form extends React.Component{
 	}	
 
 	render(){
-		//if(data){alert('ggg')};
 		return(
 			<div>
 				<div className="panel panel-default">
@@ -97,9 +93,7 @@ class Form extends React.Component{
 								<ul>
 									{this.state.results.map(function(result){
 										return(
-
-										<Result key={result.id} article={result} />
-
+											<Result key={result.id} article={result} />
 										)
 									})}
 								</ul>

@@ -19839,18 +19839,6 @@
 
 					// this.props.setTerm(this.state.term);
 
-					var currentURL = window.location.origin;
-					console.log(currentURL + "/recipe/" + this.state.term);
-
-					$.get(currentURL + "/recipe/" + this.state.term, function (data) {
-						if (data == false) {
-							// $("#name").text(" No Recipes Found ");
-							// $("#stats").hide();
-						} else {
-
-							this.props.setResults(data);
-						} //.bind(this);
-					});
 
 					// helpers.runQuery(this.state.searchTerm)
 					// 	.then((data)=>{
@@ -19901,7 +19889,7 @@
 						_react2.default.createElement(
 							'div',
 							{ className: 'row' },
-							_react2.default.createElement(_Form2.default, { setTerm: this.setTerm, setResults: "ggg" + this.setResults })
+							_react2.default.createElement(_Form2.default, { setTerm: this.setTerm, setResults: this.setResults })
 						)
 					)
 				);
@@ -19935,6 +19923,10 @@
 	var _axios = __webpack_require__(161);
 
 	var _axios2 = _interopRequireDefault(_axios);
+
+	var _Results = __webpack_require__(180);
+
+	var _Results2 = _interopRequireDefault(_Results);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -19992,15 +19984,11 @@
 						$("#name").text(" No Recipes Found ");
 						$("#stats").hide();
 					} else {
-						// $("#stats").show();
-						// $("#title").text(data.title);
-						// $("#source_url").attr("href", data.source_url);
-						// $("#image_url").attr("src", data.image);
-						console.log('from handleclicks' + data);
+						$("#stats").show();
 						self.setState({
-							results: self.state.results
+							results: data
 						});
-						//return data;
+						console.log('self.state.results', self.state.results);
 					}
 				});
 			}
@@ -20013,7 +20001,6 @@
 		}, {
 			key: 'render',
 			value: function render() {
-				//if(data){alert('ggg')};
 				return _react2.default.createElement(
 					'div',
 					null,
@@ -20096,7 +20083,7 @@
 										'ul',
 										null,
 										this.state.results.map(function (result) {
-											return _react2.default.createElement(Result, { key: result.id, article: result });
+											return _react2.default.createElement(_Results2.default, { key: result.id, article: result });
 										})
 									)
 								)
@@ -21323,6 +21310,45 @@
 	  };
 	};
 
+
+/***/ },
+/* 180 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var React = __webpack_require__(1);
+
+	var Result = React.createClass({
+	  displayName: "Result",
+
+	  render: function render() {
+	    return React.createElement(
+	      "div",
+	      null,
+	      React.createElement(
+	        "li",
+	        { className: "list-group-item" },
+	        React.createElement(
+	          "a",
+	          { href: this.props.article.image, target: "_blank" },
+	          this.props.article.title
+	        ),
+	        React.createElement(
+	          "div",
+	          { className: "btn-group pull-right" },
+	          React.createElement(
+	            "button",
+	            { type: "button", className: "btn btn-primary" },
+	            "Save"
+	          )
+	        )
+	      )
+	    );
+	  }
+	});
+
+	module.exports = Result;
 
 /***/ }
 /******/ ]);
