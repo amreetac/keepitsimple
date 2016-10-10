@@ -51,7 +51,6 @@ class Form extends React.Component{
 	handleClick(){
 		console.log("CLICK");
 		this.getSearchResults();	
-
 	}	
 
 	render(){
@@ -88,13 +87,13 @@ class Form extends React.Component{
 					<div className="panel-body">
 						<div id="stats">
 
-						<ul>
-							{this.state.results.map(function(result){
-								return(
-									<Result key={result.id} article={result} />
-								)
-							})}
-						</ul>
+							<ul>
+								{this.state.results.map(function(result){
+									return(
+										<Result key={result.id} article={result} />
+									)
+								})}
+							</ul>
 
 						</div>
 						
