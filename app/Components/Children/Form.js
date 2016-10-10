@@ -83,23 +83,21 @@ class Form extends React.Component{
 
 				<div className="panel panel-default">
 					<div className="panel-heading">
-						<h3 className="panel-title"><strong>Recipe Result</strong></h3>
+						<h2 className="panel-title"><strong>Recipe Result</strong></h2>
 					</div>
 					<div className="panel-body">
-						<div className="well">
-							<h2 id="title">All Recipes</h2>
-								<div id="stats">
+						<div id="stats">
 
-								<ul>
-									{this.state.results.map(function(result){
-										return(
-											<Result key={result.id} article={result} />
-										)
-									})}
-								</ul>
+						<ul>
+							{this.state.results.map(function(result){
+								return(
+									<Result key={result.id} article={result} />
+								)
+							})}
+						</ul>
 
-								</div>
 						</div>
+						
 					</div>
 				</div>
 

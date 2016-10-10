@@ -23,7 +23,7 @@ function FoodApi() {
 	this.baseUrl = 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com';
 	this.apiKey = 'HpxgpOtGRjmshLUHkFBTPp3BiwZfp1Dcykzjsn12LlQQTUNslw';
 
-	this.limit = 5;
+	this.limit = 6;
 
 	this.findRecipe = function(ingredientList, cb) {
 

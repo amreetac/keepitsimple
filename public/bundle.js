@@ -20056,7 +20056,7 @@
 							'div',
 							{ className: 'panel-heading' },
 							_react2.default.createElement(
-								'h3',
+								'h2',
 								{ className: 'panel-title' },
 								_react2.default.createElement(
 									'strong',
@@ -20070,22 +20070,13 @@
 							{ className: 'panel-body' },
 							_react2.default.createElement(
 								'div',
-								{ className: 'well' },
+								{ id: 'stats' },
 								_react2.default.createElement(
-									'h2',
-									{ id: 'title' },
-									'All Recipes'
-								),
-								_react2.default.createElement(
-									'div',
-									{ id: 'stats' },
-									_react2.default.createElement(
-										'ul',
-										null,
-										this.state.results.map(function (result) {
-											return _react2.default.createElement(_Results2.default, { key: result.id, article: result });
-										})
-									)
+									'ul',
+									null,
+									this.state.results.map(function (result) {
+										return _react2.default.createElement(_Results2.default, { key: result.id, article: result });
+									})
 								)
 							)
 						)
@@ -21325,15 +21316,16 @@
 	  render: function render() {
 	    return React.createElement(
 	      "div",
-	      null,
+	      { className: "col-xs-12 col-sm-6 col-md-4" },
 	      React.createElement(
 	        "li",
 	        { className: "list-group-item" },
 	        React.createElement(
-	          "a",
-	          { href: this.props.article.image, target: "_blank" },
+	          "h4",
+	          null,
 	          this.props.article.title
 	        ),
+	        React.createElement("img", { src: this.props.article.image, alt: this.props.article.title, height: "100", width: "100" }),
 	        React.createElement(
 	          "div",
 	          { className: "btn-group pull-right" },
