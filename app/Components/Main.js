@@ -16,15 +16,22 @@ class Main extends React.Component{
 
 		this.state = {
 			searchTerm: "",
-			results: ""
+			recipes: {}
 		}
 
 		this.setTerm = this.setTerm.bind(this);
+		this.setResults = this.setResults.bind(this);
 	}
 
 	setTerm(term){
 		this.setState({
 			searchTerm: term
+		})
+	}
+
+	setResults(results){
+		this.setState({
+			results: results
 		})
 	}
 
@@ -64,7 +71,7 @@ class Main extends React.Component{
 			<br />
 			<div className="container">
 				<div className="row">
-					<Form setTerm={this.setTerm}/>
+					<Form setTerm={this.setTerm} setResults={this.setResults}/>
 				</div>
 			</div>
 			
