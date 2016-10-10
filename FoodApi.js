@@ -23,22 +23,15 @@ function FoodApi() {
 	this.baseUrl = 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com';
 	this.apiKey = 'HpxgpOtGRjmshLUHkFBTPp3BiwZfp1Dcykzjsn12LlQQTUNslw';
 
-
 	this.limit = 6;
 
-
-
 	this.findRecipe = function(ingredientList, cb) {
-
 		var search = '/recipes/findByIngredients?fillIngredients=false';
 //		var ingredients = '&ingredients=apples%2Cflour%2Csugar';
 		var ingredients = '&ingredients=' + ingredientList;
 		var limits = '&limitLicense=false&number=' + this.limit;
 		var url = this.baseUrl + search + ingredients + limits + '&ranking=2';
 
-		// Hardcode ingredient list for now
-
-//	    return unirest.get(url)
 	    var Request =  unirest.get(url)
 	    	.header("X-Mashape-Key", this.apiKey)
 			.header("Accept", "application/json");
