@@ -40,6 +40,18 @@
         input[type=text]:focus {
             width: 100%;
         }
+
+        .letter { width: 50px; height:50px; border-style: solid; padding: 2px; float: left; margin: 2px; line-height: 20px;}
+
+        .letter-button-color { color: darkcyan; }
+
+        .fridge-color { color: orange; margin-top: 100px; margin-left:40px; }
+
+        #display { margin-top:150px; height:500px; width:220px; margin-left:60px; }
+
+        #buttons { padding-top:60px; }
+
+        #clear { margin-left: 20px; font-size: 25px; color: black; border-style: solid; width: 100px; } 
     </style>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -97,6 +109,8 @@
         <div class="row">
             <div class="box">
                 <div class="col-lg-12">
+
+                <div class="col-md-7" id="display">
                     <hr>
                     <h2 class="intro-text text-center">
                         <strong>Your Pantry</strong>
@@ -106,6 +120,8 @@
                 <div class="col-md-5">
                     <img class="img-responsive img-border-left" src="img/fridge.png" alt="">
                 </div>
+
+                <div id="buttons"></div>
 
                 <div class="col-md-7">
                     
@@ -149,23 +165,14 @@
                 <form>
                     <input type="text" name="search" placeholder="Search..">
 
-                    <button type="button">Submit</button>
+                    <button type="button">Search</button>
                 </form>
                 </h2>
 
             <div class="clearfix"></div>
             </div>
         </div>
-
-
-        <div class="row">
-            <div class="box">
-                <h2 class="intro-text text-center">
-                    <strong>Results:</strong>
-                </h2>
-            <div class="clearfix"></div>
-            </div>
-        </div>
+        
     </div>
     <!-- /.container -->
 
@@ -180,11 +187,77 @@
         </div>
     </footer>
 
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script type="text/javascript"> </script>
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+
+        $( document ).ready(function() {
+        //we store all the letters and underscore inside of an array called letters
+        var letters = ["apple", "eggs", "bread", "cheese"];
+        
+        /*
+        REMEMBER USE jQuery!
+
+        step 1: loop over the letters 
+            step 2: inside the loop
+                * make a variable named b 
+                    * set it equal to a button with 
+                        - the following classes: letter-button letter letter-button-color
+                        - a data-let attribute set equal to letters[i]
+                        - text of letters[i]
+                * step 3: append b to the div with an id of buttons
+        */
+        for (var i = 0; i < letters.length; i++) {    
+            var b = $('<button>');
+            b.addClass('letter-button letter letter-button-color');
+            b.attr('data-let', letters[i]);
+            b.text(letters[i])
+
+            //alternatively you could do it in one line but it'll be harder to read
+            //var b = $('<button class="letter-button letter letter-button-color" data-let="'+ letters[i] +'">').text(letters[i]);   
+            
+            $("#buttons").append(b); 
+            //alert('watch this');
+        };
+
+
+        $('.letter-button').on('click', function() {
+            /*
+                Step 4:
+
+                * inside this anonymous function that gets passed to the click event
+                    * create a variable called fridgeMagnet 
+                        * set the variable equal to a new div 
+                            * with the following classes: letter fridge-color
+                            * chain this onto the div: 
+                                .text($(this).data('let'))
+            */
+
+            //$('<p>') //that will do <p></p> for you
+            //$('<a>') // that will do <a></a> for you
+
+            var fridgeMagnet = $('<div class="letter fridge-color">').text($(this).data('let'));
+
+            /* Step 5: append the fridgeMagnet variable to the element with an id of display */
+            $("#display").append(fridgeMagnet);
+            //alert('watch this')
+        });
+
+        //Step 6: on the element with an id of clear, attach an on click function
+            /*
+                Step 7: inside ththeis anonymous function that gets passed to the click event
+                    * use the empty() function on the element with an id of display 
+            */
+        $('#clear').on('click', function() {
+            $("#display").empty(); 
+        });
+
+    });
+
+</script>
+
 
 </body>
 

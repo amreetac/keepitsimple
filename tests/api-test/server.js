@@ -18,14 +18,15 @@ app.listen(3030, function() {
 	console.log('api-test App running on port 3000!');
 
 	var foodApi = new FoodApi();
-	var result = foodApi.findRecipe("Tomato", function(recipes){
+	var result = foodApi.findRecipe("Tomato", "simple", function(response, error){
 
-		console.log("++++ recipes: ", recipes);
+		if (!error)
+		{
+			console.log("++++ recipes: ", response);
 
-		var recipe = recipes[0];
+//			var recipe = response[0];
 
-		console.log("++++ recipe: ", recipe);
-
-		return recipes;
+			console.log("++++ recipe: ", response[0]);
+		}
 	});
 });

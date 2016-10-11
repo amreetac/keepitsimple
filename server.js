@@ -17,36 +17,7 @@ app.use(bodyParser.json({type:'application/vnd.api+json'}));
 app.use('/', express.static(__dirname + '/public'));
 
 /**** Hard code a list of recipes for now. ***/
-var recipes_for_testing = [
 
-	{
-		routeName: "allrecipes",
-		title: "All Recipes",
-		source_url: "http://allrecipes.com/Recipe/Slow-Cooker-Chicken-Tortilla-Soup/Detail.aspx",
-		image_url: "http://static.food2fork.com/19321150c4.jpg"
-	},
-
-	{
-		routeName: "macandcheese",
-		title: "Mac and Cheese with Roasted Chicken, Goat Cheese, and Rosemary",
-		source_url: "http://www.mybakingaddiction.com/mac-and-cheese-roasted-chicken-and-goat-cheese/",
-		image_url: "http://static.food2fork.com/MacandCheese1122b.jpg"
-	},
-
-	{
-		routeName: "baconwrapped",
-		title: "Bacon Wrapped Buffalo Chicken Jalapeno Poppers",
-		role: "http://www.closetcooking.com/2012/03/bacon-wrapped-buffalo-chicken-jalapeno.html",
-		age: "http://static.food2fork.com/Bacon2BWrapped2BBuffalo2BChicken2BJalapeno2BPoppers2B5002B3668e0d793a2.jpg"
-	},
-
-	{
-		routeName: "buffalochicken",
-		title: "Buffalo Chicken Grilled Cheese Sandwich",
-		source_url: "http://www.closetcooking.com/2011/08/buffalo-chicken-grilled-cheese-sandwich.html",
-		image_url: "http://static.food2fork.com/Buffalo2BChicken2BPotato2BSkins2B5002B5802a7cf6f8f.jpg"
-	}
-];	
 
 (function KeepItSimple(){
 
@@ -62,7 +33,7 @@ var foodApi = new f();
 app.get('/recipe', function(req, res){
 	//res.sendFile(path.join(__dirname, '/public/recipe.html'));
 
-	res.json(foodApi.findRecipe("Milk"));
+	res.json(foodApi.findRecipe());
 
 })
 
@@ -85,57 +56,33 @@ app.get('/about', function(req, res){
 })
 
 
-// app.get('/add', function(req, res){
-// 	res.sendFile(path.join(__dirname, 'add.html'));
-// })
-
-// app.get('/all', function(req, res){
-// 	res.sendFile(path.join(__dirname, 'all.html'));
-// })
-
 // Search for Specific Character (or all characters) - provides JSON
-app.get('/api/:ingredients?', function(req, res){
-console.log(1);
+
+app.get('/recipe/:ingredients?', function(req, res){
+	console.log(1);
 	var term = req.params.ingredients;
 
 	console.log("search term: ", term);
 	console.log("req.params: ", req.params);
 
 	if(term){
-console.log(2);
+		console.log(2);
 
 		// NOTE: the findRecipe takes a callback function.
 		// This is necessary so it doesn't have to wait before
 		// returning from the unirest call. Otherwise, it would
 		// return too early and we would not have the data yet.
 		var result = foodApi.findRecipe(term, function(recipes){
-console.log(3);
-			console.log("[GET /api/:ingredients] recipes: ", recipes);
+		console.log(3);
+
+			console.log("[GET /api/:ingredients] recipes : ", recipes);
 
 			// Just send one recipe for now, later send entire array
-			res.json(recipes[0]);
+			res.json(recipes);
+
 		});
 	}
 })
-
-// // Create New Characters - takes in JSON input
-// app.post('/api/new', function(req, res){
-
-// 	var newcharacter = req.body;
-// 	newcharacter.routeName = newcharacter.name.replace(/\s+/g, '').toLowerCase()
-
-// 	console.log(newcharacter);
-
-// 	characters.push(newcharacter);
-
-// 	res.json(newcharacter);
-// })
-
-// // Starts the server to begin listening 
-// // =============================================================
-// // app.listen(PORT, function(){
-// // 	console.log('App listening on PORT ' + PORT);
-// // })
 
 app.listen(3000, function() {
     console.log('Timestamp: ', (Date()).toString());
