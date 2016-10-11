@@ -5,6 +5,7 @@ import Form from './Children/Form';
 
 import Results from './Children/Results';
 import Navbar from './Children/Navbar';
+import Footer from './Children/Footer';
 
 
 // Helper Function
@@ -84,7 +85,7 @@ class Main extends React.Component{
 					<Form setTerm={this.setTerm} setResults={this.setResults}/>
 				</div>
 			</div>
-			
+			<Footer />
 		</div>
 		)		
 	}
