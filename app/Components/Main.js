@@ -3,6 +3,7 @@ import React from 'react';
 // Import sub-components
 import Form from './Children/Form';
 import Results from './Children/Results';
+import Navbar from './Children/Navbar';
 
 
 // Helper Function
@@ -61,6 +62,7 @@ class Main extends React.Component{
 	render(){
 		return(
 		<div>
+		   <Navbar />
 			<header>
 				<div className="jumbotron">
 					<div className="row">
