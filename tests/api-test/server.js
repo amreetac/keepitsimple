@@ -53,7 +53,7 @@ app.listen(3030, function() {
 		});
 	} else if (_test_case_ == "autoCompleteRecipe") {
 		console.log("++++ calling autoCompleteRecipe");
-		var result = foodApi.autoCompleteRecipe("A", 5, function(response, error){
+		var result = foodApi.autoCompleteRecipe("Angel F", 5, function(response, error){
 			if (!error)
 			{
 				console.log("++++ response: ", response);
@@ -62,18 +62,6 @@ app.listen(3030, function() {
 			}
 			else {
 				console.log("++++ error: ", error);
-			}
-		});
-	} else if (_test_case_ == "autoCompleteFood") {
-		var result = foodApi.autoCompleteFood("Apple", "complex", function(response, error){
-
-			if (!error)
-			{
-				console.log("++++ food: ", response);
-
-	//			var recipe = response[0];
-
-	//			console.log("++++ recipe: ", response[0]);
 			}
 		});
 	}

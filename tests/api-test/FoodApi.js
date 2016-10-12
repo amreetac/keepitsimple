@@ -142,12 +142,18 @@ else {
 		console.log("**** search string: ", url);
 
 	    return unirest.get(url)
-		// These code snippets use an open-source library.
 		.header("X-Mashape-Key", self.apiKeys["complex"].apiKey)
 		.header("Accept", "application/json")
 		.end(function (result) {
-	  		console.log(result.status, result.headers, result.body);
-			cb(result.body);
+			if (result.error) {
+				console.log("**** error response:\n", result.error)
+				cb(result.error, error = true)
+			} else {
+  				console.log("**** status: ", result.status);
+  				console.log("**** headers: ", result.headers);
+  				console.log("**** body: ", result.body);
+  				cb(result.body, error = false);
+  			}
 		});
 
 	},
@@ -155,14 +161,32 @@ else {
 	this.autoCompleteRecipe = function(searchTerm, count, cb) {
 		console.log("**** recipe search term: ", searchTerm);
 
-		// For now, use the code snippet directly from mashape
-		// These code snippets use an open-source library.
-		unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/autocomplete?number=10&query=chicken")
-		.header("X-Mashape-Key", "gYPrulKTKnmshuLI06XFb8coTsw5p1gjhiEjsnMC7d2VWGx88j")
+		var self = this;
+
+		// "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com
+		// "/recipes/autocomplete?number=10&query=chicken"
+
+		var search = self.baseUrl + "/recipes/autocomplete?";
+		var number = "number=" + count;
+		var query = "&query=" + searchTerm;
+
+		var url = search + number + query;
+
+		console.log("**** search string: ", url);
+
+		unirest.get(url)
+		.header("X-Mashape-Key", self.apiKeys["complex"].apiKey)
 		.header("Accept", "application/json")
 		.end(function (result) {
-			console.log(result.status, result.headers, result.body);
-			cb(result.body);
+			if (result.error) {
+				console.log("**** error response:\n", result.error)
+				cb(result.error, error = true)
+			} else {
+  				console.log("**** status: ", result.status);
+  				console.log("**** headers: ", result.headers);
+  				console.log("**** body: ", result.body);
+  				cb(result.body, error = false);
+  			}
 		});
 	}
 }
