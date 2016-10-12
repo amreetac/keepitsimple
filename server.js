@@ -45,9 +45,29 @@ app.get('/', function(req, res){
 
 // Added pantry route
 
-app.get('/pantry', function(req, res){
-	res.sendFile(path.join(__dirname, '/public/pantry.html'));
+app.get('/ingredient', function(req, res){
+	res.sendFile(path.join(__dirname, '/public/ingredient.html'));
 })
+// Search for Specific Character (or all ingredients) - provides JSON
+app.get('/ingredient/:ingredient?', function(req, res){
+    var chosen = req.params.ingredient;
+    if(chosen){
+        console.log(2);
+        // NOTE: the findRecipe takes a callback function.
+        // This is necessary so it doesn't have to wait before
+        // returning from the unirest call. Otherwise, it would
+        // return too early and we would not have the data yet.   
+        var result = foodApi.autoCompleteFood(chosen, function(ingredient){
+        console.log(3);
+             // Just send one recipe for now, later send entire array
+
+            res.json(ingredient);
+
+        });
+       
+    }
+});
+
 
 // Added about route
 
@@ -61,9 +81,9 @@ app.get('/signin', function(req, res){
 
 // Search for Specific Character (or all characters) - provides JSON
 
-app.get('/recipe/:ingredients?', function(req, res){
+app.get('/recipe/:ingredient?', function(req, res){
 	console.log(1);
-	var term = req.params.ingredients;
+	var term = req.params.ingredient;
 
 	console.log("search term: ", term);
 	console.log("req.params: ", req.params);

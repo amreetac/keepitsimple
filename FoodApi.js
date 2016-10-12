@@ -43,6 +43,26 @@ function FoodApi() {
   				cb(result.body);
   			});
 
+	},
+	this.autoCompleteFood = function(searchTerm, cb) {
+		// These code snippets use an open-source library.
+		console.log("**** search term: ", searchTerm);
+		unirest.post("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/parseIngredients")
+		.header("X-Mashape-Key", "gYPrulKTKnmshuLI06XFb8coTsw5p1gjhiEjsnMC7d2VWGx88j")
+		.header("Content-Type", "application/x-www-form-urlencoded")
+//		.send("ingredientList=3 oz pork shoulder")
+		.send("ingredientList=" + searchTerm)
+		.send("servings=2")
+		.end(function (result) {
+		 console.log( result.body);
+		cb(result.body);
+		});
+
+	},
+
+	this.autoCompleteRecipe = function(searchTerm) {
+
+
 	}
 }
 
