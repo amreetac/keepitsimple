@@ -25,12 +25,20 @@ unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/
 /**** SPOONACULAR API using AXIOS
 ****/
 
-function FoodApi(limit = 2) {
+function FoodApi(apiKeys = null, limit = 2) {
 
-	this.apiKeys = {
-		'simple': { apiKey: 'HpxgpOtGRjmshLUHkFBTPp3BiwZfp1Dcykzjsn12LlQQTUNslw' },
-		'complex': { apiKey: 'gYPrulKTKnmshuLI06XFb8coTsw5p1gjhiEjsnMC7d2VWGx88j' },
-	};
+	if (apiKeys === null) {
+
+		this.apiKeys = {
+			'simple': { apiKey: 'HpxgpOtGRjmshLUHkFBTPp3BiwZfp1Dcykzjsn12LlQQTUNslw' },
+			'complex': { apiKey: 'gYPrulKTKnmshuLI06XFb8coTsw5p1gjhiEjsnMC7d2VWGx88j' },
+		};
+
+	} else {
+
+		this.apiKeys = apiKeys;
+
+	}
 
 	// By using a complex search, we can get detailed recipe information for 
 	// each recipe with one call to the API.
@@ -115,22 +123,71 @@ else {
 
 	this.autoCompleteFood = function(searchTerm, count, getDetails, cb) {
 		// These code snippets use an open-source library.
-		console.log("**** search term: ", searchTerm);
-		unirest.post("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/parseIngredients")
-		.header("X-Mashape-Key", "gYPrulKTKnmshuLI06XFb8coTsw5p1gjhiEjsnMC7d2VWGx88j")
-		.header("Content-Type", "application/x-www-form-urlencoded")
-//		.send("ingredientList=3 oz pork shoulder")
-		.send("ingredientList=" + searchTerm)
-		.send("servings=2")
+		console.log("**** food search term: ", searchTerm);
+
+		var self = this;
+
+		var search = self.baseUrl + "/food/ingredients/autocomplete?";
+
+		// https://spoonacular-recipe-food-nutrition-v1.p.mashape.com"
+		// "/food/ingredients/autocomplete?"
+		// "metaInformation=false&number=10&query=appl
+
+		// "/food/ingredients/autocomplete?metaInformation=false&number=10&query=appl")
+		var metaInfo = 'metaInformation=' + getDetails;
+		var number = '&number=' + count;
+		var query = '&query=' + searchTerm;
+		var url = search + metaInfo + number + query;
+
+		console.log("**** search string: ", url);
+
+	    return unirest.get(url)
+		.header("X-Mashape-Key", self.apiKeys["complex"].apiKey)
+		.header("Accept", "application/json")
 		.end(function (result) {
-		  console.log(result.status, result.headers, result.body);
+			if (result.error) {
+				console.log("**** error response:\n", result.error)
+				cb(result.error, error = true)
+			} else {
+  				console.log("**** status: ", result.status);
+  				console.log("**** headers: ", result.headers);
+  				console.log("**** body: ", result.body);
+  				cb(result.body, error = false);
+  			}
 		});
 
 	},
 
-	this.autoCompleteRecipe = function(searchTerm) {
+	this.autoCompleteRecipe = function(searchTerm, count, cb) {
+		console.log("**** recipe search term: ", searchTerm);
 
+		var self = this;
 
+		// "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com
+		// "/recipes/autocomplete?number=10&query=chicken"
+
+		var search = self.baseUrl + "/recipes/autocomplete?";
+		var number = "number=" + count;
+		var query = "&query=" + searchTerm;
+
+		var url = search + number + query;
+
+		console.log("**** search string: ", url);
+
+		unirest.get(url)
+		.header("X-Mashape-Key", self.apiKeys["complex"].apiKey)
+		.header("Accept", "application/json")
+		.end(function (result) {
+			if (result.error) {
+				console.log("**** error response:\n", result.error)
+				cb(result.error, error = true)
+			} else {
+  				console.log("**** status: ", result.status);
+  				console.log("**** headers: ", result.headers);
+  				console.log("**** body: ", result.body);
+  				cb(result.body, error = false);
+  			}
+		});
 	}
 }
 
