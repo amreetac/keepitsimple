@@ -2,7 +2,10 @@ import React from 'react';
 
 // Import sub-components
 import Form from './Children/Form';
-//import Results from './Children/Results';
+
+import Results from './Children/Results';
+import Navbar from './Children/Navbar';
+import Footer from './Children/Footer';
 
 
 // Helper Function
@@ -68,6 +71,7 @@ class Main extends React.Component{
 		
 		return(
 		<div>
+		   <Navbar />
 			<header>
 				<div className="jumbotron">
 					<div className="row">
@@ -81,7 +85,7 @@ class Main extends React.Component{
 					<Form setTerm={this.setTerm} setResults={this.setResults}/>
 				</div>
 			</div>
-			
+			<Footer />
 		</div>
 		)		
 	}
