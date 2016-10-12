@@ -13,12 +13,8 @@ var FoodApi = require('./FoodApi');
 app.use('/', express.static(__dirname + '/public'));
 
 //var _test_case_ = "findRecipe";
-<<<<<<< HEAD
 //var _test_case_ = "autoCompleteFood";
 var _test_case_ = "autoCompleteRecipe";
-=======
-var _test_case_ = "autoCompleteFood";
->>>>>>> 6b1bdb0850c91c66499d2f5e2d0b804b9ccf516d
 
 app.listen(3030, function() {
 	console.log('Timestamp: ', (Date()).toString());
@@ -27,10 +23,7 @@ app.listen(3030, function() {
 	var foodApi = new FoodApi();
 
 	if (_test_case_ == "findRecipe") {
-<<<<<<< HEAD
 		console.log("++++ calling findRecipe");
-=======
->>>>>>> 6b1bdb0850c91c66499d2f5e2d0b804b9ccf516d
 		var result = foodApi.findRecipe("Tomato", "simple", function(response, error){
 
 			if (!error)
@@ -41,7 +34,6 @@ app.listen(3030, function() {
 
 				console.log("++++ recipe: ", response[0]);
 			}
-<<<<<<< HEAD
 			else {
 				console.log("++++ error: ", error);
 			}
@@ -72,8 +64,6 @@ app.listen(3030, function() {
 				console.log("++++ error: ", error);
 			}
 		});
-=======
-		});
 	} else if (_test_case_ == "autoCompleteFood") {
 		var result = foodApi.autoCompleteFood("Apple", "complex", function(response, error){
 
@@ -86,7 +76,5 @@ app.listen(3030, function() {
 	//			console.log("++++ recipe: ", response[0]);
 			}
 		});
-
->>>>>>> 6b1bdb0850c91c66499d2f5e2d0b804b9ccf516d
 	}
 });

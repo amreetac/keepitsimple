@@ -123,7 +123,6 @@ else {
 
 	this.autoCompleteFood = function(searchTerm, count, getDetails, cb) {
 		// These code snippets use an open-source library.
-<<<<<<< HEAD
 		console.log("**** food search term: ", searchTerm);
 
 		var self = this;
@@ -149,22 +148,10 @@ else {
 		.end(function (result) {
 	  		console.log(result.status, result.headers, result.body);
 			cb(result.body);
-=======
-		console.log("**** search term: ", searchTerm);
-		unirest.post("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/parseIngredients")
-		.header("X-Mashape-Key", "gYPrulKTKnmshuLI06XFb8coTsw5p1gjhiEjsnMC7d2VWGx88j")
-		.header("Content-Type", "application/x-www-form-urlencoded")
-//		.send("ingredientList=3 oz pork shoulder")
-		.send("ingredientList=" + searchTerm)
-		.send("servings=2")
-		.end(function (result) {
-		  console.log(result.status, result.headers, result.body);
->>>>>>> 6b1bdb0850c91c66499d2f5e2d0b804b9ccf516d
 		});
 
 	},
 
-<<<<<<< HEAD
 	this.autoCompleteRecipe = function(searchTerm, count, cb) {
 		console.log("**** recipe search term: ", searchTerm);
 
@@ -177,11 +164,6 @@ else {
 			console.log(result.status, result.headers, result.body);
 			cb(result.body);
 		});
-=======
-	this.autoCompleteRecipe = function(searchTerm) {
-
-
->>>>>>> 6b1bdb0850c91c66499d2f5e2d0b804b9ccf516d
 	}
 }
 
