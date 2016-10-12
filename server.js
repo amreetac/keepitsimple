@@ -55,6 +55,9 @@ app.get('/about', function(req, res){
 	res.sendFile(path.join(__dirname, '/public/about.html'));
 })
 
+app.get('/signin', function(req, res){
+	res.sendFile(path.join(__dirname, '/public/signin.html'));
+})
 
 // Search for Specific Character (or all characters) - provides JSON
 
