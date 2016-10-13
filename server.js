@@ -24,7 +24,7 @@ app.use('/', express.static(__dirname + '/public'));
 // Use the FoodApi to access the Spoonacular Food Api
 var f = require('./FoodApi');
 
-var foodApi = new f();
+var foodApi = new f("", 10);
 
 // Routes
 // =============================================================
