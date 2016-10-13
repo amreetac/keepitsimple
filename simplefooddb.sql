@@ -10,17 +10,17 @@ CREATE TABLE users (
     PRIMARY KEY (userid)
 );
 
-DROP TABLE users;
+DROP TABLE userrecipe;
 
 CREATE TABLE ingredient (
-	foodid  INTEGER(11) AUTO_INCREMENT NOT NULL,
+    foodid  INTEGER(11) AUTO_INCREMENT NOT NULL,
     foodname VARCHAR(50),
     foodimg VARCHAR(255),
     PRIMARY KEY (foodid)
 );
 
 CREATE TABLE useringredient (
-	pantryid  INTEGER(11) AUTO_INCREMENT NOT NULL,
+    pantryid  INTEGER(11) AUTO_INCREMENT NOT NULL,
     userid INTEGER(11) NOT NULL,
     foodid INTEGER(11) NOT NULL,
     PRIMARY KEY (pantryid)
@@ -33,7 +33,7 @@ CREATE TABLE useringredient (
 );
 
 CREATE TABLE recipe (
-	recipeid  INTEGER(11) AUTO_INCREMENT NOT NULL,
+    recipeid  INTEGER(11) AUTO_INCREMENT NOT NULL,
     recipename VARCHAR(50) NOT NULL,
     recipeurl VARCHAR(255),
     recipedesc VARCHAR(255),
@@ -41,10 +41,10 @@ CREATE TABLE recipe (
 );
 
 CREATE TABLE userrecipe (
-	userrecipeid  INTEGER(11) AUTO_INCREMENT NOT NULL,
-	userid INTEGER(11) NOT NULL,
+    userrecipeid  INTEGER(11) AUTO_INCREMENT NOT NULL,
+    userid INTEGER(11) NOT NULL,
     recipeid INTEGER(11) NOT NULL,
-    PRIMARY KEY (recipeid)
+    PRIMARY KEY (userrecipeid)
     /*FOREIGN KEY (userid) REFERENCES users(userid), */
     /*FOREIGN KEY (foodid) REFERENCES ingredient(foodid) */
 );
@@ -89,22 +89,51 @@ INSERT INTO userrecipe (userid, recipeid) VALUES (3, 823572); /* Sudac has a coc
 
 
 
-/* Inner join for ingredients for the user */
+/* Inner join for ingredients for the user. I want to only select foodname and 
+foodimg*/
+
+SELECT ing.foodname, ing.foodimg
+FROM
+    useringredient as ui, users as u, ingredient as ing 
+INNER JOIN
+    u ON u.userid = ui.userid  
+INNER JOIN
+    ing ON ing.foodid = ui.foodid
+    
+    
 
 SELECT *
 FROM
-    useringredient
-INNER JOIN
-    users ON users.userid = useringredient.userid  
-INNER JOIN
-    ingredient ON ingredient.foodid = useringredient.foodid
+    useringredient 
 
-/* Inner join for user recipe results */
+INNER JOIN
+    users ON users.userid = useringredient.userid
 
+SELECT * from ingredient where foodid = useringredient.foodid
+
+INNER JOIN
+    ingredient ON ingredient.foodid = useringredient.foodid)
+
+    
+WHERE FoodName = (Select foodid from useringredient)
+
+/* Example code for nested subqueries
 SELECT *
+  FROM tutorial.sf_crime_incidents_2014_01
+ WHERE Date = (SELECT MIN(date)
+                 FROM tutorial.sf_crime_incidents_2014_01
+              )
+*/
+
+/* Inner join for user recipe results. I want to only select recipe name, 
+recipe url and recipe description */
+
+SELECT r.recipename, r.recipeurl, r.recipedesc
 FROM
-    userrecipe
+    userrecipe as ur, users as u, recipe as r
 INNER JOIN
-    users ON users.userid = userrecipe.userid  
+    u.users ON u.userid = ur.userid  
 INNER JOIN
-    recipe ON recipe.recipeid = userrecipe.recipeid
+    r ON r.recipeid = ur.recipeid
+
+    21:03:40    SELECT ing.foodname, ing.foodimg FROM useringredient as ui, users as u, ingredient as ing INNER JOIN     u ON u.userid = ui.userid   INNER JOIN     ing ON ing.foodid = ui.foodid LIMIT 0, 1000 Error Code: 1066. Not unique table/alias: 'u'   0.015 sec
