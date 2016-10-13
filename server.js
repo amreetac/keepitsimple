@@ -72,7 +72,7 @@ app.get('/recipe/:ingredients?', function(req, res){
 		// This is necessary so it doesn't have to wait before
 		// returning from the unirest call. Otherwise, it would
 		// return too early and we would not have the data yet.
-		var result = foodApi.findRecipe(term, function(recipes){
+		var result = foodApi.findRecipe(term, "complex", function(recipes){
 		console.log(3);
 
 			console.log("[GET /api/:ingredients] recipes : ", recipes);
@@ -83,6 +83,29 @@ app.get('/recipe/:ingredients?', function(req, res){
 		});
 	}
 })
+
+app.get('/ingredient', function(req, res){
+   res.sendFile(path.join(__dirname, 'ingredient.html'));
+})
+
+// Search for a list of matching ingredients following using
+// an autocomplete algorithm to help the user select an item
+// For now, just display the first item in the list.
+app.get('/ingredient/:ingredient?', function(req, res){
+   var chosen = req.params.ingredient;
+   if(chosen){
+       console.log(2);
+
+       var result = foodApi.autoCompleteFood(chosen, 1, true, function(ingredient){
+       console.log(3);
+            // Just send one recipe for now, later send entire array
+
+           res.json(ingredient);
+
+       });
+      
+   }
+});
 
 app.listen(3000, function() {
     console.log('Timestamp: ', (Date()).toString());
