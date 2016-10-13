@@ -110,10 +110,10 @@ app.get('/ingredient/:ingredient?', function(req, res){
    }
 });
 
-app.listen(3000, function() {
-    console.log('Timestamp: ', (Date()).toString());
-    console.log('KeepItSimple App running on port 3000!');
-});
-
+// app.listen(3000, function() {
+//     console.log('Timestamp: ', (Date()).toString());
+//     console.log('KeepItSimple App running on port 3000!');
+// });
+app.listen(PORT);
 	
 })();
