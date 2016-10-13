@@ -22,9 +22,10 @@ app.use('/', express.static(__dirname + '/public'));
 (function KeepItSimple(){
 
 // Use the FoodApi to access the Spoonacular Food Api
-var f = require('./FoodApi');
 
-var foodApi = new f("", 10);
+var f = require('./FoodApi');
+var apiKey = "";
+var foodApi = new f(apiKey, 6);
 
 // Routes
 // =============================================================

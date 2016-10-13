@@ -25,7 +25,7 @@ unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/
 /**** SPOONACULAR API using AXIOS
 ****/
 
-function FoodApi(apiKeys="", limit=2) {
+function FoodApi(apiKeys, limit) {
 
 	if (apiKeys === "") {
 
