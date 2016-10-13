@@ -29,7 +29,7 @@
             border-radius: 4px;
             font-size: 16px;
             background-color: white;
-            background-image: url('searchicon.png');
+            /*background-image: url('searchicon.png');*/
             background-position: 10px 10px;
             background-repeat: no-repeat;
             padding: 12px 20px 12px 40px;
@@ -131,9 +131,9 @@
                     <p>Add an item:</p>
 
                 <form>
-                    <input type="text" name="search" id="ingredientSearch" placeholder="Add..">
+                    <input type="text" name="search" placeholder="Add.." id="add-btn-input">
 
-                    <button class="btn btn-primary btn-md" id="searchBtn" type="submit">Add</button>
+                    <button type="button" id="add-btn">Add</button>
                 </form>
 
                     <p>Delete an item:</p>
@@ -141,7 +141,7 @@
                 <form>
                     <input type="text" name="search" placeholder="Delete..">
 
-                    <button type="button">Delete</button>
+                    <button type="button" class="del-btn">Delete</button>
                 </form>
                 </div>
 
@@ -196,7 +196,7 @@
     <script src="js/bootstrap.min.js"></script>
     <script type="text/javascript">
 
-        $( document ).ready(function() {
+    $( document ).ready(function() {
         //we store all the letters and underscore inside of an array called letters
         var letters = ["apple", "eggs", "bread", "cheese"];
         
@@ -223,7 +223,7 @@
             
             $("#buttons").append(b); 
             //alert('watch this');
-        };
+        }
 
 
         $('.letter-button').on('click', function() {
@@ -243,9 +243,12 @@
 
             var fridgeMagnet = $('<div class="letter fridge-color">').text($(this).data('let'));
 
-            /* Step 5: append the fridgeMagnet variable to the element with an id of display */
+            // Step 5: append the fridgeMagnet variable to the element with an id of display
             $("#display").append(fridgeMagnet);
             //alert('watch this')
+
+            });
+
         });
 
         //Step 6: on the element with an id of clear, attach an on click function
@@ -255,6 +258,39 @@
             */
         $('#clear').on('click', function() {
             $("#display").empty(); 
+        });
+
+        $('#add-btn').on('click', function() {
+
+            console.log("/pantry add-btn.on('click')");
+
+            var searchTerm = $('#add-btn-input').val();
+
+            searchTerm = searchTerm.replace(/\s+/g, '-').toLowerCase();
+
+            var currentURL = window.location.origin;
+
+            console.log("/pantry onClick:" + searchTerm);
+
+            $.get( currentURL + "/ingredient/" + searchTerm, function( data ) {
+                console.log(data);
+
+                if (data[0].hasOwnProperty('image')) {
+
+                    var imageUrl = "https://spoonacular.com/cdn/ingredients_100x100/"
+                    var imageappend = '<img src="' + 
+                            imageUrl + data[0].image + 
+                            '" alt="'+ data[0].name +
+                            '" height="50" width="50">';
+
+                    $("#display").append(imageappend);
+
+                } else {
+
+                    $("#display").append(searchTerm);
+
+                }
+
         });
 
     });
