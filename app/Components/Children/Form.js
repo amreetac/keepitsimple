@@ -1,6 +1,6 @@
 import React from 'react';
-import axios from 'axios';
 
+//import { Input } from 'react-bootstrap';
 import Result from './Results';
 
 class Form extends React.Component{
@@ -13,19 +13,17 @@ class Form extends React.Component{
 		}
 		
 		this.handleChange = this.handleChange.bind(this);
+		this.handleKeyDown = this.handleKeyDown.bind(this);
 		this.handleClick = this.handleClick.bind(this);
+
 	}
 	setResults(results){
 		this.setState({
 			results: results
 		})
 	}
-	handleChange(event){
-		var newState = {};
-		newState[event.target.id] = event.target.value;
-		this.setState(newState);
-	}
-	getSearchResults(){console.log(this.state.term);
+	getSearchResults(){
+		console.log("getSearchResults: ", this.state.term);
 
 		this.props.setTerm(this.state.term);
 		var self = this;
@@ -33,7 +31,7 @@ class Form extends React.Component{
 		console.log(currentURL+ "/recipe/" + this.state.term)
 
 		$.get( currentURL + "/recipe/" + this.state.term, function( data ) {
-			console.log('##################################### data', data);
+			console.log('data', data);
 			if(data == false){
 				$("#name").text(" No Recipes Found ");
 				$("#stats").hide();
@@ -43,11 +41,25 @@ class Form extends React.Component{
 				self.setState({
               		results: data
             	})
-            	console.log('#####################################self.state.results', self.state.results);
+            	console.log('self.state.results', self.state.results);
 			}
 			
 		})
 	}
+	handleChange(event){
+		var newState = {};
+		newState[event.target.id] = event.target.value;
+		this.setState(newState);
+		console.log(event);
+	}
+	handleKeyDown(e) {
+		console.log("handleKeyDown: ", this.state.term);
+		if (e.key === 'Enter'){
+			e.preventDefault()
+      		this.getSearchResults();
+    	}
+  	}
+	
 	handleClick(){
 		console.log("CLICK");
 		this.getSearchResults();	
@@ -62,7 +74,7 @@ class Form extends React.Component{
 					</div>
 					<div className="panel-body text-center">
 
-							<form>
+							<form id="form-recipe">
 
 								<div className="form-group">
 									<h4 className="text-center">
@@ -71,7 +83,10 @@ class Form extends React.Component{
 										</em>
 									</h4>
 					
-									<input type="text" className="form-control text-center" id="term" onChange= {this.handleChange} required/>
+									<input type="text" className="form-control text-center" id="term" 
+										onKeyDown={this.handleKeyDown} 
+										onChange= {this.handleChange} 
+									required/>
 									<br />
 									<button type="button" className="btn btn-primary" onClick={this.handleClick}>Submit</button>
 								</div>

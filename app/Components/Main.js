@@ -41,7 +41,8 @@ class Main extends React.Component{
 
 	componentDidUpdate(prevProps, prevState){
 		if(prevState.searchTerm != this.state.searchTerm){
-			console.log("UPDATED");
+			console.log(" UPDATED ",prevState.searchTerm, this.state.searchTerm );
+			console.log('prevProps: ', prevProps);
 		// 	console.log(this.state.term);
 
 		// this.props.setTerm(this.state.term);

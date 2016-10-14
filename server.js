@@ -30,13 +30,6 @@ var foodApi = new f(apiKey, 6);
 // Routes
 // =============================================================
 
-// Basic route that sends the user first to the AJAX Page
-app.get('/recipe', function(req, res){
-	//res.sendFile(path.join(__dirname, '/public/recipe.html'));
-
-	res.json(foodApi.findRecipe());
-
-})
 
 //Added home route
 
@@ -58,6 +51,15 @@ app.get('/about', function(req, res){
 
 app.get('/signin', function(req, res){
 	res.sendFile(path.join(__dirname, '/public/signin.html'));
+})
+
+
+// Basic route that sends the user first to the AJAX Page
+app.get('/recipe', function(req, res){
+	//res.sendFile(path.join(__dirname, '/public/recipe.html'));
+
+	res.json(foodApi.findRecipe());
+
 })
 
 // Search for Specific Character (or all characters) - provides JSON
