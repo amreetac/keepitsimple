@@ -22,6 +22,11 @@ class Form extends React.Component{
 			results: results
 		})
 	}
+	setTerm(term){
+		this.setState({
+			term: term
+		})
+	}
 	getSearchResults(){
 		console.log("getSearchResults: ", this.state.term);
 
@@ -50,19 +55,22 @@ class Form extends React.Component{
 		var newState = {};
 		newState[event.target.id] = event.target.value;
 		this.setState(newState);
-		console.log(event);
+		
 	}
 	handleKeyDown(e) {
-		console.log("handleKeyDown: ", this.state.term);
 		if (e.key === 'Enter'){
 			e.preventDefault()
-      		this.getSearchResults();
+			if (this.state.term){
+      			this.getSearchResults();
+      		}
     	}
   	}
 	
 	handleClick(){
 		console.log("CLICK");
-		this.getSearchResults();	
+		if (this.state.term){
+      			this.getSearchResults();
+      		}	
 	}	
 
 	render(){

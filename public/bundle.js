@@ -21648,6 +21648,13 @@
 				});
 			}
 		}, {
+			key: 'setTerm',
+			value: function setTerm(term) {
+				this.setState({
+					term: term
+				});
+			}
+		}, {
 			key: 'getSearchResults',
 			value: function getSearchResults() {
 				console.log("getSearchResults: ", this.state.term);
@@ -21677,22 +21684,24 @@
 				var newState = {};
 				newState[event.target.id] = event.target.value;
 				this.setState(newState);
-				console.log(event);
 			}
 		}, {
 			key: 'handleKeyDown',
 			value: function handleKeyDown(e) {
-				console.log("handleKeyDown: ", this.state.term);
 				if (e.key === 'Enter') {
 					e.preventDefault();
-					this.getSearchResults();
+					if (this.state.term) {
+						this.getSearchResults();
+					}
 				}
 			}
 		}, {
 			key: 'handleClick',
 			value: function handleClick() {
 				console.log("CLICK");
-				this.getSearchResults();
+				if (this.state.term) {
+					this.getSearchResults();
+				}
 			}
 		}, {
 			key: 'render',
@@ -21812,10 +21821,34 @@
 	          null,
 	          this.props.article.title
 	        ),
-	        React.createElement("img", { src: this.props.article.image, alt: this.props.article.title, height: "100", width: "100" }),
+	        React.createElement(
+	          "a",
+	          { href: this.props.article.spoonacularSourceUrl, target: "_blank" },
+	          " ",
+	          React.createElement("img", { src: this.props.article.image, alt: this.props.article.title, height: "100", width: "100" })
+	        ),
+	        React.createElement(
+	          "p",
+	          null,
+	          "Cuisines: ",
+	          this.props.article.cuisines
+	        ),
+	        React.createElement(
+	          "p",
+	          null,
+	          "Ready In Minutes: ",
+	          this.props.article.readyInMinutes
+	        ),
+	        React.createElement(
+	          "p",
+	          null,
+	          "weightWatcherSmartPoints: ",
+	          this.props.article.weightWatcherSmartPoints,
+	          " "
+	        ),
 	        React.createElement(
 	          "div",
-	          { className: "btn-group pull-right" },
+	          { className: "btn-group pull-top" },
 	          React.createElement(
 	            "button",
 	            { type: "button", className: "btn btn-primary" },
