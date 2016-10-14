@@ -22,9 +22,13 @@ unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/
 });
 ****/
 
-/**** SPOONACULAR API using AXIOS
-****/
+/**** SPOONACULAR API using unirest ****/
 
+/* FoodApi constructor takes the following args 
+	apiKeys: an array of mashape api keys to access spoonacular api
+		simple: used for simple searches from spoonacular 
+		complex: used for complex search from spoonacular
+*/ 
 function FoodApi(apiKeys, limit) {
 
 	if (apiKeys === "") {
@@ -39,7 +43,6 @@ function FoodApi(apiKeys, limit) {
 		this.apiKeys = apiKeys;
 
 	}
-
 	// By using a complex search, we can get detailed recipe information for 
 	// each recipe with one call to the API.
 	// NOTE: since this saves multiple calls to the API, HOWEVER, for that reason
@@ -47,9 +50,13 @@ function FoodApi(apiKeys, limit) {
 	// this.searchType = "searchType";
 
 	this.baseUrl = 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com';
-	// this.apiKey = this.apiKeys[this.searchType].apiKey;
 
 	this.limit = limit;
+
+	/* findRecipe(ingredientList, searchType, cb)
+		ingredientList: string of ingredients with comma seperator for better results
+		searchType: string = complex/simple for depending on required data
+		cb: call back function returns array of recipes as json obj  */
 
 	this.findRecipe = function(ingredientList, searchType, cb) {
 
@@ -57,15 +64,12 @@ function FoodApi(apiKeys, limit) {
 
 		var apiKey = self.apiKeys[searchType].apiKey;
 
-		var search = self.baseUrl + (self.searchType === "complex" ?
-			"/recipes/searchComplex?fillIngredients=false" :
-			"/recipes/findByIngredients?fillIngredients=false");
+		var search = self.baseUrl + (searchType === "complex" ?
+			"/recipes/searchComplex?addRecipeInformation=true&includeIngredients=":
+			"/recipes/findByIngredients?fillIngredients=false&ingredients=");
 
-//		var search = '/recipes/findByIngredients?fillIngredients=false';
-//		var ingredients = '&ingredients=apples%2Cflour%2Csugar';
-		var ingredients = '&ingredients=' + ingredientList;
 		var limits = '&limitLicense=false&number=' + self.limit;
-		var url = search + ingredients + limits + '&ranking=2';
+		var url = search + ingredientList + limits + '&ranking=2';
 
 		console.log("**** search string: ", url);
 
@@ -81,45 +85,18 @@ function FoodApi(apiKeys, limit) {
 	  				console.log("**** status: ", result.status);
 	  				console.log("**** headers: ", result.headers);
 	  				console.log("**** body: ", result.body);
-	  				cb(result.body, error = false);
+	  				cb((searchType === "complex" ? result.body.results: result.body), error = false);
 	  			}
   			});
 
-/*** FOR TESTING ONLY: **
-if (_api_testing_ == false) {
-}
-else {
-		console.log("**** TESTING ****")
-		// these search strings work
-		var searchSimple = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?fillIngredients=false&ingredients=apples%2Cflour%2Csugar&limitLicense=false&number=5&ranking=1"
-		var searchComplex = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/searchComplex?addRecipeInformation=true&cuisine=american&excludeIngredients=coconut%2C+mango&fillIngredients=false&includeIngredients=onions%2C+lettuce%2C+tomato&intolerances=peanut%2C+shellfish&limitLicense=true&maxCalories=1500&maxCarbs=100&maxFat=100&maxProtein=100&minCalories=150&minCarbs=5&minFat=5&minProtein=5&number=5&offset=0&query=burger&ranking=2&type=main+course";
-		var searchString = self.baseUrl;
-		var presetOptions="&fillIngredients=true&limitLicense=true&number=2&ranking=2";
-		if (self.searchType === "simple") {
-			searchString += "/recipes/findByIngredients?" +
-				"&ingredients=" + 
-				ingredientList +
-				presetOptions;
-		} else {
-			searchString += "/recipes/searchComplex?addRecipeInformation=true" +
-				"&includeIngredients=" + 
-				ingredientList + 
-				presetOptions;
-		}
-		console.log("**** apiKey: ", self.apiKey);
-		console.log("**** searchString:\n", searchString);
-		return unirest.get(searchString)
-//		.header("X-Mashape-Key", "gYPrulKTKnmshuLI06XFb8coTsw5p1gjhiEjsnMC7d2VWGx88j")
-		.header("X-Mashape-Key", self.apiKey)
-		.header("Accept", "application/json")
-		.end(function (result) {
-		  console.log(result.status, result.headers, result.body);
-		  cb(result.body)
-		});
-}
-*** END TESTING ****/
-
 	},
+
+
+	/* autoCompleteFood(searchTerm, count, getDetails, cb)
+		searchTerm: string of ingredients with comma seperator for better results
+		count: number of results
+		getDetails: 
+		cb: call back function returns array of recipes as json obj  */
 
 	this.autoCompleteFood = function(searchTerm, count, getDetails, cb) {
 		// These code snippets use an open-source library.
@@ -129,11 +106,6 @@ else {
 
 		var search = self.baseUrl + "/food/ingredients/autocomplete?";
 
-		// https://spoonacular-recipe-food-nutrition-v1.p.mashape.com"
-		// "/food/ingredients/autocomplete?"
-		// "metaInformation=false&number=10&query=appl
-
-		// "/food/ingredients/autocomplete?metaInformation=false&number=10&query=appl")
 		var metaInfo = 'metaInformation=' + getDetails;
 		var number = '&number=' + count;
 		var query = '&query=' + searchTerm;
@@ -158,13 +130,16 @@ else {
 
 	},
 
+	/* autoCompleteRecipe(searchTerm, count, cb)
+		searchTerm: string of recipes with comma seperator for better results
+		count: number of results
+		getDetails: 
+		cb: call back function returns array of recipes as json obj  */
+
 	this.autoCompleteRecipe = function(searchTerm, count, cb) {
 		console.log("**** recipe search term: ", searchTerm);
 
 		var self = this;
-
-		// "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com
-		// "/recipes/autocomplete?number=10&query=chicken"
 
 		var search = self.baseUrl + "/recipes/autocomplete?";
 		var number = "number=" + count;

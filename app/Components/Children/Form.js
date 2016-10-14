@@ -33,7 +33,7 @@ class Form extends React.Component{
 		console.log(currentURL+ "/recipe/" + this.state.term)
 
 		$.get( currentURL + "/recipe/" + this.state.term, function( data ) {
-
+			console.log('##################################### data', data);
 			if(data == false){
 				$("#name").text(" No Recipes Found ");
 				$("#stats").hide();
@@ -43,7 +43,7 @@ class Form extends React.Component{
 				self.setState({
               		results: data
             	})
-            	console.log('self.state.results', self.state.results);
+            	console.log('#####################################self.state.results', self.state.results);
 			}
 			
 		})

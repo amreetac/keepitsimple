@@ -21663,7 +21663,7 @@
 				console.log(currentURL + "/recipe/" + this.state.term);
 
 				$.get(currentURL + "/recipe/" + this.state.term, function (data) {
-
+					console.log('##################################### data', data);
 					if (data == false) {
 						$("#name").text(" No Recipes Found ");
 						$("#stats").hide();
@@ -21672,7 +21672,7 @@
 						self.setState({
 							results: data
 						});
-						console.log('self.state.results', self.state.results);
+						console.log('#####################################self.state.results', self.state.results);
 					}
 				});
 			}
@@ -23074,7 +23074,7 @@
 	                        { className: "navbar-header" },
 	                        _react2.default.createElement(
 	                            "button",
-	                            { type: "button", "class": "navbar-toggle", "data-toggle": "collapse", "data-target": "#bs-example-navbar-collapse-1" },
+	                            { type: "button", className: "navbar-toggle", "data-toggle": "collapse", "data-target": "#bs-example-navbar-collapse-1" },
 	                            _react2.default.createElement(
 	                                "span",
 	                                { className: "sr-only" },
