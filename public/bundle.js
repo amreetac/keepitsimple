@@ -20107,11 +20107,15 @@
 								'div',
 								{ id: 'stats' },
 								_react2.default.createElement(
-									'ul',
-									null,
-									this.state.results.map(function (result) {
-										return _react2.default.createElement(_Results2.default, { key: result.id, article: result });
-									})
+									'form',
+									{ id: 'show-recipe', action: '/recipe/saved', method: 'POST' },
+									_react2.default.createElement(
+										'ul',
+										null,
+										this.state.results.map(function (result) {
+											return _react2.default.createElement(_Results2.default, { key: result.id, article: result });
+										})
+									)
 								)
 							)
 						)
@@ -20136,7 +20140,7 @@
 	var Result = React.createClass({
 	  displayName: "Result",
 	  saveRecipeResults: function saveRecipeResults() {
-	    console.log("getSearchResults: ", this.state.term);
+	    console.log("saveRecipeResults: #################################");
 	  },
 	  saveRecipeClick: function saveRecipeClick() {
 	    console.log("CLICK");
@@ -20185,7 +20189,7 @@
 	          { className: "btn-group pull-top" },
 	          React.createElement(
 	            "button",
-	            { type: "button", className: "btn btn-primary", onClick: this.saveRecipeClick.bind(this.sarticle) },
+	            { type: "button", className: "btn btn-primary", onClick: this.saveRecipeClick },
 	            "Save"
 	          )
 	        )

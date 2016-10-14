@@ -109,6 +109,27 @@ app.get('/recipe/:ingredient?', function(req, res){
 		});
 	}
 })
+//adding code for save ingredients
+// Route to add an article to saved list
+app.post('/recipe/saved', function(req, res){
+	var newArticle = new Article(req.body);
+
+	console.log(req.body)
+
+	var title = req.body.cuisines;
+	var date = req.body.title;
+	var spoonacularSourceUrl = req.body.spoonacularSourceUrl;
+	var readyInMinutes = req.body.readyInMinutes;
+	var weightWatcherSmartPoints = req.body.weightWatcherSmartPoints;
+	
+	newArticle.save(function(err, doc){
+		if(err){
+			console.log(err);
+		} else {
+			res.send(doc._id);
+		}
+	});
+});
 
 app.get('/ingredient', function(req, res){
    res.sendFile(path.join(__dirname, 'ingredient.html'));
@@ -132,27 +153,7 @@ app.get('/ingredient/:ingredient?', function(req, res){
       
    }
 });
-//adding code for save ingredients
-// Route to add an article to saved list
-app.post('/ingredient/saved', function(req, res){
-	var newArticle = new Article(req.body);
 
-	console.log(req.body)
-
-	var title = req.body.cuisines;
-	var date = req.body.title;
-	var spoonacularSourceUrl = req.body.spoonacularSourceUrl;
-	var readyInMinutes = req.body.readyInMinutes;
-	var weightWatcherSmartPoints = req.body.weightWatcherSmartPoints;
-	
-	newArticle.save(function(err, doc){
-		if(err){
-			console.log(err);
-		} else {
-			res.send(doc._id);
-		}
-	});
-});
 
 // app.listen(3000, function() {
 //     console.log('Timestamp: ', (Date()).toString());
