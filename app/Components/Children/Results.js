@@ -1,6 +1,16 @@
 var React = require('react');
 
 var Result = React.createClass({
+  saveRecipeResults(){
+    console.log("getSearchResults: ", this.state.term);
+
+    
+    
+  },
+  saveRecipeClick(){
+    console.log("CLICK");
+    this.saveRecipeResults();
+  }, 
   render: function(){
     return(
       <div className="col-xs-12 col-sm-6 col-md-4 clearfix">
@@ -11,7 +21,7 @@ var Result = React.createClass({
             <p>Ready In Minutes: {this.props.article.readyInMinutes}</p>
             <p>weightWatcherSmartPoints: {this.props.article.weightWatcherSmartPoints} </p>
             <div className="btn-group pull-top">
-     	    	<button type="button" className="btn btn-primary">Save</button>
+     	    	<button type="button" className="btn btn-primary" onClick={this.saveRecipeClick.bind(this.sarticle)}>Save</button>
         	</div>
         	
         </li>

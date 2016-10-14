@@ -20135,6 +20135,13 @@
 
 	var Result = React.createClass({
 	  displayName: "Result",
+	  saveRecipeResults: function saveRecipeResults() {
+	    console.log("getSearchResults: ", this.state.term);
+	  },
+	  saveRecipeClick: function saveRecipeClick() {
+	    console.log("CLICK");
+	    this.saveRecipeResults();
+	  },
 
 	  render: function render() {
 	    return React.createElement(
@@ -20178,7 +20185,7 @@
 	          { className: "btn-group pull-top" },
 	          React.createElement(
 	            "button",
-	            { type: "button", className: "btn btn-primary" },
+	            { type: "button", className: "btn btn-primary", onClick: this.saveRecipeClick.bind(this.sarticle) },
 	            "Save"
 	          )
 	        )
