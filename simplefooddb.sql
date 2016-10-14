@@ -10,8 +10,6 @@ CREATE TABLE users (
     PRIMARY KEY (userid)
 );
 
-DROP TABLE userrecipe;
-
 CREATE TABLE ingredient (
     foodid  INTEGER(11) AUTO_INCREMENT NOT NULL,
     foodname VARCHAR(50),
@@ -49,10 +47,6 @@ CREATE TABLE userrecipe (
     /*FOREIGN KEY (foodid) REFERENCES ingredient(foodid) */
 );
 
-
-DROP TABLE food;
-
-
 /*Hard-coding values for all tables for testing purposes*/
 
 INSERT INTO recipe (recipeid, recipename, recipeurl, recipedesc) VALUES (823536, "Carrot-potato-soup", "https://spoonacular.com/Carrot-potato-soup,-healthy-Indian-soup-823536", "This is a classic healthy carrot potato soup.");
@@ -80,6 +74,11 @@ INSERT INTO useringredient (userid, foodid) VALUES (2, 5); /* Stefc has a lemon 
 INSERT INTO useringredient (userid, foodid) VALUES (5, 1); /* Padmak has an apple */
 INSERT INTO useringredient (userid, foodid) VALUES (3, 2); /* Sudac has an orange */
 INSERT INTO useringredient (userid, foodid) VALUES (4, 1); /* Johnd has an apple */
+INSERT INTO useringredient (userid, foodid) VALUES (1, 3); /* Amreetac has an apple */
+INSERT INTO useringredient (userid, foodid) VALUES (1, 5); /* Stefc has a lemon */
+INSERT INTO useringredient (userid, foodid) VALUES (2, 4); /* Padmak has an apple */
+INSERT INTO useringredient (userid, foodid) VALUES (2, 2); /* Sudac has an orange */
+INSERT INTO useringredient (userid, foodid) VALUES (2, 1); /* Johnd has an apple */
 
 INSERT INTO userrecipe (userid, recipeid) VALUES (1, 823536); /* Amreetac has a carrot potato soup */
 INSERT INTO userrecipe (userid, recipeid) VALUES (2, 823571); /* Stefc has a grammys coconut pie */
@@ -87,54 +86,11 @@ INSERT INTO userrecipe (userid, recipeid) VALUES (4, 823536); /* Johnd has a car
 INSERT INTO userrecipe (userid, recipeid) VALUES (5, 823569); /* Padmak has a pumpkin chai */
 INSERT INTO userrecipe (userid, recipeid) VALUES (3, 823572); /* Sudac has a coconut mochi */
 
+SELECT u.userid, u.username, ing.*
+FROM users AS u, useringredient AS ui, ingredient AS ing
+WHERE u.userid = ui.userid AND ui.foodid = ing.foodid
+ORDER BY u.userid
 
-
-/* Inner join for ingredients for the user. I want to only select foodname and 
-foodimg*/
-
-SELECT ing.foodname, ing.foodimg
-FROM
-    useringredient as ui, users as u, ingredient as ing 
-INNER JOIN
-    u ON u.userid = ui.userid  
-INNER JOIN
-    ing ON ing.foodid = ui.foodid
-    
-/*test */
-    
-
-SELECT *
-FROM
-    useringredient 
-
-INNER JOIN
-    users ON users.userid = useringredient.userid
-
-SELECT * from ingredient where foodid = useringredient.foodid
-
-INNER JOIN
-    ingredient ON ingredient.foodid = useringredient.foodid)
-
-    
-WHERE FoodName = (Select foodid from useringredient)
-
-/* Example code for nested subqueries
-SELECT *
-  FROM tutorial.sf_crime_incidents_2014_01
- WHERE Date = (SELECT MIN(date)
-                 FROM tutorial.sf_crime_incidents_2014_01
-              )
-*/
-
-/* Inner join for user recipe results. I want to only select recipe name, 
-recipe url and recipe description */
-
-SELECT r.recipename, r.recipeurl, r.recipedesc
-FROM
-    userrecipe as ur, users as u, recipe as r
-INNER JOIN
-    u.users ON u.userid = ur.userid  
-INNER JOIN
-    r ON r.recipeid = ur.recipeid
-
-    21:03:40    SELECT ing.foodname, ing.foodimg FROM useringredient as ui, users as u, ingredient as ing INNER JOIN     u ON u.userid = ui.userid   INNER JOIN     ing ON ing.foodid = ui.foodid LIMIT 0, 1000 Error Code: 1066. Not unique table/alias: 'u'   0.015 sec
+SELECT u.userid, r.*
+FROM users AS u, userrecipe AS ur, recipe AS r
+WHERE u.userid = ur.userid AND ur.recipeid = r.recipeid

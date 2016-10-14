@@ -30,6 +30,13 @@ var foodApi = new f(apiKey, 6);
 // Routes
 // =============================================================
 
+// Basic route that sends the user first to the AJAX Page
+app.get('/recipe', function(req, res){
+	//res.sendFile(path.join(__dirname, '/public/recipe.html'));
+
+	res.json(foodApi.findRecipe());
+
+})
 
 //Added home route
 
@@ -39,29 +46,9 @@ app.get('/', function(req, res){
 
 // Added pantry route
 
-app.get('/ingredient', function(req, res){
-	res.sendFile(path.join(__dirname, '/public/ingredient.html'));
+app.get('/pantry', function(req, res){
+	res.sendFile(path.join(__dirname, '/public/pantry.html'));
 })
-// Search for Specific Character (or all ingredients) - provides JSON
-app.get('/ingredient/:ingredient?', function(req, res){
-    var chosen = req.params.ingredient;
-    if(chosen){
-        console.log(2);
-        // NOTE: the findRecipe takes a callback function.
-        // This is necessary so it doesn't have to wait before
-        // returning from the unirest call. Otherwise, it would
-        // return too early and we would not have the data yet.   
-        var result = foodApi.autoCompleteFood(chosen, function(ingredient){
-        console.log(3);
-             // Just send one recipe for now, later send entire array
-
-            res.json(ingredient);
-
-        });
-       
-    }
-});
-
 
 // Added about route
 
@@ -73,20 +60,11 @@ app.get('/signin', function(req, res){
 	res.sendFile(path.join(__dirname, '/public/signin.html'));
 })
 
-
-// Basic route that sends the user first to the AJAX Page
-app.get('/recipe', function(req, res){
-	//res.sendFile(path.join(__dirname, '/public/recipe.html'));
-
-	res.json(foodApi.findRecipe());
-
-})
-
 // Search for Specific Character (or all characters) - provides JSON
 
-app.get('/recipe/:ingredient?', function(req, res){
+app.get('/recipe/:ingredients?', function(req, res){
 	console.log(1);
-	var term = req.params.ingredient;
+	var term = req.params.ingredients;
 
 	console.log("search term: ", term);
 	console.log("req.params: ", req.params);
