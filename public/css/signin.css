@@ -1,13 +1,14 @@
-
 body {
     font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
-    background: url('../img/signpantry.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
     }
-
+/* Put back to body in case of error and use
+signin_old.html: 
+   background: url('../img/signpantry.jpg') no-repeat center center fixed;
+   */
 .rem{
 
    color: black;
@@ -17,9 +18,15 @@ body {
     max-width: 200;
     max-height:200
     border: 5px solid green;
+       background: url('../img/signpantry.jpg') no-repeat center center fixed;
     padding: 5px;
     margin: 25px;
 }
+
+/*
+.container2{
+  background: url('../img/signpantry.jpg') no-repeat center center fixed;
+} */
 
 .form-signin {
   max-width: 330px;
@@ -63,6 +70,7 @@ body {
   border-top-right-radius: 0;
 }
 
+/*
 .brand,
 .address-bar {
     display: none;
@@ -78,3 +86,5 @@ h6 {
     font-weight: 700;
     letter-spacing: 1px;
   }
+
+*/
