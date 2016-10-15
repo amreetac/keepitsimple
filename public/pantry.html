@@ -116,12 +116,12 @@
                 <div class="col-md-7" id="display">
                     <hr>
                     <h2 class="intro-text text-center">
-                        <strong>Your Pantry</strong>
+                        <strong>Clear your Pantry</strong>
                     </h2>
                     <hr>
                 </div>
                 <div class="col-md-5">
-                    <img class="img-responsive img-border-left" src="img/fridge.png" alt="">
+                    <img class="img-responsive img-border-left" id= "emptyfridge" src="img/fridge.png" alt="">
                 </div>
 
                 <div id="buttons"></div>
@@ -134,15 +134,23 @@
                     <input type="text" name="search" placeholder="Add.." id="add-btn-input">
 
                     <button type="button" id="add-btn">Add</button>
+
+                <br>
+
+                <br>
+
                 </form>
 
-                    <p>Delete an item:</p>
+                  <!--
 
+                    <p>Delete an item:</p>
                 <form>
                     <input type="text" name="search" placeholder="Delete..">
 
                     <button type="button" class="del-btn">Delete</button>
                 </form>
+
+                -->
                 </div>
 
                 <br>
@@ -153,7 +161,7 @@
                 <div class="clearfix"></div>
             </div>
         </div>
-
+<!--
     <div class="container">
         <div class="row">
             <div class="box">
@@ -177,6 +185,8 @@
             </div>
         </div>
     </div>
+
+-->
     </div>
     <!-- /.container -->
     <footer>
@@ -198,7 +208,7 @@
 
     $( document ).ready(function() {
         //we store all the letters and underscore inside of an array called letters
-        var letters = ["apple", "eggs", "bread", "cheese"];
+        /*var letters = ["apple", "eggs", "bread", "cheese"];
         
         /*
         REMEMBER USE jQuery!
@@ -212,7 +222,7 @@
                         - text of letters[i]
                 * step 3: append b to the div with an id of buttons
         */
-        for (var i = 0; i < letters.length; i++) {    
+        /*for (var i = 0; i < letters.length; i++) {    
             var b = $('<button>');
             b.addClass('letter-button letter letter-button-color');
             b.attr('data-let', letters[i]);
@@ -224,7 +234,7 @@
             $("#buttons").append(b); 
             //alert('watch this');
         }
-
+    */
 
         $('.letter-button').on('click', function() {
             /*
@@ -295,9 +305,14 @@
 
     });
 
+         $('#display').on('click', function() {
+            $("#display").empty(); 
+        });
+
 </script>
 
 
 </body>
+
 
 </html>
