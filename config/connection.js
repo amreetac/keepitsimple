@@ -11,9 +11,19 @@ var source = {
         port: 3306,
         host: 'm7wltxurw8d2n21q.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
         user: 'eu4xz0nyaonngbf4',
-        password: "c377x1xc6713qabw",
-        database: "odozzhsdf95oio5k"  
+        password: "odozzhsdf95oio5k",
+        database: "fab7d2a5n3m9rpt0"  
     },
+
+    // var source = {
+    // // localhost
+    // localhost: {
+    //     port: 3306,
+    //     host: 'm7wltxurw8d2n21q.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
+    //     user: 'eu4xz0nyaonngbf4',
+    //     password: "c377x1xc6713qabw",
+    //     database: "odozzhsdf95oio5k"  
+    // },
 
 
     // jawsDB
