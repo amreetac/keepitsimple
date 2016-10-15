@@ -4,6 +4,24 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var path = require('path');
 
+// Setup Authentication modules
+var passport = require('passport');
+var session  = require('express-session');
+var cookieParser = require('cookie-parser');
+var morgan = require('morgan');
+
+var flash    = require('connect-flash');
+
+
+
+// configuration ===============================================================
+// connect to our database
+
+require('./config/passport')(passport); // pass passport for configuration
+
+
+
+
 // Sets up the Express App
 // =============================================================
 var app = express();
@@ -15,6 +33,30 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.text());
 app.use(bodyParser.json({type:'application/vnd.api+json'}));
 app.use('/', express.static(__dirname + '/public'));
+
+
+
+// set up our express application
+app.use(morgan('dev')); // log every request to the console
+app.use(cookieParser()); // read cookies (needed for auth)
+app.use(bodyParser.urlencoded({
+	extended: true
+}));
+
+// required for passport
+app.use(session({
+	secret: 'vidyapathaisalwaysrunning',
+	resave: true,
+	saveUninitialized: true
+ } )); // session secret
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+app.use(flash()); // use connect-flash for flash messages stored in session
+
+// Signin routes ======================================================================
+require('./public/js/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
+
+
 
 /**** Hard code a list of recipes for now. ***/
 
@@ -49,9 +91,9 @@ app.get('/about', function(req, res){
 	res.sendFile(path.join(__dirname, '/public/about.html'));
 })
 
-app.get('/signin', function(req, res){
-	res.sendFile(path.join(__dirname, '/public/signin.html'));
-})
+// app.get('/signin', function(req, res){
+// 	res.sendFile(path.join(__dirname, '/public/signin.html'));
+// })
 
 
 // Basic route that sends the user first to the AJAX Page

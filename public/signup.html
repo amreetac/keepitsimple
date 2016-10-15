@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="Login">
+    <meta name="author" content="Bootstrap + Sudarshana">
+    
+    <title>Keep it Simple!</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/signin.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <!-- <link href="css/business-casual.css" rel="stylesheet"> -->
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
+
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="js/ie-emulation-modes-warning.js"></script>
+    <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+    <script src='http://code.jquery.com/jquery-2.1.3.min.js'></script>
+
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body >
+    <div class="brand">Keep it Simple</div>
+    <div class="address-bar">What Shall I Make? </div>
+<!-- Navigation -->
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- navbar-brand is hidden on larger screens, but visible when the menu is collapsed -->
+                <a class="navbar-brand" href="index.html">Keep it Simple</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="landing.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="pantry.html">Your Pantry</a>
+                    </li>
+                    <li>
+                        <a href="about.html">About Us</a>
+                    </li>
+                    <li>
+                        <a href="recipe.html">Recipe Maker</a>
+                    </li>
+                    <li class = "shnsh">
+                        <a href="signup.html">Sign-up</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+    <div class="container">
+    
+
+      <form id = "form-sign" class="form-signin" action = "/signup/" method="post">
+       <!-- <h2 class="form-signin-heading">Please sign in</h2> -->
+        <label for="inputusername" class="sr-only">User Name</label>
+        <input type="user" name = "username" id="inputUser" class="form-control" placeholder="User Name" required autofocus>
+        <!-- <label for="inputEmail"  class="sr-only">Email address</label>
+        <input type="email" id="inputEmail" name = "useremail" class="form-control" placeholder="Email address" required autofocus> -->
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" name = "password" class="form-control" placeholder="Password" required>
+        <!-- <div class="checkbox">
+          <label>
+            <input class ="rem" type="checkbox" value="remember-me"> Remember me
+          </label>
+        </div> -->
+        <button id = "updPass" class="btn btn-lg btn-primary btn-block" type="submit" >Sign up</button>
+        <a href="login.html" id="haver">Already signed up!</a>
+        <div id="openpantry"></div>
+      </form>
+
+    
+    </div> <!-- /container -->
+     
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+   
+    <!-- <script type="text/javascript">
+   $(document).ready(function(){
+    $('#updPass').click(function(e){
+       e.preventDefault();
+      console.log('select_link clicked');
+ 
+        var form = $("form#form-sign"),
+        formData = {"username" : $("#inputUser").val(), "userpassword": $("#inputPassword").val()} ,//form.serialize(),
+
+        currentUrl = window.location.origin,
+        formUrl = currentUrl + '/signup/', //form.attr('action'),
+        formMethod = form.attr('method');
+
+        console.log("fordata before: " + formData);
+        //send data to server
+        $.ajax({
+            type:'POST',
+            url: '/signup/',
+            type: formMethod,
+            data: formData,
+            success:function(data){
+               console.log('success');
+              //console.log(JSON.stringify(data));
+            }
+        })
+          
+          
+    });
+  });
+    </script> -->
+  </body>
+</html>
