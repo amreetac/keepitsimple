@@ -24,10 +24,10 @@ text-decoration-line: underline
     padding: 5px;
     margin: 25px;
 }
-/*.box-it{
+.box-it{
   border: #ff0000 3px solid;
-   background-color: orange; ;
-}*/
+   background-color: #FFE633  ; ;
+}
 
 fieldset {
 position:relative;
@@ -60,6 +60,10 @@ legend {
 .form-signin .checkbox {
   margin-bottom: 10px;
   color:#ff4000
+}
+.fld-box {
+    position: relative;
+    left:100px;
 }
 .form-signin .checkbox {
   font-weight: normal;

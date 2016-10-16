@@ -83,9 +83,11 @@
     </nav>
     <div class="container">
     
-      <fieldset class="box-it">
+     <div class = "fld-box">
+    
+       <form class="form-signin" action='/login/' method="POST">
+        <fieldset class="box-it">
         <legend> Signup/Login</legend>
-      <form class="form-signin" action='/login/' method="POST">
        <!-- <h2 class="form-signin-heading">Please sign in</h2> -->
         <label for="inputusername" class="sr-only">User Name</label>
         <input type="user" name = "username" id="inputUser" class="form-control" placeholder="User Name" required autofocus>
@@ -97,15 +99,8 @@
           </label>
         </div> -->
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+         </fieldset>
       </form>
-      </fieldset>
-    
-    </div> <!-- /container -->
-     
-
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="js/ie10-viewport-bug-workaround.js"></script>
-
      <footer>
         <div class="containerf">
             <div class="row">
@@ -116,6 +111,14 @@
             </div>
         </div>
     </footer>
+    </div>
+    </div> <!-- /container -->
+     
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+
+     
   </body>
 
 </html>
