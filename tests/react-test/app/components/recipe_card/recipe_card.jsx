@@ -6,10 +6,14 @@ import React from 'react';
 // The RecipeCard has the following components:
 // * RecipeName - name of the recipe
 // * Ingredients - list of ingredients for the recipe
+console.log(1)
 // * Instructions - list of instructions
 import RecipeName from './recipe_name.jsx';
+console.log(2)
 import Ingredients from './ingredients.jsx';
+console.log(3)
 import Instructions from './instructions.jsx';
+console.log(4)
 
 class RecipeCard extends React.Component {
 	constructor(props){
