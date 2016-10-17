@@ -24,13 +24,16 @@ class RecipeCard extends React.Component {
 		this.handleChange = this.handleChange.bind(this);
 		this.handleKeyDown = this.handleKeyDown.bind(this);
 		this.handleClick = this.handleClick.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
 
 	}
+
 	setName(name){
 		this.setState({
 			name: name
 		})
 	}
+
 	setIngredients(ingredients){
 		this.setState({
 			ingredients: ingredients
@@ -44,7 +47,8 @@ class RecipeCard extends React.Component {
 		console.log("handleSubmit: ", this.state);
 
 		console.log("Save Recipe In Database Here");
-		// this.props.setTerm(this.state.term);
+
+		this.setName(this.state.name);
 		// var self = this;
 		// var currentURL = window.location.origin;
 		// console.log(currentURL+ "/recipe/" + this.state.term)
@@ -107,6 +111,10 @@ class RecipeCard extends React.Component {
 									<RecipeName type="text" className="form-control text-center" id="term" required/>
 
 									<br />
+								
+									<Ingredients />
+									
+									<Instructions />
 
 									<button type="button" className="btn btn-primary" onClick={this.handleSubmit}>Submit</button>
 								</div>
@@ -115,42 +123,6 @@ class RecipeCard extends React.Component {
 					</div>
 				</div>
 
-				// Ingredient List
-				<div className="panel panel-default">
-					<div className="panel-heading">
-						<h2 className="panel-title"><strong>Ingredients</strong></h2>
-					</div>
-					<div className="panel-body">
-						<div id="ingredients">
-
-							<p>
-								Ingredient List Goes Here
-								<Ingredients />
-							</p>
-
-						</div>
-						
-					</div>
-				</div>
-
-
-				// Instruction List
-				<div className="panel panel-default">
-					<div className="panel-heading">
-						<h2 className="panel-title"><strong>Instructions</strong></h2>
-					</div>
-					<div className="panel-body">
-						<div id="instructions">
-
-							<ul>
-								Instruction List Goes Here
-								<Instructions />
-							</ul>
-
-						</div>
-						
-					</div>
-				</div>
 
 			</div>
 
