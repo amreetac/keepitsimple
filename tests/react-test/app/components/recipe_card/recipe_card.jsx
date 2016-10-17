@@ -14,6 +14,8 @@ import Ingredients from './ingredients.jsx';
 console.log(3)
 import Instructions from './instructions.jsx';
 console.log(4)
+import InstructionEditor from './instruction_editor.jsx';
+console.log(5)
 
 class RecipeCard extends React.Component {
 	constructor(props){
@@ -132,7 +134,9 @@ class RecipeCard extends React.Component {
 								
 									<Ingredients />
 									
-									<Instructions />
+									{/*<Instructions />*/}
+
+									<InstructionEditor />
 
 									<button type="button" className="btn btn-primary" onClick={this.handleSubmit.bind(this)}>Submit</button>
 								</div>

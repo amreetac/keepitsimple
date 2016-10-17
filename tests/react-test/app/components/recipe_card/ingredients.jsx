@@ -39,4 +39,6 @@ class Ingredient extends React.Component {
   }
 }
 
-module.exports = Ingredient;
+export default Ingredient;
+
+
