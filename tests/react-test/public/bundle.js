@@ -19822,6 +19822,7 @@
 			_this.handleChange = _this.handleChange.bind(_this);
 			_this.handleKeyDown = _this.handleKeyDown.bind(_this);
 			_this.handleClick = _this.handleClick.bind(_this);
+			_this.handleSubmit = _this.handleSubmit.bind(_this);
 
 			return _this;
 		}
@@ -19851,7 +19852,8 @@
 				console.log("handleSubmit: ", this.state);
 
 				console.log("Save Recipe In Database Here");
-				// this.props.setTerm(this.state.term);
+
+				this.setName(this.state.name);
 				// var self = this;
 				// var currentURL = window.location.origin;
 				// console.log(currentURL+ "/recipe/" + this.state.term)
@@ -19934,75 +19936,13 @@
 									{ className: 'form-group' },
 									_react2.default.createElement(_recipe_name2.default, { type: 'text', className: 'form-control text-center', id: 'term', required: true }),
 									_react2.default.createElement('br', null),
+									_react2.default.createElement(_ingredients2.default, null),
+									_react2.default.createElement(_instructions2.default, null),
 									_react2.default.createElement(
 										'button',
 										{ type: 'button', className: 'btn btn-primary', onClick: this.handleSubmit },
 										'Submit'
 									)
-								)
-							)
-						)
-					),
-					'// Ingredient List',
-					_react2.default.createElement(
-						'div',
-						{ className: 'panel panel-default' },
-						_react2.default.createElement(
-							'div',
-							{ className: 'panel-heading' },
-							_react2.default.createElement(
-								'h2',
-								{ className: 'panel-title' },
-								_react2.default.createElement(
-									'strong',
-									null,
-									'Ingredients'
-								)
-							)
-						),
-						_react2.default.createElement(
-							'div',
-							{ className: 'panel-body' },
-							_react2.default.createElement(
-								'div',
-								{ id: 'ingredients' },
-								_react2.default.createElement(
-									'p',
-									null,
-									'Ingredient List Goes Here',
-									_react2.default.createElement(_ingredients2.default, null)
-								)
-							)
-						)
-					),
-					'// Instruction List',
-					_react2.default.createElement(
-						'div',
-						{ className: 'panel panel-default' },
-						_react2.default.createElement(
-							'div',
-							{ className: 'panel-heading' },
-							_react2.default.createElement(
-								'h2',
-								{ className: 'panel-title' },
-								_react2.default.createElement(
-									'strong',
-									null,
-									'Instructions'
-								)
-							)
-						),
-						_react2.default.createElement(
-							'div',
-							{ className: 'panel-body' },
-							_react2.default.createElement(
-								'div',
-								{ id: 'instructions' },
-								_react2.default.createElement(
-									'ul',
-									null,
-									'Instruction List Goes Here',
-									_react2.default.createElement(_instructions2.default, null)
 								)
 							)
 						)
@@ -20071,7 +20011,7 @@
 /* 161 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -20098,15 +20038,39 @@
 	  }
 
 	  _createClass(Ingredient, [{
-	    key: 'render',
+	    key: "render",
 	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        null,
+	      return (
+	        // Ingredient List
 	        _react2.default.createElement(
-	          'p',
-	          null,
-	          'Ingredients go here!'
+	          "div",
+	          { className: "panel panel-default" },
+	          _react2.default.createElement(
+	            "div",
+	            { className: "panel-heading" },
+	            _react2.default.createElement(
+	              "h2",
+	              { className: "panel-title" },
+	              _react2.default.createElement(
+	                "strong",
+	                null,
+	                "Ingredients"
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            "div",
+	            { className: "panel-body" },
+	            _react2.default.createElement(
+	              "div",
+	              { id: "ingredients" },
+	              _react2.default.createElement(
+	                "div",
+	                null,
+	                "Ingredient List Goes Here"
+	              )
+	            )
+	          )
 	        )
 	      );
 	    }
@@ -20121,7 +20085,7 @@
 /* 162 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -20139,30 +20103,54 @@
 
 
 	var Instruction = function (_React$Component) {
-	  _inherits(Instruction, _React$Component);
+		_inherits(Instruction, _React$Component);
 
-	  function Instruction() {
-	    _classCallCheck(this, Instruction);
+		function Instruction() {
+			_classCallCheck(this, Instruction);
 
-	    return _possibleConstructorReturn(this, (Instruction.__proto__ || Object.getPrototypeOf(Instruction)).apply(this, arguments));
-	  }
+			return _possibleConstructorReturn(this, (Instruction.__proto__ || Object.getPrototypeOf(Instruction)).apply(this, arguments));
+		}
 
-	  _createClass(Instruction, [{
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(
-	          'p',
-	          null,
-	          'Instructions go here!'
-	        )
-	      );
-	    }
-	  }]);
+		_createClass(Instruction, [{
+			key: "render",
+			value: function render() {
+				return (
+					// Instruction List
+					_react2.default.createElement(
+						"div",
+						{ className: "panel panel-default" },
+						_react2.default.createElement(
+							"div",
+							{ className: "panel-heading" },
+							_react2.default.createElement(
+								"h2",
+								{ className: "panel-title" },
+								_react2.default.createElement(
+									"strong",
+									null,
+									"Instructions"
+								)
+							)
+						),
+						_react2.default.createElement(
+							"div",
+							{ className: "panel-body" },
+							_react2.default.createElement(
+								"div",
+								{ id: "instructions" },
+								_react2.default.createElement(
+									"ul",
+									null,
+									"Instruction List Goes Here"
+								)
+							)
+						)
+					)
+				);
+			}
+		}]);
 
-	  return Instruction;
+		return Instruction;
 	}(_react2.default.Component);
 
 	module.exports = Instruction;
