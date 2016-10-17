@@ -21,22 +21,31 @@ class RecipeCard extends React.Component {
 			instructions:[]
 		}
 		
-		this.handleChange = this.handleChange.bind(this);
-		this.handleKeyDown = this.handleKeyDown.bind(this);
-		this.handleClick = this.handleClick.bind(this);
-		this.handleSubmit = this.handleSubmit.bind(this);
+		// this.handleChange = this.handleChange.bind(this);
+		// this.handleKeyDown = this.handleKeyDown.bind(this);
+		// this.handleClick = this.handleClick.bind(this);
+		// this.handleSubmit = this.handleSubmit.bind(this);
 
 	}
 
 	setName(name){
+		console.log("RecipeCard.setName(): ", name)
 		this.setState({
 			name: name
 		})
 	}
 
 	setIngredients(ingredients){
+		console.log("RecipeCard.setIngredients(): ", ingredients)
 		this.setState({
 			ingredients: ingredients
+		})
+	}
+
+	setInstructions(instructions){
+		console.log("RecipeCard.setInstructions(): ", instructions)
+		this.setState({
+			instructions: instructions
 		})
 	}
 
@@ -44,11 +53,11 @@ class RecipeCard extends React.Component {
 	// model and insert it in the database.
 	handleSubmit(){
 
-		console.log("handleSubmit: ", this.state);
+		console.log("RecipeCard.handleSubmit(): ", this.state);
 
 		console.log("Save Recipe In Database Here");
 
-		this.setName(this.state.name);
+		console.log("Recipe Name: ", this.state.name);
 		// var self = this;
 		// var currentURL = window.location.origin;
 		// console.log(currentURL+ "/recipe/" + this.state.term)
@@ -71,11 +80,16 @@ class RecipeCard extends React.Component {
 	}
 
 	// Call the appropriate method depending on new state
-	handleChange(event){
-		var newState = {};
-		newState[event.target.id] = event.target.value;
-		this.setState(newState);
+	// handleChange(event){
+	// 	console.log("RecipeCard.handleChange(event) event: ", event);
+	// 	var newState = {};
+	// 	newState[event.target.id] = event.target.value;
+	// 	this.setState(newState);
 		
+	// }
+
+	handleChange(name) {
+		this.setName(name);
 	}
 
 	handleKeyDown(e) {
@@ -108,7 +122,7 @@ class RecipeCard extends React.Component {
 
 								<div className="form-group">
 					
-									<RecipeName type="text" className="form-control text-center" id="term" required/>
+									<RecipeName type="text" className="form-control text-center" id="term" handleChange={this.handleChange.bind(this)} required/>
 
 									<br />
 								
@@ -116,7 +130,7 @@ class RecipeCard extends React.Component {
 									
 									<Instructions />
 
-									<button type="button" className="btn btn-primary" onClick={this.handleSubmit}>Submit</button>
+									<button type="button" className="btn btn-primary" onClick={this.handleSubmit.bind(this)}>Submit</button>
 								</div>
 
 							</form>

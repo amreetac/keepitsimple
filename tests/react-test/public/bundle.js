@@ -19819,10 +19819,10 @@
 				instructions: []
 			};
 
-			_this.handleChange = _this.handleChange.bind(_this);
-			_this.handleKeyDown = _this.handleKeyDown.bind(_this);
-			_this.handleClick = _this.handleClick.bind(_this);
-			_this.handleSubmit = _this.handleSubmit.bind(_this);
+			// this.handleChange = this.handleChange.bind(this);
+			// this.handleKeyDown = this.handleKeyDown.bind(this);
+			// this.handleClick = this.handleClick.bind(this);
+			// this.handleSubmit = this.handleSubmit.bind(this);
 
 			return _this;
 		}
@@ -19830,6 +19830,7 @@
 		_createClass(RecipeCard, [{
 			key: 'setName',
 			value: function setName(name) {
+				console.log("RecipeCard.setName(): ", name);
 				this.setState({
 					name: name
 				});
@@ -19837,8 +19838,17 @@
 		}, {
 			key: 'setIngredients',
 			value: function setIngredients(ingredients) {
+				console.log("RecipeCard.setIngredients(): ", ingredients);
 				this.setState({
 					ingredients: ingredients
+				});
+			}
+		}, {
+			key: 'setInstructions',
+			value: function setInstructions(instructions) {
+				console.log("RecipeCard.setInstructions(): ", instructions);
+				this.setState({
+					instructions: instructions
 				});
 			}
 
@@ -19849,11 +19859,11 @@
 			key: 'handleSubmit',
 			value: function handleSubmit() {
 
-				console.log("handleSubmit: ", this.state);
+				console.log("RecipeCard.handleSubmit(): ", this.state);
 
 				console.log("Save Recipe In Database Here");
 
-				this.setName(this.state.name);
+				console.log("Recipe Name: ", this.state.name);
 				// var self = this;
 				// var currentURL = window.location.origin;
 				// console.log(currentURL+ "/recipe/" + this.state.term)
@@ -19876,13 +19886,18 @@
 			}
 
 			// Call the appropriate method depending on new state
+			// handleChange(event){
+			// 	console.log("RecipeCard.handleChange(event) event: ", event);
+			// 	var newState = {};
+			// 	newState[event.target.id] = event.target.value;
+			// 	this.setState(newState);
+
+			// }
 
 		}, {
 			key: 'handleChange',
-			value: function handleChange(event) {
-				var newState = {};
-				newState[event.target.id] = event.target.value;
-				this.setState(newState);
+			value: function handleChange(name) {
+				this.setName(name);
 			}
 		}, {
 			key: 'handleKeyDown',
@@ -19934,13 +19949,13 @@
 								_react2.default.createElement(
 									'div',
 									{ className: 'form-group' },
-									_react2.default.createElement(_recipe_name2.default, { type: 'text', className: 'form-control text-center', id: 'term', required: true }),
+									_react2.default.createElement(_recipe_name2.default, { type: 'text', className: 'form-control text-center', id: 'term', handleChange: this.handleChange.bind(this), required: true }),
 									_react2.default.createElement('br', null),
 									_react2.default.createElement(_ingredients2.default, null),
 									_react2.default.createElement(_instructions2.default, null),
 									_react2.default.createElement(
 										'button',
-										{ type: 'button', className: 'btn btn-primary', onClick: this.handleSubmit },
+										{ type: 'button', className: 'btn btn-primary', onClick: this.handleSubmit.bind(this) },
 										'Submit'
 									)
 								)
@@ -19960,7 +19975,7 @@
 /* 160 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -19978,31 +19993,39 @@
 
 
 	var RecipeName = function (_React$Component) {
-	  _inherits(RecipeName, _React$Component);
+		_inherits(RecipeName, _React$Component);
 
-	  function RecipeName() {
-	    _classCallCheck(this, RecipeName);
+		function RecipeName() {
+			_classCallCheck(this, RecipeName);
 
-	    return _possibleConstructorReturn(this, (RecipeName.__proto__ || Object.getPrototypeOf(RecipeName)).apply(this, arguments));
-	  }
+			return _possibleConstructorReturn(this, (RecipeName.__proto__ || Object.getPrototypeOf(RecipeName)).apply(this, arguments));
+		}
 
-	  _createClass(RecipeName, [{
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(
-	          'label',
-	          null,
-	          'Name:'
-	        ),
-	        _react2.default.createElement('input', null)
-	      );
-	    }
-	  }]);
+		_createClass(RecipeName, [{
+			key: "handleChange",
+			value: function handleChange(e) {
+				console.log("RecipeName.handleChange(e): ", e.target.value);
+				console.log("this: ", this);
+				this.props.handleChange(e.target.value);
+			}
+		}, {
+			key: "render",
+			value: function render() {
+				console.log("RecipeName.render()");
+				return _react2.default.createElement(
+					"div",
+					{ className: "recipeName" },
+					_react2.default.createElement(
+						"label",
+						null,
+						"Name:"
+					),
+					_react2.default.createElement("input", { type: "text", onChange: this.handleChange.bind(this) })
+				);
+			}
+		}]);
 
-	  return RecipeName;
+		return RecipeName;
 	}(_react2.default.Component);
 
 	module.exports = RecipeName;
