@@ -3,6 +3,23 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var path = require('path');
+var controller = require('./config/controller');
+// Setup Authentication modules
+var passport = require('passport');
+var session  = require('express-session');
+var cookieParser = require('cookie-parser');
+var morgan = require('morgan');
+
+var flash    = require('connect-flash');
+
+
+// configuration ===============================================================
+// connect to our database
+
+require('./config/passport')(passport); // pass passport for configuration
+
+
+
 
 // Sets up the Express App
 // =============================================================
@@ -15,6 +32,30 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.text());
 app.use(bodyParser.json({type:'application/vnd.api+json'}));
 app.use('/', express.static(__dirname + '/public'));
+
+
+
+// set up our express application
+app.use(morgan('dev')); // log every request to the console
+app.use(cookieParser()); // read cookies (needed for auth)
+app.use(bodyParser.urlencoded({
+	extended: true
+}));
+
+// required for passport
+app.use(session({
+	secret: 'beWiseeatHealthy',
+	resave: true,
+	saveUninitialized: true
+ } )); // session secret
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+app.use(flash()); // use connect-flash for flash messages stored in session
+
+// Signin routes ======================================================================
+require('./public/js/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
+
+
 
 /**** Hard code a list of recipes for now. ***/
 
@@ -69,9 +110,9 @@ app.get('/about', function(req, res){
 	res.sendFile(path.join(__dirname, '/public/about.html'));
 })
 
-app.get('/signin', function(req, res){
-	res.sendFile(path.join(__dirname, '/public/signin.html'));
-})
+// app.get('/signin', function(req, res){
+// 	res.sendFile(path.join(__dirname, '/public/signin.html'));
+// })
 
 
 // Basic route that sends the user first to the AJAX Page
@@ -109,6 +150,7 @@ app.get('/recipe/:ingredient?', function(req, res){
 		});
 	}
 })
+<<<<<<< HEAD
 //adding code for save ingredients
 // Route to add an article to saved list
 app.post('/recipe/saved', function(req, res){
@@ -130,29 +172,47 @@ app.post('/recipe/saved', function(req, res){
 		}
 	});
 });
+=======
+app.post('/newrecipe', function(req, res){
+	controller.newSave(req.body, function(recipeData) {
+		res.json(recipeData);
+	});
+	// res.status(200).end();
+	// res.json(req.body)
+>>>>>>> 922e3d75705bc1a6c6c9ab142be0d45f1346b78c
 
-app.get('/ingredient', function(req, res){
-   res.sendFile(path.join(__dirname, 'ingredient.html'));
 })
 
-// Search for a list of matching ingredients following using
-// an autocomplete algorithm to help the user select an item
-// For now, just display the first item in the list.
-app.get('/ingredient/:ingredient?', function(req, res){
-   var chosen = req.params.ingredient;
-   if(chosen){
-       console.log(2);
+app.get('/allrecipes', function(req, res){
+	controller.getRecipes(function(recipeData) {
+		res.json(recipeData);
+	});
+	// res.status(200).end();
+	// res.json(req.body)
 
-       var result = foodApi.autoCompleteFood(chosen, 1, true, function(ingredient){
-       console.log(3);
-            // Just send one recipe for now, later send entire array
+})
+// app.get('/ingredient', function(req, res){
+//    res.sendFile(path.join(__dirname, 'ingredient.html'));
+// })
 
-           res.json(ingredient);
+// // Search for a list of matching ingredients following using
+// // an autocomplete algorithm to help the user select an item
+// // For now, just display the first item in the list.
+// app.get('/ingredient/:ingredient?', function(req, res){
+//    var chosen = req.params.ingredient;
+//    if(chosen){
+//        console.log(2);
 
-       });
+//        var result = foodApi.autoCompleteFood(chosen, 1, true, function(ingredient){
+//        console.log(3);
+//             // Just send one recipe for now, later send entire array
+
+//            res.json(ingredient);
+
+//        });
       
-   }
-});
+//    }
+// });
 
 
 // app.listen(3000, function() {
