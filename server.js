@@ -150,36 +150,13 @@ app.get('/recipe/:ingredient?', function(req, res){
 		});
 	}
 })
-<<<<<<< HEAD
-//adding code for save ingredients
-// Route to add an article to saved list
-app.post('/recipe/saved', function(req, res){
-	var newArticle = new Article(req.body);
 
-	console.log(req.body)
-
-	var title = req.body.cuisines;
-	var date = req.body.title;
-	var spoonacularSourceUrl = req.body.spoonacularSourceUrl;
-	var readyInMinutes = req.body.readyInMinutes;
-	var weightWatcherSmartPoints = req.body.weightWatcherSmartPoints;
-	
-	newArticle.save(function(err, doc){
-		if(err){
-			console.log(err);
-		} else {
-			res.send(doc._id);
-		}
-	});
-});
-=======
 app.post('/newrecipe', function(req, res){
 	controller.newSave(req.body, function(recipeData) {
 		res.json(recipeData);
 	});
 	// res.status(200).end();
 	// res.json(req.body)
->>>>>>> 922e3d75705bc1a6c6c9ab142be0d45f1346b78c
 
 })
 
