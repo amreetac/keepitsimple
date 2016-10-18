@@ -36,7 +36,7 @@ function FoodApi(apiKeys, limit) {
 		this.apiKeys = {
 			 'simple': { apiKey: 'HpxgpOtGRjmshLUHkFBTPp3BiwZfp1Dcykzjsn12LlQQTUNslw' },
 			 'complex': { apiKey: 'gYPrulKTKnmshuLI06XFb8coTsw5p1gjhiEjsnMC7d2VWGx88j' },
-			
+
 		};
 
 	} else {

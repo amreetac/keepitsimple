@@ -80,9 +80,29 @@ app.get('/', function(req, res){
 
 // Added pantry route
 
-app.get('/pantry', function(req, res){
-	res.sendFile(path.join(__dirname, '/public/pantry.html'));
+app.get('/ingredient', function(req, res){
+	res.sendFile(path.join(__dirname, '/public/ingredient.html'));
 })
+// Search for Specific Character (or all ingredients) - provides JSON
+app.get('/ingredient/:ingredient?', function(req, res){
+    var chosen = req.params.ingredient;
+    if(chosen){
+        console.log(2);
+        // NOTE: the findRecipe takes a callback function.
+        // This is necessary so it doesn't have to wait before
+        // returning from the unirest call. Otherwise, it would
+        // return too early and we would not have the data yet.   
+        var result = foodApi.autoCompleteFood(chosen, function(ingredient){
+        console.log(3);
+             // Just send one recipe for now, later send entire array
+
+            res.json(ingredient);
+
+        });
+       
+    }
+});
+
 
 // Added about route
 
@@ -105,9 +125,9 @@ app.get('/recipe', function(req, res){
 
 // Search for Specific Character (or all characters) - provides JSON
 
-app.get('/recipe/:ingredients?', function(req, res){
+app.get('/recipe/:ingredient?', function(req, res){
 	console.log(1);
-	var term = req.params.ingredients;
+	var term = req.params.ingredient;
 
 	console.log("search term: ", term);
 	console.log("req.params: ", req.params);
@@ -130,12 +150,36 @@ app.get('/recipe/:ingredients?', function(req, res){
 		});
 	}
 })
+<<<<<<< HEAD
+//adding code for save ingredients
+// Route to add an article to saved list
+app.post('/recipe/saved', function(req, res){
+	var newArticle = new Article(req.body);
+
+	console.log(req.body)
+
+	var title = req.body.cuisines;
+	var date = req.body.title;
+	var spoonacularSourceUrl = req.body.spoonacularSourceUrl;
+	var readyInMinutes = req.body.readyInMinutes;
+	var weightWatcherSmartPoints = req.body.weightWatcherSmartPoints;
+	
+	newArticle.save(function(err, doc){
+		if(err){
+			console.log(err);
+		} else {
+			res.send(doc._id);
+		}
+	});
+});
+=======
 app.post('/newrecipe', function(req, res){
 	controller.newSave(req.body, function(recipeData) {
 		res.json(recipeData);
 	});
 	// res.status(200).end();
 	// res.json(req.body)
+>>>>>>> 922e3d75705bc1a6c6c9ab142be0d45f1346b78c
 
 })
 
@@ -169,6 +213,7 @@ app.get('/allrecipes', function(req, res){
       
 //    }
 // });
+
 
 // app.listen(3000, function() {
 //     console.log('Timestamp: ', (Date()).toString());

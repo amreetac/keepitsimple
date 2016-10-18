@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>KeepItSimple</title>
+
+    <!-- Here we include bootstrap. This will be made available to all of the generated HTML/JS that React generates-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" >
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+  
+</head>
+<body>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title"><strong>Character Search</strong></h3>
+	</div>
+	<div class="panel-body">
+		<input type="text" id="ingredientSearch" class="form-control" >
+		<br>
+		<div class="text-right">
+			<button type="submit" class="btn btn-primary btn-md" id="searchBtn"></span>Add</button>
+			
+		</div>
+	</div>
+</div>
+					<br>
+<div id="ingredients"></div>
+
+<script type="text/javascript">
+$("#ingredientSearch").keypress(function (e) {
+     if (e.which == 13) {
+         console.log('You pressed enter!');
+          
+        $("#searchBtn").click();
+     } 
+ });
+
+$(document).ready(function() {
+
+    $(document).on("click","#searchBtn",function() {
+		var searchIngredient = $("#ingredientSearch").val().trim();
+
+		searchIngredient = searchIngredient.replace(/\s+/g, '-').toLowerCase();
+
+		var currentURL = window.location.origin;
+		console.log(searchIngredient);
+		$.get( currentURL + "/ingredient/" + searchIngredient, function( data ) {
+			console.log(data);
+			if (data[0].hasOwnProperty('image')){
+				var imageappend = '<img src="' +data[0].image+ '" alt="'+data[0].name+'" height="50" width="50">';
+				$("#ingredients").append(imageappend);
+			}
+		});
+		$("#ingredientSearch").val('');
+
+	});	
+    
+});
+</script>
+ 
+</body>
+</html> 

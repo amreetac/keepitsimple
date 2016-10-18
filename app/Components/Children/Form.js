@@ -109,14 +109,15 @@ class Form extends React.Component{
 					</div>
 					<div className="panel-body">
 						<div id="stats">
-
-							<ul>
-								{this.state.results.map(function(result){
-									return(
-										<Result key={result.id} article={result} />
-									)
-								})}
-							</ul>
+							<form id="show-recipe" action="/recipe/saved" method='POST'>
+								<ul>
+									{this.state.results.map(function(result){
+										return(
+											<Result key={result.id} article={result} />
+										)
+									})}
+								</ul>
+							</form>
 
 						</div>
 						
