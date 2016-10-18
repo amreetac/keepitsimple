@@ -3,7 +3,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var path = require('path');
-
+var controller = require('./config/controller');
 // Setup Authentication modules
 var passport = require('passport');
 var session  = require('express-session');
@@ -11,7 +11,6 @@ var cookieParser = require('cookie-parser');
 var morgan = require('morgan');
 
 var flash    = require('connect-flash');
-
 
 
 // configuration ===============================================================
@@ -131,29 +130,45 @@ app.get('/recipe/:ingredients?', function(req, res){
 		});
 	}
 })
+app.post('/newrecipe', function(req, res){
+	controller.newSave(req.body, function(recipeData) {
+		res.json(recipeData);
+	});
+	// res.status(200).end();
+	// res.json(req.body)
 
-app.get('/ingredient', function(req, res){
-   res.sendFile(path.join(__dirname, 'ingredient.html'));
 })
 
-// Search for a list of matching ingredients following using
-// an autocomplete algorithm to help the user select an item
-// For now, just display the first item in the list.
-app.get('/ingredient/:ingredient?', function(req, res){
-   var chosen = req.params.ingredient;
-   if(chosen){
-       console.log(2);
+app.get('/allrecipes', function(req, res){
+	controller.getRecipes(function(recipeData) {
+		res.json(recipeData);
+	});
+	// res.status(200).end();
+	// res.json(req.body)
 
-       var result = foodApi.autoCompleteFood(chosen, 1, true, function(ingredient){
-       console.log(3);
-            // Just send one recipe for now, later send entire array
+})
+// app.get('/ingredient', function(req, res){
+//    res.sendFile(path.join(__dirname, 'ingredient.html'));
+// })
 
-           res.json(ingredient);
+// // Search for a list of matching ingredients following using
+// // an autocomplete algorithm to help the user select an item
+// // For now, just display the first item in the list.
+// app.get('/ingredient/:ingredient?', function(req, res){
+//    var chosen = req.params.ingredient;
+//    if(chosen){
+//        console.log(2);
 
-       });
+//        var result = foodApi.autoCompleteFood(chosen, 1, true, function(ingredient){
+//        console.log(3);
+//             // Just send one recipe for now, later send entire array
+
+//            res.json(ingredient);
+
+//        });
       
-   }
-});
+//    }
+// });
 
 // app.listen(3000, function() {
 //     console.log('Timestamp: ', (Date()).toString());

@@ -39,6 +39,9 @@ render(){
                     <li>
                         <a href="signup.html">Sign-up</a>
                     </li>
+                     <li>
+                        <a href="/myrecipes">View Recipes</a>
+                    </li>
                 </ul>
             </div>
        

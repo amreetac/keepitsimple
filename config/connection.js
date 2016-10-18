@@ -10,11 +10,11 @@ var source = {
 
 // localhost
     localhost: {
-        port: 3306,
-        host: '127.0.0.1',
-        user: 'root',
-        password: "nodeAPP001",
-        database: "simplefooddb"  
+         port: 3306,
+         host: 'm7wltxurw8d2n21q.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
+         user: 'eu4xz0nyaonngbf4',
+         password: "odozzhsdf95oio5k",
+         database: "fab7d2a5n3m9rpt0"  
     },
     // localhost
     // localhost: {
@@ -36,11 +36,10 @@ var source = {
     // },
     // jawsDB
     jawsDB: {
-        port: 3306,
         host: 'm7wltxurw8d2n21q.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
-        user: 'eu4xz0nyaonngbf4',
-        password: "c377x1xc6713qabw",
-        database: "odozzhsdf95oio5k" 
+         user: 'eu4xz0nyaonngbf4',
+         password: "odozzhsdf95oio5k",
+         database: "fab7d2a5n3m9rpt0"  
     }
 }
 
