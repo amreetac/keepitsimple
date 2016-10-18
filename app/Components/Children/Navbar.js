@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 class Navbar extends React.Component{
 	constructor(props){
 		super(props);
@@ -28,7 +29,8 @@ render(){
                         <a href="landing.html">Home</a>
                     </li>
                     <li>
-                        <a href="pantry.html">Your Pantry</a>
+                    <Link to="/pantry">
+                    Your Pantry</Link>
                     </li>
                     <li>
                         <a href="about.html">About Us</a>

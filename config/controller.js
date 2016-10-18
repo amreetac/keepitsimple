@@ -17,6 +17,7 @@ module.exports = {
 	},
 	getIngredients: function(cb) {
 		orm.all('ingredient', function(result) {
+			console.log(result);
 			cb(result);
 		});
 	}

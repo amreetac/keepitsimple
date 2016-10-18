@@ -13,7 +13,13 @@ body{
 	font-style: italic;
 	color: #fff;
 }
+#ingredients{
+	background-image: url("/img/fridgeracksboard.png");
 
+}
+.ingredientsList{
+	list-style: none;
+}
 /*
 .container{
 	padding:10px;
