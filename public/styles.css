@@ -27,6 +27,16 @@ body{
 .carousel-inner img {
   margin: auto;
 }
+.team{
+	width:250px;
+	height:250px;
+}
+.myCarousel{
+	text-align: center;
+}
+.carousel-control{
+	align: center;
+}
 /*
 .container{
 	padding:10px;

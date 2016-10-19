@@ -21574,7 +21574,7 @@
 	                                null,
 	                                _react2.default.createElement(
 	                                    'a',
-	                                    { href: 'about.html' },
+	                                    { href: '/about' },
 	                                    'About Us'
 	                                )
 	                            ),
@@ -27367,6 +27367,10 @@
 
 	var _landing_page2 = _interopRequireDefault(_landing_page);
 
+	var _about = __webpack_require__(254);
+
+	var _about2 = _interopRequireDefault(_about);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var Routes = _react2.default.createElement(
@@ -27375,7 +27379,8 @@
 		_react2.default.createElement(_reactRouter.Route, { path: '/', component: _landing_page2.default }),
 		_react2.default.createElement(_reactRouter.Route, { path: '/pantry', component: _PantryForm2.default }),
 		_react2.default.createElement(_reactRouter.Route, { path: '/findrecipe', component: _RecipeMain2.default }),
-		_react2.default.createElement(_reactRouter.Route, { path: '/landing', component: _landing_page2.default })
+		_react2.default.createElement(_reactRouter.Route, { path: '/landing', component: _landing_page2.default }),
+		_react2.default.createElement(_reactRouter.Route, { path: '/about', component: _about2.default })
 	);
 
 	exports.default = Routes;
@@ -28218,6 +28223,290 @@
 	}(_react2.default.Component);
 
 	exports.default = landing_page;
+
+/***/ },
+/* 254 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _Navbar = __webpack_require__(182);
+
+	var _Navbar2 = _interopRequireDefault(_Navbar);
+
+	var _Footer = __webpack_require__(246);
+
+	var _Footer2 = _interopRequireDefault(_Footer);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var about = function (_React$Component) {
+	    _inherits(about, _React$Component);
+
+	    function about() {
+	        _classCallCheck(this, about);
+
+	        return _possibleConstructorReturn(this, (about.__proto__ || Object.getPrototypeOf(about)).apply(this, arguments));
+	    }
+
+	    _createClass(about, [{
+	        key: 'componentWillUnmount',
+	        value: function componentWillUnmount() {
+	            $('.carousel').carousel({
+	                interval: false //changes the speed
+	            });
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+
+	            return _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement(_Navbar2.default, null),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'container' },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'row' },
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'box' },
+	                            _react2.default.createElement(
+	                                'div',
+	                                { className: 'col-lg-12' },
+	                                _react2.default.createElement('hr', null),
+	                                _react2.default.createElement(
+	                                    'h2',
+	                                    { className: 'intro-text text-center' },
+	                                    'About',
+	                                    _react2.default.createElement(
+	                                        'strong',
+	                                        null,
+	                                        'Keep It Simple'
+	                                    )
+	                                ),
+	                                _react2.default.createElement('hr', null)
+	                            ),
+	                            _react2.default.createElement(
+	                                'div',
+	                                { className: 'col-md-6' },
+	                                _react2.default.createElement('img', { className: 'img-responsive img-border-left', src: 'img/slide-2.jpg', alt: '' })
+	                            ),
+	                            _react2.default.createElement(
+	                                'div',
+	                                { className: 'col-md-6' },
+	                                _react2.default.createElement(
+	                                    'p',
+	                                    null,
+	                                    'Do you have only a few items in your fridge?'
+	                                ),
+	                                _react2.default.createElement(
+	                                    'p',
+	                                    null,
+	                                    'Don\'t know what to do with them? '
+	                                ),
+	                                _react2.default.createElement(
+	                                    'p',
+	                                    null,
+	                                    'Let\'s Keep It Simple and let us make your menu!'
+	                                )
+	                            ),
+	                            _react2.default.createElement('div', { className: 'clearfix' })
+	                        )
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'row' },
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'box' },
+	                            _react2.default.createElement(
+	                                'div',
+	                                { className: 'col-lg-12' },
+	                                _react2.default.createElement('hr', null),
+	                                _react2.default.createElement(
+	                                    'h2',
+	                                    { className: 'intro-text text-center' },
+	                                    'Our',
+	                                    _react2.default.createElement(
+	                                        'strong',
+	                                        null,
+	                                        'Team'
+	                                    )
+	                                ),
+	                                _react2.default.createElement('hr', null)
+	                            ),
+	                            _react2.default.createElement(
+	                                'div',
+	                                { className: 'col-sm-3 text-center' },
+	                                _react2.default.createElement('img', { className: 'img-responsive team', src: 'img/padma.jpg', alt: 'padma' }),
+	                                _react2.default.createElement(
+	                                    'h3',
+	                                    null,
+	                                    'Padmaja Kondeti',
+	                                    _react2.default.createElement(
+	                                        'small',
+	                                        null,
+	                                        'Full Stack Developer and API Specialist'
+	                                    )
+	                                )
+	                            ),
+	                            _react2.default.createElement(
+	                                'div',
+	                                { className: 'col-sm-3 text-center' },
+	                                _react2.default.createElement('img', { className: 'img-responsive team', src: 'img/amreeta.jpg', alt: 'amreeta' }),
+	                                _react2.default.createElement(
+	                                    'h3',
+	                                    null,
+	                                    'Amreeta Choudhury',
+	                                    _react2.default.createElement('br', null),
+	                                    _react2.default.createElement(
+	                                        'small',
+	                                        null,
+	                                        'Project Manager and Front-end Designer'
+	                                    )
+	                                )
+	                            ),
+	                            _react2.default.createElement(
+	                                'div',
+	                                { className: 'col-sm-3 text-center' },
+	                                _react2.default.createElement('img', { className: 'img-responsive team', src: 'img/stef2.jpg', alt: 'stef' }),
+	                                _react2.default.createElement(
+	                                    'h3',
+	                                    null,
+	                                    ' Stefanie Centi',
+	                                    _react2.default.createElement('br', null),
+	                                    _react2.default.createElement(
+	                                        'small',
+	                                        null,
+	                                        'API Specialist and Back-end Expert'
+	                                    )
+	                                )
+	                            ),
+	                            _react2.default.createElement(
+	                                'div',
+	                                { className: 'col-sm-3 text-center' },
+	                                _react2.default.createElement('img', { className: 'img-responsive team', src: 'img/suda2.jpg', alt: 'suda' }),
+	                                _react2.default.createElement(
+	                                    'h3',
+	                                    null,
+	                                    ' Sudharshana Chavan',
+	                                    _react2.default.createElement('br', null),
+	                                    _react2.default.createElement(
+	                                        'small',
+	                                        null,
+	                                        'Full Stack Developer and Authentication Specialist'
+	                                    )
+	                                )
+	                            ),
+	                            _react2.default.createElement('div', { className: 'clearfix' })
+	                        )
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'container' },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'row' },
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'box' },
+	                            _react2.default.createElement(
+	                                'div',
+	                                { className: 'col-sm-6 text-center' },
+	                                _react2.default.createElement(
+	                                    'div',
+	                                    { id: 'myCarousel', className: 'carousel slide', 'data-ride': 'carousel' },
+	                                    _react2.default.createElement(
+	                                        'ol',
+	                                        { className: 'carousel-indicators' },
+	                                        _react2.default.createElement('li', { 'data-target': '#myCarousel', 'data-slide-to': '0', className: 'active' }),
+	                                        _react2.default.createElement('li', { 'data-target': '#myCarousel', 'data-slide-to': '1' }),
+	                                        _react2.default.createElement('li', { 'data-target': '#myCarousel', 'data-slide-to': '2' }),
+	                                        _react2.default.createElement('li', { 'data-target': '#myCarousel', 'data-slide-to': '3' }),
+	                                        _react2.default.createElement('li', { 'data-target': '#myCarousel', 'data-slide-to': '4' })
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'div',
+	                                        { className: 'carousel-inner', role: 'listbox' },
+	                                        _react2.default.createElement(
+	                                            'div',
+	                                            { className: 'item active' },
+	                                            _react2.default.createElement('img', { src: 'img/pic1.jpg', alt: 'Image 1', id: 'center' })
+	                                        ),
+	                                        _react2.default.createElement(
+	                                            'div',
+	                                            { className: 'item' },
+	                                            _react2.default.createElement('img', { src: 'img/picture2.jpg', alt: 'Image 2', id: 'center' })
+	                                        ),
+	                                        _react2.default.createElement(
+	                                            'div',
+	                                            { className: 'item' },
+	                                            _react2.default.createElement('img', { src: 'img/pic3.jpg', alt: 'Image 3', id: 'center' })
+	                                        ),
+	                                        _react2.default.createElement(
+	                                            'div',
+	                                            { className: 'item' },
+	                                            _react2.default.createElement('img', { src: 'img/pic4.jpg', alt: 'Image 4', id: 'center' })
+	                                        ),
+	                                        _react2.default.createElement(
+	                                            'div',
+	                                            { className: 'item' },
+	                                            _react2.default.createElement('img', { src: 'img/group.jpg', alt: 'Image 5', id: 'center' })
+	                                        )
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'a',
+	                                        { className: 'left carousel-control', href: '#myCarousel', role: 'button', 'data-slide': 'prev' },
+	                                        _react2.default.createElement('span', { className: 'glyphicon glyphicon-chevron-left', 'aria-hidden': 'true' }),
+	                                        _react2.default.createElement(
+	                                            'span',
+	                                            { className: 'sr-only' },
+	                                            'Previous'
+	                                        )
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'a',
+	                                        { className: 'right carousel-control', href: '#myCarousel', role: 'button', 'data-slide': 'next' },
+	                                        _react2.default.createElement('span', { className: 'glyphicon glyphicon-chevron-right', 'aria-hidden': 'true' }),
+	                                        _react2.default.createElement(
+	                                            'span',
+	                                            { className: 'sr-only' },
+	                                            'Next'
+	                                        )
+	                                    )
+	                                )
+	                            )
+	                        )
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+
+	    return about;
+	}(_react2.default.Component);
+
+	exports.default = about;
 
 /***/ }
 /******/ ]);

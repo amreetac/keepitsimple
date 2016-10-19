@@ -33,7 +33,7 @@ render(){
                     Your Pantry</Link>
                     </li>
                     <li>
-                        <a href="about.html">About Us</a>
+                        <a href="/about">About Us</a>
                     </li>
                     <li>
                         <a href="/findrecipe">Recipe Maker</a>

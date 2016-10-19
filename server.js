@@ -78,35 +78,35 @@ var foodApi = new f(apiKey, 6);
 
 // Added pantry route
 
-app.get('/ingredient', function(req, res){
-	res.sendFile(path.join(__dirname, '/public/ingredient.html'));
-})
-// Search for Specific Character (or all ingredients) - provides JSON
-app.get('/ingredient/:ingredient?', function(req, res){
-    var chosen = req.params.ingredient;
-    if(chosen){
-        console.log(2);
-        // NOTE: the findRecipe takes a callback function.
-        // This is necessary so it doesn't have to wait before
-        // returning from the unirest call. Otherwise, it would
-        // return too early and we would not have the data yet.   
-        var result = foodApi.autoCompleteFood(chosen, function(ingredient){
-        console.log(3);
-             // Just send one recipe for now, later send entire array
+// app.get('/ingredient', function(req, res){
+// 	res.sendFile(path.join(__dirname, '/public/ingredient.html'));
+// })
+// // Search for Specific Character (or all ingredients) - provides JSON
+// app.get('/ingredient/:ingredient?', function(req, res){
+//     var chosen = req.params.ingredient;
+//     if(chosen){
+//         console.log(2);
+//         // NOTE: the findRecipe takes a callback function.
+//         // This is necessary so it doesn't have to wait before
+//         // returning from the unirest call. Otherwise, it would
+//         // return too early and we would not have the data yet.   
+//         var result = foodApi.autoCompleteFood(chosen, function(ingredient){
+//         console.log(3);
+//              // Just send one recipe for now, later send entire array
 
-            res.json(ingredient);
+//             res.json(ingredient);
 
-        });
+//         });
        
-    }
-});
+//     }
+// });
 
 
 // Added about route
 
-app.get('/about', function(req, res){
-	res.sendFile(path.join(__dirname, '/public/about.html'));
-})
+// app.get('/about', function(req, res){
+// 	res.sendFile(path.join(__dirname, '/public/about.html'));
+// })
 
 // app.get('/signin', function(req, res){
 // 	res.sendFile(path.join(__dirname, '/public/signin.html'));
