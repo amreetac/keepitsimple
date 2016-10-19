@@ -28631,13 +28631,13 @@
 								),
 								_react2.default.createElement(
 									'label',
-									{ 'for': 'inputusername', className: 'sr-only' },
+									{ htmlFor: 'inputusername', className: 'sr-only' },
 									'User Name'
 								),
 								_react2.default.createElement('input', { type: 'user', name: 'username', id: 'inputUser', className: 'form-control', placeholder: 'User Name', required: true, autofocus: true }),
 								_react2.default.createElement(
 									'label',
-									{ 'for': 'inputPassword', className: 'sr-only' },
+									{ htmlFor: 'inputPassword', className: 'sr-only' },
 									'Password'
 								),
 								_react2.default.createElement('input', { type: 'password', id: 'inputPassword', name: 'password', className: 'form-control', placeholder: 'Password', required: true }),
@@ -28778,13 +28778,13 @@
 													),
 													_react2.default.createElement(
 															"label",
-															{ "for": "inputusername", className: "sr-only" },
+															{ htmlFor: "inputusername", className: "sr-only" },
 															"User Name"
 													),
 													_react2.default.createElement("input", { type: "user", name: "username", id: "inputUser", className: "form-control", placeholder: "User Name", required: true, autofocus: true }),
 													_react2.default.createElement(
 															"label",
-															{ "for": "inputPassword", className: "sr-only" },
+															{ htmlFor: "inputPassword", className: "sr-only" },
 															"Password"
 													),
 													_react2.default.createElement("input", { type: "password", id: "inputPassword", className: "form-control", placeholder: "Password", name: "password", required: true }),
