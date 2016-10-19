@@ -39,11 +39,9 @@ render(){
                         <a href="/findrecipe">Recipe Maker</a>
                     </li>
                     <li>
-                        <a href="signup.html">Sign-up</a>
+                        <a href="/signup">Sign-up</a>
                     </li>
-                     <li>
-                        <a href="/myrecipes">View Recipes</a>
-                    </li>
+                    
                 </ul>
             </div>
        
