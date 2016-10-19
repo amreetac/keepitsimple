@@ -13,15 +13,20 @@ body{
 	font-style: italic;
 	color: #fff;
 }
+#ingredients{
+	background-image: url("/img/fridgeracksboard.png");
+	background-size: 75%;
+	background-repeat: no-repeat;
+	height:800px;
+}
 
 #center {
-align: center;
+	align: center;
 }
 
 .carousel-inner img {
   margin: auto;
 }
-
 /*
 .container{
 	padding:10px;
@@ -44,3 +49,17 @@ footer{
 
 }
 */
+
+.recipe-list {
+	margin-left: auto; 
+	margin-right: auto;
+	padding-top: 15%;
+	padding-left: 5%;
+	padding-right: 15%;
+}
+.recipe-item {
+	display: inline-block;
+	width: 100px;
+	height:100px;
+	padding: 10px;
+}

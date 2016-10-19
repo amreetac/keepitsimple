@@ -14,6 +14,12 @@ module.exports = {
 		orm.all('recipe', function(result) {
 			cb(result);
 		});
+	},
+	getIngredients: function(cb) {
+		orm.all('ingredient', function(result) {
+			console.log(result);
+			cb(result);
+		});
 	}
 }
 // var newUserMysql = {

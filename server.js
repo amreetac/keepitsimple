@@ -74,9 +74,7 @@ var foodApi = new f(apiKey, 6);
 
 //Added home route
 
-app.get('/', function(req, res){
-	res.sendFile(path.join(__dirname, '/public/landing.html'));
-})
+
 
 // Added pantry route
 
@@ -157,7 +155,6 @@ app.post('/newrecipe', function(req, res){
 	});
 	// res.status(200).end();
 	// res.json(req.body)
-
 })
 
 app.get('/allrecipes', function(req, res){
@@ -167,6 +164,22 @@ app.get('/allrecipes', function(req, res){
 	// res.status(200).end();
 	// res.json(req.body)
 
+})
+
+//to get all the ingredients for the pantry page
+app.get('/allingredients', function(req, res){
+	controller.getIngredients(function(ingredientData) {
+		console.log(res);		
+		res.json(ingredientData);
+
+	});
+	// res.status(200).end();
+	// res.json(req.body)
+
+})
+app.get('*', function(req, res){
+	res.sendFile(path.join(__dirname, '/public/index.html'));
+	//res.redirect(path.join(__dirname, '/landingpage'));
 })
 // app.get('/ingredient', function(req, res){
 //    res.sendFile(path.join(__dirname, 'ingredient.html'));

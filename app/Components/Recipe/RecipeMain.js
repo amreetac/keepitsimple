@@ -1,17 +1,17 @@
 import React from 'react';
 
 // Import sub-components
-import Form from './Children/Form';
+import RecipeSearchForm from './RecipeSearchForm';
 
-import Results from './Children/Results';
-import Navbar from './Children/Navbar';
-import Footer from './Children/Footer';
+import RecipeResults from './RecipeResults';
+import Navbar from '../Children/Navbar';
+import Footer from '../Children/Footer';
 
 
 // Helper Function
 //import helpers from './utils/helpers.js';
 
-class Main extends React.Component{
+class RecipeMain extends React.Component{
 
 	constructor(props){
 
@@ -61,7 +61,7 @@ class Main extends React.Component{
 			<br />
 			<div className="container">
 				<div className="row">
-					<Form setTerm={this.setTerm} setResults={this.setResults}/>
+					<RecipeSearchForm setTerm={this.setTerm} setResults={this.setResults}/>
 				</div>
 			</div>
 			<Footer />
@@ -72,4 +72,4 @@ class Main extends React.Component{
 }
 
 // Export the componen back for use in other files
-export default Main;
+export default RecipeMain;

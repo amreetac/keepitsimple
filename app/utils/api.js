@@ -6,6 +6,9 @@ const Api = {
 	},
 	getRecipes: function() {
 		return axios.get('/allrecipes');
+	},
+	getIngredients: function() {
+		return axios.get('/allingredients');
 	}
 }
 
