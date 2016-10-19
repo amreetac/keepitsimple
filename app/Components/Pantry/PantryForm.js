@@ -57,7 +57,7 @@ class PantryForm extends React.Component{
 								<ul className="recipe-list">
 									{this.state.results.map(function(result){
 										return(
-											<PantryIngredient  key={result.id} ingredient={result}/>
+											<PantryIngredient  key={result.foodid} ingredient={result}/>
 										)
 									})}
 								</ul>

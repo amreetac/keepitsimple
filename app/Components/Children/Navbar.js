@@ -27,13 +27,16 @@ render(){
                         <Link to="/pantry">Your Pantry</Link>
                     </li>
                     <li>
-                         <Link to="/about">About Us</Link>
+                        <Link to="/findrecipe">Find Recipes</Link>
                     </li>
                     <li>
-                        <Link to="/findrecipe">Recipe Maker</Link>
+                         <Link to="/newrecipe">Add Recipes</Link>
                     </li>
                     <li>
                         <Link to="/signup">Sign-up</Link>
+                    </li>
+                    <li>
+                         <Link to="/about">About Us</Link>
                     </li>
                     
                 </ul>

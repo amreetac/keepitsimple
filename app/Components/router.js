@@ -7,6 +7,7 @@ import LandingPage from './landing_page/landing_page.js';
 import About from './about/about.js';
 import SignupForm from './Signup/SignupForm.js';
 import LoginForm from './Signup/LoginForm.js';
+import RecipeCard from './recipe_card/recipe_card.jsx';
 
 const Routes = (
 	<Router history={browserHistory}>
@@ -18,6 +19,7 @@ const Routes = (
 		<Route path="/about" component={About} />
 		<Route path="/signup" component={SignupForm} />
 		<Route path="/login" component={LoginForm} />
+		<Route path="/newrecipe" component={RecipeCard} />
 
 		
 	{/*<Route path="/addrecipe" component={PantryForm} />*/}
