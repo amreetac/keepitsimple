@@ -28358,6 +28358,7 @@
 	                                    'h3',
 	                                    null,
 	                                    'Padmaja Kondeti',
+	                                    _react2.default.createElement('br', null),
 	                                    _react2.default.createElement(
 	                                        'small',
 	                                        null,
@@ -28490,6 +28491,22 @@
 	                                            'Next'
 	                                        )
 	                                    )
+	                                )
+	                            ),
+	                            _react2.default.createElement(
+	                                'div',
+	                                { className: 'col-sm-6 text-center' },
+	                                _react2.default.createElement(
+	                                    'h2',
+	                                    null,
+	                                    'Having Fun!!'
+	                                ),
+	                                _react2.default.createElement('br', null),
+	                                _react2.default.createElement('br', null),
+	                                _react2.default.createElement(
+	                                    'p',
+	                                    null,
+	                                    'Enjoying our own recipes while working for the app.'
 	                                )
 	                            )
 	                        )

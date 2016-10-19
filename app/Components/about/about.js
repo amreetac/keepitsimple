@@ -46,6 +46,7 @@ class about extends React.Component{
                             <div className="col-sm-3 text-center">
                                 <img className="img-responsive team" src="img/padma.jpg" alt="padma"  />
                                 <h3>Padmaja Kondeti
+                                    <br />
                                     <small>Full Stack Developer and API Specialist</small>
                                 </h3>
                             </div>
@@ -123,7 +124,14 @@ class about extends React.Component{
                                 </a>
                             </div>
                         </div>
+                        <div className="col-sm-6 text-center">
+                            <h2>Having Fun!!</h2>
+                            <br />
+                            <br />
+                            <p>Enjoying our own recipes while working for the app.</p>
+                        </div>
                     </div>
+
                 </div>
 
                 </div>
