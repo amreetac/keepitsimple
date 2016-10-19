@@ -21556,7 +21556,7 @@
 	                                null,
 	                                _react2.default.createElement(
 	                                    'a',
-	                                    { href: 'landing.html' },
+	                                    { href: '/landing' },
 	                                    'Home'
 	                                )
 	                            ),
@@ -21583,7 +21583,7 @@
 	                                null,
 	                                _react2.default.createElement(
 	                                    'a',
-	                                    { href: 'recipe.html' },
+	                                    { href: '/findrecipe' },
 	                                    'Recipe Maker'
 	                                )
 	                            ),
@@ -27363,14 +27363,19 @@
 
 	var _RecipeMain2 = _interopRequireDefault(_RecipeMain);
 
+	var _landing_page = __webpack_require__(253);
+
+	var _landing_page2 = _interopRequireDefault(_landing_page);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var Routes = _react2.default.createElement(
 		_reactRouter.Router,
 		{ history: _reactRouter.browserHistory },
-		_react2.default.createElement(_reactRouter.Route, { path: '/', component: _Main2.default }),
+		_react2.default.createElement(_reactRouter.Route, { path: '/', component: _landing_page2.default }),
 		_react2.default.createElement(_reactRouter.Route, { path: '/pantry', component: _PantryForm2.default }),
-		_react2.default.createElement(_reactRouter.Route, { path: '/findrecipe', component: _RecipeMain2.default })
+		_react2.default.createElement(_reactRouter.Route, { path: '/findrecipe', component: _RecipeMain2.default }),
+		_react2.default.createElement(_reactRouter.Route, { path: '/landing', component: _landing_page2.default })
 	);
 
 	exports.default = Routes;
@@ -27951,7 +27956,7 @@
 								_react2.default.createElement(
 									'h1',
 									null,
-									'Add Ingredients'
+									'Select Ingredients'
 								),
 								_react2.default.createElement(
 									'div',
@@ -27961,7 +27966,7 @@
 										{ id: 'show-ingredient', method: 'GET' },
 										_react2.default.createElement(
 											'ul',
-											null,
+											{ className: 'recipe-list' },
 											this.state.results.map(function (result) {
 												return _react2.default.createElement(_PantryIngredient2.default, { key: result.id, ingredient: result });
 											})
@@ -27986,7 +27991,7 @@
 /* 252 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -28018,13 +28023,13 @@
 	  }
 
 	  _createClass(PantryIngredient, [{
-	    key: 'render',
+	    key: "render",
 	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement('img', { src: this.props.ingredient.foodimg })
-	      );
+	      return _react2.default.createElement("img", {
+	        className: "img-responsive recipe-item",
+	        src: this.props.ingredient.foodimg,
+	        width: "200"
+	      });
 	      //     value: this.state.value,
 	      //     onChange: this.onChange
 	      //   });
@@ -28047,6 +28052,172 @@
 	}(_react2.default.Component);
 
 	exports.default = PantryIngredient;
+
+/***/ },
+/* 253 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _Navbar = __webpack_require__(182);
+
+	var _Navbar2 = _interopRequireDefault(_Navbar);
+
+	var _Footer = __webpack_require__(246);
+
+	var _Footer2 = _interopRequireDefault(_Footer);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var landing_page = function (_React$Component) {
+	    _inherits(landing_page, _React$Component);
+
+	    function landing_page() {
+	        _classCallCheck(this, landing_page);
+
+	        return _possibleConstructorReturn(this, (landing_page.__proto__ || Object.getPrototypeOf(landing_page)).apply(this, arguments));
+	    }
+
+	    _createClass(landing_page, [{
+	        key: 'componentWillUnmount',
+	        value: function componentWillUnmount() {
+	            $('.carousel').carousel({
+	                interval: false //changes the speed
+	            });
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+
+	            return _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement(_Navbar2.default, null),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'container' },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'row' },
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'box' },
+	                            _react2.default.createElement(
+	                                'div',
+	                                { className: 'col-lg-12 text-center' },
+	                                _react2.default.createElement(
+	                                    'div',
+	                                    {
+	                                        id: 'carousel-example-generic',
+	                                        className: 'carousel slide',
+	                                        ref: function ref(carousel) {
+	                                            if (carousel) {
+	                                                $('.carousel').carousel({
+	                                                    interval: 5000 //changes the speed
+	                                                });
+	                                            }
+	                                        }
+	                                    },
+	                                    _react2.default.createElement(
+	                                        'ol',
+	                                        { className: 'carousel-indicators hidden-xs' },
+	                                        _react2.default.createElement('li', { 'data-target': '#carousel-example-generic', 'data-slide-to': '0', className: 'active' }),
+	                                        _react2.default.createElement('li', { 'data-target': '#carousel-example-generic', 'data-slide-to': '1' }),
+	                                        _react2.default.createElement('li', { 'data-target': '#carousel-example-generic', 'data-slide-to': '2' })
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'div',
+	                                        { className: 'carousel-inner' },
+	                                        _react2.default.createElement(
+	                                            'div',
+	                                            { className: 'item active' },
+	                                            _react2.default.createElement('img', { className: 'img-responsive img-full', src: 'img/slide-1.jpg', alt: '' })
+	                                        ),
+	                                        _react2.default.createElement(
+	                                            'div',
+	                                            { className: 'item' },
+	                                            _react2.default.createElement('img', { className: 'img-responsive img-full', src: 'img/slide-2.jpg', alt: '' })
+	                                        ),
+	                                        _react2.default.createElement(
+	                                            'div',
+	                                            { className: 'item' },
+	                                            _react2.default.createElement('img', { className: 'img-responsive img-full', src: 'img/slide-3.jpg', alt: '' })
+	                                        )
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'a',
+	                                        { className: 'left carousel-control', href: '#carousel-example-generic', 'data-slide': 'prev' },
+	                                        _react2.default.createElement('span', { className: 'icon-prev' })
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'a',
+	                                        { className: 'right carousel-control', href: '#carousel-example-generic', 'data-slide': 'next' },
+	                                        _react2.default.createElement('span', { className: 'icon-next' })
+	                                    )
+	                                ),
+	                                ' ',
+	                                _react2.default.createElement(
+	                                    'h2',
+	                                    { className: 'brand-before' },
+	                                    _react2.default.createElement(
+	                                        'small',
+	                                        null,
+	                                        'Welcome to'
+	                                    )
+	                                ),
+	                                _react2.default.createElement(
+	                                    'h1',
+	                                    { className: 'brand-name' },
+	                                    'Keep It Simple'
+	                                ),
+	                                _react2.default.createElement('hr', { className: 'tagline-divider' }),
+	                                _react2.default.createElement(
+	                                    'h2',
+	                                    null,
+	                                    _react2.default.createElement(
+	                                        'small',
+	                                        null,
+	                                        'By',
+	                                        _react2.default.createElement(
+	                                            'strong',
+	                                            null,
+	                                            'Start Bootstrap'
+	                                        )
+	                                    )
+	                                )
+	                            ),
+	                            ' '
+	                        ),
+	                        ' '
+	                    ),
+	                    ' '
+	                ),
+	                ' ',
+	                _react2.default.createElement(_Footer2.default, null)
+	            );
+	        }
+	    }]);
+
+	    return landing_page;
+	}(_react2.default.Component);
+
+	exports.default = landing_page;
 
 /***/ }
 /******/ ]);

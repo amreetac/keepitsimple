@@ -9,9 +9,12 @@ class PantryIngredient extends React.Component {
 
   render() {
     return  (
-      <div>
-        <img src= {this.props.ingredient.foodimg} />
-      </div>
+  
+        <img
+          className="img-responsive recipe-item" 
+          src= {this.props.ingredient.foodimg}
+          width="200"
+        />
     )
   //     value: this.state.value,
   //     onChange: this.onChange

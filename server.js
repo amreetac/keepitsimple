@@ -178,7 +178,8 @@ app.get('/allingredients', function(req, res){
 
 })
 app.get('*', function(req, res){
-	res.sendFile(path.join(__dirname, '/public/recipe.html'));
+	res.sendFile(path.join(__dirname, '/public/index.html'));
+	//res.redirect(path.join(__dirname, '/landingpage'));
 })
 // app.get('/ingredient', function(req, res){
 //    res.sendFile(path.join(__dirname, 'ingredient.html'));
