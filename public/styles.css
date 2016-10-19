@@ -18,10 +18,14 @@ body{
 	background-size: 75%;
 	background-repeat: no-repeat;
 	height:800px;
-
 }
-.ingredientsList{
-	list-style: none;
+
+#center {
+	align: center;
+}
+
+.carousel-inner img {
+  margin: auto;
 }
 /*
 .container{
