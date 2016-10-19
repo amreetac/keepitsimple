@@ -54,7 +54,7 @@ class PantryForm extends React.Component{
 							
 
 							<form id="show-ingredient"  method='GET'>
-								<ul className="recipe-list">
+								<ul className="recipe-list col-md-offset-6 col-md-6">
 									{this.state.results.map(function(result){
 										return(
 											<PantryIngredient  key={result.foodid} ingredient={result}/>
@@ -66,6 +66,8 @@ class PantryForm extends React.Component{
 						</div>
 					</div>
 					<div className="panel-body text-center">
+						<button type="button" className="btn btn-primary">Create Recipe</button>
+
 					</div>
 				</div>
 			<Footer />

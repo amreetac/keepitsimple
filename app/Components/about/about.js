@@ -18,7 +18,8 @@ class about extends React.Component{
                             <div className="col-lg-12">
                                 <hr />
                                 <h2 className="intro-text text-center">About
-                                    <strong>Keep It Simple</strong>
+                                    
+                                    <strong> Keep It Simple</strong>
                                 </h2>
                                 <hr />
                             </div>
@@ -39,7 +40,8 @@ class about extends React.Component{
                             <div className="col-lg-12">
                                 <hr />
                                 <h2 className="intro-text text-center">Our
-                                    <strong>Team</strong>
+                                    
+                                    <strong> Team</strong>
                                 </h2>
                                 <hr />
                             </div>

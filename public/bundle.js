@@ -27986,7 +27986,7 @@
 										{ id: 'show-ingredient', method: 'GET' },
 										_react2.default.createElement(
 											'ul',
-											{ className: 'recipe-list' },
+											{ className: 'recipe-list col-md-offset-6 col-md-6' },
 											this.state.results.map(function (result) {
 												return _react2.default.createElement(_PantryIngredient2.default, { key: result.foodid, ingredient: result });
 											})
@@ -27995,7 +27995,15 @@
 								)
 							)
 						),
-						_react2.default.createElement('div', { className: 'panel-body text-center' })
+						_react2.default.createElement(
+							'div',
+							{ className: 'panel-body text-center' },
+							_react2.default.createElement(
+								'button',
+								{ type: 'button', className: 'btn btn-primary' },
+								'Create Recipe'
+							)
+						)
 					),
 					_react2.default.createElement(_Footer2.default, null)
 				);
@@ -28299,7 +28307,7 @@
 	                                    _react2.default.createElement(
 	                                        'strong',
 	                                        null,
-	                                        'Keep It Simple'
+	                                        ' Keep It Simple'
 	                                    )
 	                                ),
 	                                _react2.default.createElement('hr', null)
@@ -28348,7 +28356,7 @@
 	                                    _react2.default.createElement(
 	                                        'strong',
 	                                        null,
-	                                        'Team'
+	                                        ' Team'
 	                                    )
 	                                ),
 	                                _react2.default.createElement('hr', null)
