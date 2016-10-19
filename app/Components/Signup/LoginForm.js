@@ -4,7 +4,7 @@ import Navbar from "../Children/Navbar";
 import Footer from "../Children/Footer";
 import LoginFields from "./LoginFields";
 
-class SignupForm extends React.Component{
+class LoginForm extends React.Component{
 	constructor(props){
 		super(props);
 		this.state = {

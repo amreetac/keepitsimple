@@ -7,9 +7,7 @@ import SignupFields from "./SignupFields";
 class SignupForm extends React.Component{
 	constructor(props){
 		super(props);
-		this.state = {
-			fields : ""
-		}
+		
     }
 
 

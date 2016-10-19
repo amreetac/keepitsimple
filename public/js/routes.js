@@ -7,11 +7,11 @@ module.exports = function(app, passport) {
 	// LOGIN ===============================
 	// =====================================
 	// show the login form
-	app.get('/login', function(req, res) {
+	// app.get('/login', function(req, res) {
         
-		// render the page and pass in any flash data if it exists
-		res.sendFile(path.join(__dirname,'../login.html'));
-	});
+	// 	// render the page and pass in any flash data if it exists
+	// 	res.sendFile(path.join(__dirname,'../login.html'));
+	// });
 
 	// process the login form
 	app.post('/login', passport.authenticate('local-login', {
@@ -34,11 +34,11 @@ module.exports = function(app, passport) {
 	// SIGNUP ==============================
 	// =====================================
 	// show the signup form
-	app.get('/signup', function(req, res) {
-		// render the page and pass in any flash data if it exists
-		res.sendFile(path.join(__dirname,'../signup.html'));
+	// app.get('/signup', function(req, res) {
+	// 	// render the page and pass in any flash data if it exists
+	// 	res.sendFile(path.join(__dirname,'../signup.html'));
 		
-	});
+	// });
 
 	// process the signup form
 	app.post('/signup', passport.authenticate('local-signup', {
@@ -61,10 +61,10 @@ module.exports = function(app, passport) {
 	// =====================================
 	// LOGOUT ==============================
 	// =====================================
-	app.get('/logout', function(req, res) {
-		req.logout();
-		res.redirect('/');
-	});
+	// app.get('/logout', function(req, res) {
+	// 	req.logout();
+	// 	res.redirect('/');
+	// });
 };
 
 // route middleware to make sure
