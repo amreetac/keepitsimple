@@ -26,20 +26,19 @@ render(){
             <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul className="nav navbar-nav">
                     <li>
-                        <a href="/landing">Home</a>
+                        <Link to="/landing">Home</Link>
                     </li>
                     <li>
-                    <Link to="/pantry">
-                    Your Pantry</Link>
+                        <Link to="/pantry">Your Pantry</Link>
                     </li>
                     <li>
-                        <a href="/about">About Us</a>
+                         <Link to="/about">About Us</Link>
                     </li>
                     <li>
-                        <a href="/findrecipe">Recipe Maker</a>
+                        <Link to="/findrecipe">Recipe Maker</Link>
                     </li>
                     <li>
-                        <a href="/signup">Sign-up</a>
+                        <Link to="/signup">Sign-up</Link>
                     </li>
                     
                 </ul>

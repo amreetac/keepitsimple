@@ -21555,8 +21555,8 @@
 	                                'li',
 	                                null,
 	                                _react2.default.createElement(
-	                                    'a',
-	                                    { href: '/landing' },
+	                                    _reactRouter.Link,
+	                                    { to: '/landing' },
 	                                    'Home'
 	                                )
 	                            ),
@@ -21573,8 +21573,8 @@
 	                                'li',
 	                                null,
 	                                _react2.default.createElement(
-	                                    'a',
-	                                    { href: '/about' },
+	                                    _reactRouter.Link,
+	                                    { to: '/about' },
 	                                    'About Us'
 	                                )
 	                            ),
@@ -21582,8 +21582,8 @@
 	                                'li',
 	                                null,
 	                                _react2.default.createElement(
-	                                    'a',
-	                                    { href: '/findrecipe' },
+	                                    _reactRouter.Link,
+	                                    { to: '/findrecipe' },
 	                                    'Recipe Maker'
 	                                )
 	                            ),
@@ -21591,8 +21591,8 @@
 	                                'li',
 	                                null,
 	                                _react2.default.createElement(
-	                                    'a',
-	                                    { href: '/signup' },
+	                                    _reactRouter.Link,
+	                                    { to: '/signup' },
 	                                    'Sign-up'
 	                                )
 	                            )
@@ -28404,7 +28404,7 @@
 	                                _react2.default.createElement(
 	                                    'h3',
 	                                    null,
-	                                    ' Sudharshana Chavan',
+	                                    ' Sudarshana Chavan',
 	                                    _react2.default.createElement('br', null),
 	                                    _react2.default.createElement(
 	                                        'small',
@@ -28494,7 +28494,8 @@
 	                            )
 	                        )
 	                    )
-	                )
+	                ),
+	                _react2.default.createElement(_Footer2.default, null)
 	            );
 	        }
 	    }]);
