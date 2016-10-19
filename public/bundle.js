@@ -21508,10 +21508,10 @@
 	var Navbar = function (_React$Component) {
 	    _inherits(Navbar, _React$Component);
 
-	    function Navbar(props) {
+	    function Navbar() {
 	        _classCallCheck(this, Navbar);
 
-	        return _possibleConstructorReturn(this, (Navbar.__proto__ || Object.getPrototypeOf(Navbar)).call(this, props));
+	        return _possibleConstructorReturn(this, (Navbar.__proto__ || Object.getPrototypeOf(Navbar)).apply(this, arguments));
 	    }
 
 	    _createClass(Navbar, [{
@@ -27267,7 +27267,7 @@
 	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+	    value: true
 	});
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -27285,43 +27285,43 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var Footer = function (_React$Component) {
-	  _inherits(Footer, _React$Component);
+	    _inherits(Footer, _React$Component);
 
-	  function Footer(props) {
-	    _classCallCheck(this, Footer);
+	    function Footer() {
+	        _classCallCheck(this, Footer);
 
-	    return _possibleConstructorReturn(this, (Footer.__proto__ || Object.getPrototypeOf(Footer)).call(this, props));
-	  }
-
-	  _createClass(Footer, [{
-	    key: "render",
-	    value: function render() {
-
-	      return _react2.default.createElement(
-	        "footer",
-	        null,
-	        _react2.default.createElement(
-	          "div",
-	          { className: "container" },
-	          _react2.default.createElement(
-	            "div",
-	            { className: "row" },
-	            _react2.default.createElement(
-	              "div",
-	              { className: "col-lg-12 text-center" },
-	              _react2.default.createElement(
-	                "p",
-	                null,
-	                "Copyright \xA9 2016 Amreeta Choudhury Padmaja Kondeti Stefanie Centi Sudarshana Chavan"
-	              )
-	            )
-	          )
-	        )
-	      );
+	        return _possibleConstructorReturn(this, (Footer.__proto__ || Object.getPrototypeOf(Footer)).apply(this, arguments));
 	    }
-	  }]);
 
-	  return Footer;
+	    _createClass(Footer, [{
+	        key: "render",
+	        value: function render() {
+
+	            return _react2.default.createElement(
+	                "footer",
+	                null,
+	                _react2.default.createElement(
+	                    "div",
+	                    { className: "container" },
+	                    _react2.default.createElement(
+	                        "div",
+	                        { className: "row" },
+	                        _react2.default.createElement(
+	                            "div",
+	                            { className: "col-lg-12 text-center" },
+	                            _react2.default.createElement(
+	                                "p",
+	                                null,
+	                                "Copyright \xA9 2016 Amreeta Choudhury Padmaja Kondeti Stefanie Centi Sudarshana Chavan"
+	                            )
+	                        )
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+
+	    return Footer;
 	}(_react2.default.Component);
 
 	exports.default = Footer;
@@ -28021,11 +28021,10 @@
 	var PantryIngredient = function (_React$Component) {
 	  _inherits(PantryIngredient, _React$Component);
 
-	  function PantryIngredient(props) {
+	  function PantryIngredient() {
 	    _classCallCheck(this, PantryIngredient);
 
-	    return _possibleConstructorReturn(this, (PantryIngredient.__proto__ || Object.getPrototypeOf(PantryIngredient)).call(this, props));
-	    //    this.onChange = (value) => this.setState({value});
+	    return _possibleConstructorReturn(this, (PantryIngredient.__proto__ || Object.getPrototypeOf(PantryIngredient)).apply(this, arguments));
 	  }
 
 	  _createClass(PantryIngredient, [{
@@ -28036,21 +28035,6 @@
 	        src: this.props.ingredient.foodimg,
 	        width: "200"
 	      });
-	      //     value: this.state.value,
-	      //     onChange: this.onChange
-	      //   });
-	      // }
-
-	      // onChange(value) {
-	      //   this.setState({value: value});
-	      //   if (this.props.onChange) {
-	      //     // Send the changes up to the parent component as an HTML string. 
-	      //     // This is here to demonstrate using `.toString()` but in a real app it 
-	      //     // would be better to avoid generating a string on each change. 
-	      //     this.props.onChange(
-	      //       value.toString('html')
-	      //     );
-	      //   }
 	    }
 	  }]);
 
@@ -28566,10 +28550,10 @@
 	var SignupForm = function (_React$Component) {
 		_inherits(SignupForm, _React$Component);
 
-		function SignupForm(props) {
+		function SignupForm() {
 			_classCallCheck(this, SignupForm);
 
-			return _possibleConstructorReturn(this, (SignupForm.__proto__ || Object.getPrototypeOf(SignupForm)).call(this, props));
+			return _possibleConstructorReturn(this, (SignupForm.__proto__ || Object.getPrototypeOf(SignupForm)).apply(this, arguments));
 		}
 
 		_createClass(SignupForm, [{
@@ -28619,10 +28603,10 @@
 	var SignupFields = function (_React$Component) {
 		_inherits(SignupFields, _React$Component);
 
-		function SignupFields(props) {
+		function SignupFields() {
 			_classCallCheck(this, SignupFields);
 
-			return _possibleConstructorReturn(this, (SignupFields.__proto__ || Object.getPrototypeOf(SignupFields)).call(this, props));
+			return _possibleConstructorReturn(this, (SignupFields.__proto__ || Object.getPrototypeOf(SignupFields)).apply(this, arguments));
 		}
 
 		_createClass(SignupFields, [{
@@ -28718,15 +28702,10 @@
 	var LoginForm = function (_React$Component) {
 		_inherits(LoginForm, _React$Component);
 
-		function LoginForm(props) {
+		function LoginForm() {
 			_classCallCheck(this, LoginForm);
 
-			var _this = _possibleConstructorReturn(this, (LoginForm.__proto__ || Object.getPrototypeOf(LoginForm)).call(this, props));
-
-			_this.state = {
-				fields: ""
-			};
-			return _this;
+			return _possibleConstructorReturn(this, (LoginForm.__proto__ || Object.getPrototypeOf(LoginForm)).apply(this, arguments));
 		}
 
 		_createClass(LoginForm, [{
@@ -28774,10 +28753,10 @@
 	var LoginFields = function (_React$Component) {
 			_inherits(LoginFields, _React$Component);
 
-			function LoginFields(props) {
+			function LoginFields() {
 					_classCallCheck(this, LoginFields);
 
-					return _possibleConstructorReturn(this, (LoginFields.__proto__ || Object.getPrototypeOf(LoginFields)).call(this, props));
+					return _possibleConstructorReturn(this, (LoginFields.__proto__ || Object.getPrototypeOf(LoginFields)).apply(this, arguments));
 			}
 
 			_createClass(LoginFields, [{

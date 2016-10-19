@@ -5,12 +5,6 @@ import Footer from "../Children/Footer";
 import SignupFields from "./SignupFields";
 
 class SignupForm extends React.Component{
-	constructor(props){
-		super(props);
-		
-    }
-
-
 render(){
 	return (
 	   <div>

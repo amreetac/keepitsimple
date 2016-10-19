@@ -5,14 +5,6 @@ import Footer from "../Children/Footer";
 import LoginFields from "./LoginFields";
 
 class LoginForm extends React.Component{
-	constructor(props){
-		super(props);
-		this.state = {
-			fields : ""
-		}
-    }
-
-
 render(){
 	return (
 	   <div>

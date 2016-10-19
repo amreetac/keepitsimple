@@ -1,11 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
 class SignupFields extends React.Component{
-	constructor(props){
-		super(props);
-    }
-
-
 render(){
 	return (
 	   <div className="container">
